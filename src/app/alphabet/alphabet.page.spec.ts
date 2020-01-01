@@ -1,6 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { AlphabetPage } from './alphabet.page';
 
 describe('AlphabetPage', () => {
@@ -9,7 +8,7 @@ describe('AlphabetPage', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AlphabetPage ],
+      declarations: [AlphabetPage],
       imports: [IonicModule.forRoot()]
     }).compileComponents();
 
@@ -21,4 +20,5 @@ describe('AlphabetPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
