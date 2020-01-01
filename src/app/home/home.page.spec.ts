@@ -31,5 +31,14 @@ describe('HomePage', () => {
 
       component.goToAlphabet();
         expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
-    }));
+    })
+  );
+
+  it('should render button text', () => {
+    fixture.detectChanges();
+
+    const compiled = fixture.debugElement.nativeElement;
+    expect(compiled.querySelector('.go-to-alphabet-btn').textContent).toContain('Let\'s start studying the alphabet');
+  });
+
 });
