@@ -2,6 +2,7 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetPage } from './alphabet.page';
 import { TranslateModule } from '@ngx-translate/core';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('AlphabetPage', () => {
   let component: AlphabetPage;
@@ -10,7 +11,7 @@ describe('AlphabetPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
-      imports: [IonicModule, TranslateModule]
+      imports: [IonicModule, TranslateModule, HttpClientTestingModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AlphabetPage);

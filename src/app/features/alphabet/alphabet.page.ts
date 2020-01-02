@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
 
 @Component({
   selector: 'app-alphabet',
@@ -6,9 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alphabet.page.scss'],
 })
 export class AlphabetPage implements OnInit {
-  public alphabet$;
+  public alphabet$ = this.alphabetService.alphabet;
 
-  constructor() { }
+  constructor(private alphabetService: AlphabetService) { }
 
   ngOnInit() { }
 

@@ -8,26 +8,31 @@
 
 <ion-content>
 
-  <ion-grid>
-    
-    <ion-row>
-      <ion-col class="ion-margin-bottom">
-        <div class="ion-text-center letter letter-yiddish">אַ</div>
-      </ion-col>
-    </ion-row>
+  <ion-slides dir="rtl">
+    <ion-slide *ngFor="let letter of alphabet$ | async">
 
-    <ion-row>
-      <ion-col class="ion-margin-bottom">
-        <div class="ion-text-center letter letter-english">a</div>
-      </ion-col>
-    </ion-row>
+      <ion-grid>
+ 
+        <ion-row>
+          <ion-col class="ion-margin-bottom">
+            <div class="ion-text-center letter letter-yiddish">{{ letter.letterYiddish }}</div>
+          </ion-col>
+        </ion-row>
 
-    <ion-row>
-      <ion-col class="ion-padding-bottom">
-        <div class="ion-text-center letter-name">Pasekh Alef</div>
-      </ion-col>
-    </ion-row>
+        <ion-row>
+          <ion-col class="ion-margin-bottom">
+            <div class="ion-text-center letter letter-english">{{ letter.letterEnglish }}</div>
+          </ion-col>
+        </ion-row>
 
-  </ion-grid>
+        <ion-row>
+          <ion-col class="ion-padding-bottom">
+            <div class="ion-text-center letter-name">{{ letter.letterName }}</div>
+          </ion-col>
+        </ion-row>
 
+      </ion-grid>
+
+    </ion-slide>
+  </ion-slides>
 </ion-content>
