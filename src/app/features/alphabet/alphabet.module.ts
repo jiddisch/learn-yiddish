@@ -18,3 +18,4 @@ import { AlphabetPage } from './alphabet.page';
   declarations: [AlphabetPage]
 })
 export class AlphabetPageModule {}
+

@@ -1,0 +1,27 @@
+[
+    {
+        "letterYiddish": "אַ",
+        "letterEnglish": "a",
+        "letterName": "Pasekh Alef"
+    },
+    {
+        "letterYiddish": "אָ",
+        "letterEnglish": "o",
+        "letterName": "Komets Alef"
+    },
+    {
+        "letterYiddish": "ע",
+        "letterEnglish": "e",
+        "letterName": "Ayen"
+    },
+    {
+        "letterYiddish": "ד",
+        "letterEnglish": "d",
+        "letterName": "Dalet"
+    },
+    {
+        "letterYiddish": "ר",
+        "letterEnglish": "r",
+        "letterName": "Reysh"
+    }
+]
