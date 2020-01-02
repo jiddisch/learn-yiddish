@@ -25,7 +25,7 @@ describe('HomePage', () => {
     TestBed.configureTestingModule({
       declarations: [HomePage],
       imports: [
-        IonicModule.forRoot(),
+        IonicModule,
         RouterTestingModule.withRoutes([]),
         TranslateTestingModule.withTranslations(TRANSLATIONS)
       ]
@@ -69,5 +69,7 @@ describe('HomePage', () => {
       fixture.detectChanges();
       expect(compiled.querySelector('.go-to-alphabet-btn').textContent).toContain(YIDDISH_TRANSLATIONS.startStudyAlphabetButton);
     });
+
   });
+  
 });

@@ -10,7 +10,7 @@ describe('AlphabetPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
-      imports: [IonicModule.forRoot(), TranslateModule.forRoot({})]
+      imports: [IonicModule, TranslateModule]
     }).compileComponents();
 
     fixture = TestBed.createComponent(AlphabetPage);

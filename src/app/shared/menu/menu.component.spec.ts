@@ -13,7 +13,7 @@ describe('MenuComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ MenuComponent ],
-      imports: [IonicModule.forRoot(), RouterTestingModule.withRoutes([])]
+      imports: [IonicModule, RouterTestingModule.withRoutes([])]
     }).compileComponents();
 
     fixture = TestBed.createComponent(MenuComponent);

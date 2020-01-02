@@ -6,10 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./alphabet.page.scss'],
 })
 export class AlphabetPage implements OnInit {
+  public alphabet$;
 
   constructor() { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }
