@@ -23,5 +23,55 @@
         "letterYiddish": "ר",
         "letterEnglish": "r",
         "letterName": "Reysh"
+    },
+    {
+        "letterYiddish": "ב",
+        "letterEnglish": "b",
+        "letterName": "Beys"
+    },
+    {
+        "letterYiddish": "ו",
+        "letterEnglish": "v, u",
+        "letterName": "Vov"
+    },
+    {
+        "letterYiddish": "ט",
+        "letterEnglish": "t",
+        "letterName": "Tes"
+    },
+    {
+        "letterYiddish": "י",
+        "letterEnglish": "y, i",
+        "letterName": "Yud"
+    },
+    {
+        "letterYiddish": "יִ",
+        "letterEnglish": "i",
+        "letterName": "Hirek Yud"
+    },
+    {
+        "letterYiddish": "מ",
+        "letterEnglish": "m",
+        "letterName": "Mem"
+    },
+    {
+        "letterYiddish": "ם",
+        "letterEnglish": "m",
+        "letterName": "Shlos-Mem"
+    },
+    {
+        "letterYiddish": "ס",
+        "letterEnglish": "s",
+        "letterName": "Samekh"
+    },
+    {
+        "letterYiddish": "נ",
+        "letterEnglish": "n",
+        "letterName": "Nun"
+    },
+    {
+        "letterYiddish": "ן",
+        "letterEnglish": "n",
+        "letterName": "Langer Nun"
     }
 ]

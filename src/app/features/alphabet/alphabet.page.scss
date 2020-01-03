@@ -1,5 +1,5 @@
 .letter-yiddish {
-    font-size: 46vh;
+    font-size: 44vh;
     line-height: 0.7em;
     font-family: 'Varela Round', sans-serif;
 }
@@ -10,9 +10,19 @@
 }
 
 .letter-name {
-    font-size: 6vh;
+    font-size: 8vh;
+    line-height: 2em;
 }
 
-.ion-margin-bottom {
-    margin-bottom: 10vh;
+.letter-yiddish-col {
+    margin-bottom: 12vh;
+}
+
+.letter-english-col {
+    margin-bottom: 5vh;
+}
+
+ion-item-divider {
+    width: 100vw;
+    min-height: 2px;
 }
