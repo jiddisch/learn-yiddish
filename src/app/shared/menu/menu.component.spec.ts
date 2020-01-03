@@ -33,4 +33,13 @@ describe('MenuComponent', () => {
     component.goToHome();
     expect(navigateSpy).toHaveBeenCalledWith(['/home']);
   }));
+
+  it('should be able to navigate to `/alphabet`',
+  fakeAsync(() => {
+    router = TestBed.get(Router);
+    const navigateSpy = spyOn(router, 'navigate');
+
+    component.goToAlphabet();
+    expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
+  }));
 });

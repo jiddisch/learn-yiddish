@@ -16,4 +16,8 @@ export class MenuComponent implements OnInit {
     this.route.navigate(['/home']);
   }
 
+  public goToAlphabet(): void {
+    this.route.navigate(['/alphabet']);
+  }
+
 }

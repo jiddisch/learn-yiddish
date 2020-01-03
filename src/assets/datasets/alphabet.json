@@ -10,9 +10,19 @@
         "letterName": "Komets Alef"
     },
     {
-        "letterYiddish": "ע",
-        "letterEnglish": "e",
-        "letterName": "Ayen"
+        "letterYiddish": "ב",
+        "letterEnglish": "b",
+        "letterName": "Beys"
+    },
+    {
+        "letterYiddish": "בֿ",
+        "letterEnglish": "b",
+        "letterName": "Veys"
+    },
+    {
+        "letterYiddish": "ג",
+        "letterEnglish": "g",
+        "letterName": "Giml"
     },
     {
         "letterYiddish": "ד",
@@ -20,19 +30,24 @@
         "letterName": "Dalet"
     },
     {
-        "letterYiddish": "ר",
-        "letterEnglish": "r",
-        "letterName": "Reysh"
-    },
-    {
-        "letterYiddish": "ב",
-        "letterEnglish": "b",
-        "letterName": "Beys"
+        "letterYiddish": "ה",
+        "letterEnglish": "h",
+        "letterName": "Hey"
     },
     {
         "letterYiddish": "ו",
         "letterEnglish": "v, u",
         "letterName": "Vov"
+    },
+    {
+        "letterYiddish": "ע",
+        "letterEnglish": "e",
+        "letterName": "Ayen"
+    },
+    {
+        "letterYiddish": "ר",
+        "letterEnglish": "r",
+        "letterName": "Reysh"
     },
     {
         "letterYiddish": "ט",
