@@ -14,4 +14,8 @@ export class HomePage {
     this.route.navigate(['/alphabet']);
   }
 
+  public goToTestLetters(): void {
+    this.route.navigate(['/test-letters']);
+  }
+
 }

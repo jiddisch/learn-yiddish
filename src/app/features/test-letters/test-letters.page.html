@@ -7,5 +7,28 @@
 </ion-header>
 
 <ion-content>
+  
+  <ion-slides [pager]="true" dir="rtl">
+    <ion-slide *ngFor="let test of tests$ | async">
 
+      <ion-grid>
+ 
+        <ion-row>
+          <ion-col class="letters-yiddish-col">
+            <div class="ion-text-center letters letters-yiddish">{{ test.lettersYiddish }}</div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col class="letters-english-col">
+            <ion-item dir="ltr">
+              <ion-input placeholder="Type the answer here"></ion-input>
+            </ion-item>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
+
+    </ion-slide>
+  </ion-slides>
 </ion-content>

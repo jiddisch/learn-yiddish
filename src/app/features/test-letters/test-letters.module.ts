@@ -1,20 +1,15 @@
 import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
-
-import { IonicModule } from '@ionic/angular';
-
 import { TestLettersPageRoutingModule } from './test-letters-routing.module';
-
 import { TestLettersPage } from './test-letters.page';
+import { SharedModule } from 'src/app/shared/shared.module';
+import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
 
 @NgModule({
   imports: [
-    CommonModule,
-    FormsModule,
-    IonicModule,
+    SharedModule,
     TestLettersPageRoutingModule
   ],
-  declarations: [TestLettersPage]
+  declarations: [TestLettersPage],
+  providers: [TestLettersService]
 })
 export class TestLettersPageModule {}
