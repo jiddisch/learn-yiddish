@@ -9,7 +9,7 @@ export class AlphabetService {
 
   constructor(private http: HttpClient) { }
 
-  get alphabet(): Observable<Alphabet[]> {
+  get alphabet$(): Observable<Alphabet[]> {
     return this.http.get<Alphabet[]>(this.url);
   }
   

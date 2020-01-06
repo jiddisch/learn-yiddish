@@ -11,7 +11,7 @@ export class TestLettersService {
 
   constructor(private http: HttpClient) { }
 
-  get getTestsS(): Observable<TestLetters[]> {
+  get getTests$(): Observable<TestLetters[]> {
     return this.http.get<TestLetters[]>(this.url);
   }
 }

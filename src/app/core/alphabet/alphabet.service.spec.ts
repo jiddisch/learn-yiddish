@@ -1,21 +1,20 @@
-import { TestBed, getTestBed, ComponentFixture } from '@angular/core/testing';
+import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AlphabetService } from './alphabet.service';
 
 describe('AlphabetService', () => {
-  let injector: TestBed;
   let service: AlphabetService;
   let httpMock: HttpTestingController;
-  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
+
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
 
-    injector = getTestBed();
-    service = injector.get(AlphabetService);
-    httpMock = injector.get(HttpTestingController);
+    service = TestBed.get(AlphabetService);
+    httpMock = TestBed.get(HttpTestingController);
+    
   });
 
   afterEach(() => {
@@ -40,13 +39,14 @@ describe('AlphabetService', () => {
       }
     ]
 
-    service.alphabet.subscribe(alphabet => {
+    service.alphabet$.subscribe(alphabet => {
       expect(alphabet.length).toBe(2);
       expect(alphabet).toEqual(mockAlphabet);
     });
 
     const req = httpMock.expectOne(`../../../assets/datasets/alphabet.json`);
     expect(req.request.method).toBe("GET");
+
     req.flush(mockAlphabet);
 
   });

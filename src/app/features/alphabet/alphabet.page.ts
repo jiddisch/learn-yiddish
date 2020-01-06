@@ -7,7 +7,7 @@ import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
   styleUrls: ['./alphabet.page.scss'],
 })
 export class AlphabetPage implements OnInit {
-  public alphabet$ = this.alphabetService.alphabet
+  public alphabet$ = this.alphabetService.alphabet$;
 
   constructor(private alphabetService: AlphabetService) { }
 

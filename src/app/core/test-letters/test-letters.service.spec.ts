@@ -1,15 +1,54 @@
 import { TestBed } from '@angular/core/testing';
 import { TestLettersService } from './test-letters.service';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 describe('TestLettersService', () => {
   let service: TestLettersService;
-  beforeEach(() => TestBed.configureTestingModule({
-    imports: [HttpClientTestingModule]
-  }));
+  let httpMock: HttpTestingController;
+
+  beforeEach(() => {
+
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
+
+    service = TestBed.get(TestLettersService);
+    httpMock = TestBed.get(HttpTestingController);
+
+  });
+
+  afterEach(() => {
+    httpMock.verify();
+  });
 
   it('should be created', () => {
-    service = TestBed.get(TestLettersService);
     expect(service).toBeTruthy();
   });
+
+  it('should return an Observable<TestLettersService[]>', () => {
+    const testLetters = [
+      {
+          "id": 0,
+          "lettersYiddish": "ער",
+          "lettersEnglish": "er"
+      },
+      {
+          "id": 1,
+          "lettersYiddish": "רע",
+          "lettersEnglish": "re"
+      }
+  ]
+
+    service.getTests$.subscribe(testLetters => {
+      expect(testLetters.length).toBe(2);
+      expect(testLetters).toEqual(testLetters);
+    });
+
+    const req = httpMock.expectOne(`../../../assets/datasets/test-letters.json`);
+    expect(req.request.method).toBe("GET");
+
+    req.flush(testLetters);
+
+  });
+
 });
