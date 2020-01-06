@@ -1,26 +1,57 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetPage } from './alphabet.page';
-import { TranslateModule } from '@ngx-translate/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { DebugElement } from '@angular/core';
+import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
 describe('AlphabetPage', () => {
   let component: AlphabetPage;
   let fixture: ComponentFixture<AlphabetPage>;
+  let debugElement: DebugElement;
 
-  beforeEach(async(() => {
+  beforeEach(async( () => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
-      imports: [IonicModule, TranslateModule, HttpClientTestingModule]
-    }).compileComponents();
+      imports: [IonicModule, HttpClientTestingModule]
+    });
 
     fixture = TestBed.createComponent(AlphabetPage);
     component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
     fixture.detectChanges();
-  }));
+  }) );
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should be present with content of letters', () => {
+    const mockAlphabet = [
+      {
+        letterYiddish: "אַ",
+        letterEnglish: "a",
+        letterName: "Pasekh Alef"
+      },
+      {
+        letterYiddish: "אָ",
+        letterEnglish: "o",
+        letterName: "Komets Alef"
+      }
+    ];
+
+    const alphabet = of(mockAlphabet);
+    component.alphabet$ = alphabet;
+
+    fixture.detectChanges();
+    let yiddishLetterSpy = debugElement.queryAll(By.css('.letter-yiddish'));
+    expect(yiddishLetterSpy[0].nativeElement.innerText).toEqual('אַ', 'unexpected letter');
+    expect(yiddishLetterSpy[1].nativeElement.innerText).toEqual('אָ', 'unexpected letter');
+    expect(yiddishLetterSpy.length).toBe(2, 'unexpected length of letters');
+
+    let letterName = debugElement.queryAll(By.css('.letter-name'));
+    expect(letterName[1].nativeElement.innerText).toEqual('Komets Alef', 'unexpected letter name');
   });
 
 });

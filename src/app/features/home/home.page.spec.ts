@@ -50,13 +50,16 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be able to navigate to `/alphabet`',
+  it('should be able to navigate',
     fakeAsync(() => {
       router = TestBed.get(Router);
       const navigateSpy = spyOn(router, 'navigate');
 
-      component.goToAlphabet();
-      expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
+      component.goToPage('/home');
+      expect(navigateSpy).toHaveBeenCalledWith(['/home']);
+
+      component.goToPage('/test-letters');
+      expect(navigateSpy).toHaveBeenCalledWith(['/test-letters']);
     })
   );
 

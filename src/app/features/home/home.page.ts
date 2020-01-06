@@ -10,12 +10,8 @@ export class HomePage {
 
   constructor(private route: Router) {}
 
-  public goToAlphabet(): void {
-    this.route.navigate(['/alphabet']);
-  }
-
-  public goToTestLetters(): void {
-    this.route.navigate(['/test-letters']);
+  public goToPage(page: string): void {
+    this.route.navigate([page]);
   }
 
 }

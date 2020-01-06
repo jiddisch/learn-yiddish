@@ -1,4 +1,4 @@
-import { TestBed, getTestBed } from '@angular/core/testing';
+import { TestBed, getTestBed, ComponentFixture } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { AlphabetService } from './alphabet.service';
 
@@ -6,14 +6,11 @@ describe('AlphabetService', () => {
   let injector: TestBed;
   let service: AlphabetService;
   let httpMock: HttpTestingController;
-
   let httpTestingController: HttpTestingController;
-  
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [AlphabetService]
     });
 
     injector = getTestBed();

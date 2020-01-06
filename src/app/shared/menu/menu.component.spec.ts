@@ -25,30 +25,19 @@ describe('MenuComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be able to navigate to `/home`',
+  it('should be able to navigate',
   fakeAsync(() => {
     router = TestBed.get(Router);
     const navigateSpy = spyOn(router, 'navigate');
 
-    component.goToHome();
+    component.goToPage('/home');
     expect(navigateSpy).toHaveBeenCalledWith(['/home']);
-  }));
 
-  it('should be able to navigate to `/alphabet`',
-  fakeAsync(() => {
-    router = TestBed.get(Router);
-    const navigateSpy = spyOn(router, 'navigate');
-
-    component.goToAlphabet();
+    component.goToPage('/alphabet');
     expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
-  }));
 
-  it('should be able to navigate to `/test-letters`',
-  fakeAsync(() => {
-    router = TestBed.get(Router);
-    const navigateSpy = spyOn(router, 'navigate');
-
-    component.goToTestLetters();
+    component.goToPage('/test-letters');
     expect(navigateSpy).toHaveBeenCalledWith(['/test-letters']);
   }));
+
 });

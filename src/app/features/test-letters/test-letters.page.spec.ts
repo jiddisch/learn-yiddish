@@ -4,7 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { TranslateModule } from '@ngx-translate/core';
-import { HttpClientModule } from '@angular/common/http';
 
 describe('TestLettersPage', () => {
   let component: TestLettersPage;
