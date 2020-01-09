@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { TestLetters } from './test-letters.model';
 import { Observable } from 'rxjs';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TestLettersService {
-  readonly url: string = '../../../assets/datasets/test-letters.json';
+  readonly url: string = environment.testLettersUrl;
 
   constructor(private http: HttpClient) { }
 

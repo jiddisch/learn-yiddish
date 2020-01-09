@@ -14,8 +14,6 @@ export class TestLettersPage implements OnInit {
 
   ngOnInit() {
     const r = this.generateLettersService.generateLetters('טן');
-    console.log(r);
-    
   }
 
   test(lettersEnglish: string): void {

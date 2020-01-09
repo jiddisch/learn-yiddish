@@ -4,7 +4,9 @@
 
 export const environment = {
   production: false,
-  amountPotentialLetters: 5
+  amountPotentialLetters: 5,
+  testLettersUrl: '../assets/datasets/test-letters.json',
+  alphabetUrl: '../assets/datasets/alphabet.json'
 };
 
 /*

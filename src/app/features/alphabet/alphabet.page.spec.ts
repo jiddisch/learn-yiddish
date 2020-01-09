@@ -20,7 +20,6 @@ describe('AlphabetPage', () => {
     fixture = TestBed.createComponent(AlphabetPage);
     component = fixture.componentInstance;
     debugElement = fixture.debugElement;
-    fixture.detectChanges();
   }) );
 
   it('should create', () => {
@@ -45,12 +44,14 @@ describe('AlphabetPage', () => {
     component.alphabet$ = alphabet;
 
     fixture.detectChanges();
-    let yiddishLetterSpy = debugElement.queryAll(By.css('.letter-yiddish'));
+    
+    const yiddishLetterSpy = debugElement.queryAll(By.css('.letter-yiddish'));
+    const letterName = debugElement.queryAll(By.css('.letter-name'));
+
     expect(yiddishLetterSpy[0].nativeElement.innerText).toEqual('אַ', 'unexpected letter');
     expect(yiddishLetterSpy[1].nativeElement.innerText).toEqual('אָ', 'unexpected letter');
     expect(yiddishLetterSpy.length).toBe(2, 'unexpected length of letters');
-
-    let letterName = debugElement.queryAll(By.css('.letter-name'));
+    
     expect(letterName[1].nativeElement.innerText).toEqual('Komets Alef', 'unexpected letter name');
   });
 

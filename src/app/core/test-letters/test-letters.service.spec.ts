@@ -1,6 +1,7 @@
 import { TestBed } from '@angular/core/testing';
 import { TestLettersService } from './test-letters.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
+import { environment } from 'src/environments/environment';
 
 describe('TestLettersService', () => {
   let service: TestLettersService;
@@ -44,7 +45,7 @@ describe('TestLettersService', () => {
       expect(testLetters).toEqual(testLetters);
     });
 
-    const req = httpMock.expectOne(`../../../assets/datasets/test-letters.json`);
+    const req = httpMock.expectOne(environment.testLettersUrl);
     expect(req.request.method).toBe("GET");
 
     req.flush(testLetters);

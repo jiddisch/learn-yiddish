@@ -1,8 +1,7 @@
-import { async, ComponentFixture, TestBed, fakeAsync, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from './home.page';
-import { Router } from '@angular/router';
 import { TranslateTestingModule } from 'ngx-translate-testing';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -24,7 +23,6 @@ describe('HomePage', () => {
 
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
-  let router: Router;
   let compiled: any;
 
   beforeEach(async(() => {
@@ -43,35 +41,21 @@ describe('HomePage', () => {
     fixture = TestBed.createComponent(HomePage);
     component = fixture.componentInstance;
     compiled = fixture.debugElement.nativeElement;
-    fixture.detectChanges();
+    
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be able to navigate',
-    fakeAsync(() => {
-      router = TestBed.get(Router);
-      const navigateSpy = spyOn(router, 'navigate');
-
-      component.goToPage('/home');
-      expect(navigateSpy).toHaveBeenCalledWith(['/home']);
-
-      component.goToPage('/test-letters');
-      expect(navigateSpy).toHaveBeenCalledWith(['/test-letters']);
-    })
-  );
-
   it('should render English button text', () => {
     fixture.detectChanges();
     expect(compiled.querySelector('.go-to-alphabet-btn').textContent).toContain(ENGLISH_TRANSLATIONS.startStudyAlphabetButton);
   });
 
-  describe('with Yiddish Hebrew translations', () => {
+  describe('with Yiddish-Hebrew translations', () => {
     beforeEach(inject([TranslateService], (translateService: TranslateService) => {
       translateService.use(YIDDISH_HE_LANGUAGE);
-      fixture.detectChanges();
     }));
 
     it('should render Yiddish button text', () => {
@@ -84,7 +68,6 @@ describe('HomePage', () => {
   describe('with Yiddish Latin translations', () => {
     beforeEach(inject([TranslateService], (translateService: TranslateService) => {
       translateService.use(YIDDISH_LA_LANGUAGE);
-      fixture.detectChanges();
     }));
 
     it('should render Yiddish button text', () => {

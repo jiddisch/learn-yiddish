@@ -2,10 +2,11 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { Alphabet } from './alphabet.model';
+import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AlphabetService {
-  readonly url: string = '../../../assets/datasets/alphabet.json';
+  readonly url: string = environment.alphabetUrl;
 
   constructor(private http: HttpClient) { }
 
