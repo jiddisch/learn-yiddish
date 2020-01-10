@@ -1,10 +1,10 @@
 import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetPage } from './alphabet.page';
-import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
+import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
 
 describe('AlphabetPage', () => {
   let component: AlphabetPage;
@@ -14,7 +14,10 @@ describe('AlphabetPage', () => {
   beforeEach(async( () => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
-      imports: [IonicModule, HttpClientTestingModule]
+      imports: [IonicModule],
+      providers: [
+        {provide: AlphabetService, useClass: AlphabetServiceMock}
+      ]
     });
 
     fixture = TestBed.createComponent(AlphabetPage);
@@ -26,7 +29,7 @@ describe('AlphabetPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should be present with content of letters', () => {
+  it('the slider should be present with a list of letters', () => {
     const mockAlphabet = [
       {
         letterYiddish: "אַ",
@@ -56,3 +59,5 @@ describe('AlphabetPage', () => {
   });
 
 });
+
+class AlphabetServiceMock {}

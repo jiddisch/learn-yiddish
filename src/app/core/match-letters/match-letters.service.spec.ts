@@ -1,10 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-import { TestLettersService } from './test-letters.service';
+import { MatchLettersService } from './match-letters.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
 
-describe('TestLettersService', () => {
-  let service: TestLettersService;
+describe('MatchLettersService', () => {
+  let service: MatchLettersService;
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
@@ -13,7 +13,7 @@ describe('TestLettersService', () => {
       imports: [HttpClientTestingModule],
     });
 
-    service = TestBed.get(TestLettersService);
+    service = TestBed.get(MatchLettersService);
     httpMock = TestBed.get(HttpTestingController);
 
   });
@@ -26,7 +26,7 @@ describe('TestLettersService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return an Observable<TestLettersService[]>', () => {
+  it('should return an Observable<MatchLettersService[]> object from HTTP', () => {
     const testLetters = [
       {
           "id": 0,

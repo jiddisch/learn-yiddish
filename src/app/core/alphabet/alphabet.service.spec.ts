@@ -26,7 +26,7 @@ describe('AlphabetService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return an Observable<AlphabetService[]>', () => {
+  it('should return an Observable<AlphabetService[]> object from HTTP', () => {
     const mockAlphabet = [
       {
         letterYiddish: "אַ",

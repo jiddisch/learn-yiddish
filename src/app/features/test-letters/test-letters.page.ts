@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
+import { MatchLettersService } from 'src/app/core/match-letters/match-letters.service';
 import { GenerateLettersService } from 'src/app/core/generate-letters/generate-letters.service';
 
 @Component({
@@ -8,9 +8,9 @@ import { GenerateLettersService } from 'src/app/core/generate-letters/generate-l
   styleUrls: ['./test-letters.page.scss'],
 })
 export class TestLettersPage implements OnInit {
-  public tests$ = this.testLettersService.getTests$;
+  public tests$ = this.matchLettersService.getTests$;
 
-  constructor(private testLettersService: TestLettersService, private generateLettersService: GenerateLettersService) { }
+  constructor(private matchLettersService: MatchLettersService, private generateLettersService: GenerateLettersService) { }
 
   ngOnInit() {
     const r = this.generateLettersService.generateLetters('טן');
