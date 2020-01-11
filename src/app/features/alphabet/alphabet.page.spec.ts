@@ -4,7 +4,7 @@ import { AlphabetPage } from './alphabet.page';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { of } from 'rxjs';
-import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
+import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service';
 
 describe('AlphabetPage', () => {
   let component: AlphabetPage;
