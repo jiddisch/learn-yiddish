@@ -8,14 +8,11 @@ describe('MatchLettersService', () => {
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
-
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
     });
-
     service = TestBed.get(MatchLettersService);
     httpMock = TestBed.get(HttpTestingController);
-
   });
 
   afterEach(() => {
@@ -47,9 +44,6 @@ describe('MatchLettersService', () => {
 
     const req = httpMock.expectOne(environment.testLettersUrl);
     expect(req.request.method).toBe("GET");
-
     req.flush(testLetters);
-
   });
-
 });

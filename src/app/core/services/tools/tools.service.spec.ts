@@ -1,14 +1,10 @@
 import { TestBed } from '@angular/core/testing';
-
 import { ToolsService } from './tools.service';
-import { environment } from 'src/environments/environment';
 
 describe('ToolsService', () => {
   let service: ToolsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-
     service = TestBed.get(ToolsService);
   });
 
@@ -16,10 +12,8 @@ describe('ToolsService', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should shuffle words of a string and return a shuffles array', () => {
+  it('should shuffle a string to an array', () => {
     const shuffle = service.shuffleStr2Arr('טער');
-
     expect(shuffle).toEqual(jasmine.arrayWithExactContents(['ט', 'ר', 'ע']));
   })
-
 });

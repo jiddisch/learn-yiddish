@@ -6,7 +6,7 @@ import { environment } from 'src/environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AlphabetService {
-  readonly url: string = environment.alphabetUrl;
+  private readonly url: string = environment.alphabetUrl;
 
   constructor(private http: HttpClient) { }
 

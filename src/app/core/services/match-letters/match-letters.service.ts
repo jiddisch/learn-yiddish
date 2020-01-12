@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class MatchLettersService {
-  readonly url: string = environment.testLettersUrl;
+  private readonly url: string = environment.testLettersUrl;
 
   constructor(private http: HttpClient) { }
 

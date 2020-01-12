@@ -8,14 +8,11 @@ describe('AlphabetService', () => {
   let httpMock: HttpTestingController;
 
   beforeEach(() => {
-
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-
     service = TestBed.get(AlphabetService);
     httpMock = TestBed.get(HttpTestingController);
-    
   });
 
   afterEach(() => {
@@ -44,12 +41,8 @@ describe('AlphabetService', () => {
       expect(alphabet.length).toBe(2);
       expect(alphabet).toEqual(mockAlphabet);
     });
-
     const req = httpMock.expectOne(environment.alphabetUrl);
     expect(req.request.method).toBe("GET");
-
     req.flush(mockAlphabet);    
-
   });
-
 });
