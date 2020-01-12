@@ -1,9 +1,10 @@
-import { async, ComponentFixture, TestBed, inject } from '@angular/core/testing';
+import { async, ComponentFixture, TestBed, inject, fakeAsync } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from './home.page';
 import { TranslateTestingModule } from 'ngx-translate-testing';
 import { TranslateService } from '@ngx-translate/core';
+import { Router } from '@angular/router';
 
 describe('HomePage', () => {
   
@@ -24,6 +25,7 @@ describe('HomePage', () => {
   let component: HomePage;
   let fixture: ComponentFixture<HomePage>;
   let compiled: any;
+  let router: Router;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
@@ -47,6 +49,21 @@ describe('HomePage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should be able to navigate',
+  fakeAsync(() => {
+    router = TestBed.get(Router);
+    const navigateSpy = spyOn(router, 'navigate');
+
+    component.goToPage('/home');
+    expect(navigateSpy).toHaveBeenCalledWith(['/home']);
+
+    component.goToPage('/alphabet');
+    expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
+
+    component.goToPage('/test-letters');
+    expect(navigateSpy).toHaveBeenCalledWith(['/test-letters']);
+  }));
 
   it('should render English button text', () => {
     fixture.detectChanges();

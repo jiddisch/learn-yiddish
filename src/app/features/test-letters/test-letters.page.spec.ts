@@ -1,9 +1,8 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
 import { TestLettersPage } from './test-letters.page';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { TranslateModule } from '@ngx-translate/core';
+import { MatchLettersService } from 'src/app/core/services/match-letters/match-letters.service';
 
 describe('TestLettersPage', () => {
   let component: TestLettersPage;
@@ -12,15 +11,19 @@ describe('TestLettersPage', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ TestLettersPage ],
-      imports: [IonicModule, TranslateModule, HttpClientTestingModule]
-    }).compileComponents();
+      imports: [IonicModule],
+      providers: [
+        {provide: MatchLettersService, useClass: MatchLettersServiceStub}
+      ]
+    });
 
     fixture = TestBed.createComponent(TestLettersPage);
     component = fixture.componentInstance;
-    fixture.detectChanges();
   }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
 });
+
+class MatchLettersServiceStub {}

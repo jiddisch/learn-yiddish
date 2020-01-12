@@ -11,17 +11,18 @@ import { environment } from 'src/environments/environment';
 export class TestLettersPage implements OnInit {
   public tests$ = this.matchLettersService.getTests$;
 
+  private yiddishLetters = environment.yiddishLetters;
+  private amountPotentialLetters = environment.amountPotentialLetters;
+
+  private yiddishLettersShuffled = this.toolsService.shuffleStr2Arr(this.yiddishLetters);
+  private lengthIncludedLetters = 'ער'.length;
+  private yiddishPotentialLetters = this.yiddishLettersShuffled.slice(0, this.amountPotentialLetters - this.lengthIncludedLetters);
+  private yiddishPotentialWithIncludedLetters = this.yiddishPotentialLetters.concat('ער').join('');
+  private yiddishPotentialWithIncludedLettersShuffled = this.toolsService.shuffleStr2Arr(this.yiddishPotentialWithIncludedLetters);
+
   constructor(private matchLettersService: MatchLettersService, private toolsService: ToolsService) { }
 
-  ngOnInit() {
-    const yiddishLetters = environment.yiddishLetters;
-    const yiddishLettersShuffled = this.toolsService.shuffleStr2Arr(yiddishLetters);
-    const amountPotentialLetters = environment.amountPotentialLetters;
-    const lengthIncludedLetters = 'ער'.length;
-    const yiddishPotentialLetters = yiddishLettersShuffled.slice(0, amountPotentialLetters - lengthIncludedLetters);
-    const yiddishPotentialWithIncludedLetters = yiddishPotentialLetters.concat('ער').join('');
-    const yiddishPotentialWithIncludedLettersShuffled = this.toolsService.shuffleStr2Arr(yiddishPotentialWithIncludedLetters);
-  }
+  ngOnInit() { }
 
   test(lettersEnglish: string): void {
     // test if lettersEnglish match the input ng-model

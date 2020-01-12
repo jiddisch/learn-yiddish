@@ -12,7 +12,7 @@ describe('MenuComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ MenuComponent ],
+      declarations: [MenuComponent],
       imports: [IonicModule, RouterTestingModule.withRoutes([])]
     }).compileComponents();
 
@@ -26,18 +26,18 @@ describe('MenuComponent', () => {
   });
 
   it('should be able to navigate',
-  fakeAsync(() => {
-    router = TestBed.get(Router);
-    const navigateSpy = spyOn(router, 'navigate');
+    fakeAsync(() => {
+      router = TestBed.get(Router);
+      const navigateSpy = spyOn(router, 'navigate');
 
-    component.goToPage('/home');
-    expect(navigateSpy).toHaveBeenCalledWith(['/home']);
+      component.goToPage('/home');
+      expect(navigateSpy).toHaveBeenCalledWith(['/home']);
 
-    component.goToPage('/alphabet');
-    expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
+      component.goToPage('/alphabet');
+      expect(navigateSpy).toHaveBeenCalledWith(['/alphabet']);
 
-    component.goToPage('/test-letters');
-    expect(navigateSpy).toHaveBeenCalledWith(['/test-letters']);
-  }));
+      component.goToPage('/test-letters');
+      expect(navigateSpy).toHaveBeenCalledWith(['/test-letters']);
+    }));
 
 });
