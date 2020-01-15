@@ -3,7 +3,6 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
-import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -11,12 +10,28 @@ import { Router } from '@angular/router';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
+  navigation = [
+    {
+      link: 'home',
+      icon: 'home',
+      label: 'menu.home'
+    },
+    {
+      link: 'alphabet',
+      icon: 'logo-buffer',
+      label: 'menu.alphabet'
+    },
+    {
+      link: 'test-letters',
+      icon: 'help',
+      label: 'menu.test-letters'
+    }
+  ]
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private translate: TranslateService,
-    private route: Router
+    private translate: TranslateService
   ) {
     this.initializeApp();
     translate.setDefaultLang('en');
@@ -30,7 +45,4 @@ export class AppComponent {
     });
   }
 
-  public goToPage(page: string): void {
-    this.route.navigate([page]);
-  }
 }

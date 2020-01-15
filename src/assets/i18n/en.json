@@ -1,5 +1,8 @@
 {
     "startStudyAlphabetButton": "Let's start studying the alphabet",
     "goTotestLettersButton": "Test Letters",
-    "testButton": "Test"
+    "testButton": "Test",
+    "menu.home": "Home",
+    "menu.alphabet": "Alphabet",
+    "menu.testLetters": "Exercises on Letters"
 }

@@ -43,4 +43,8 @@ describe('AppComponent', () => {
     expect(splashScreenSpy.hide).toHaveBeenCalled();
   });
 
+  it('should navigate while clicking on menu items', () => {
+    
+  })
+
 });
