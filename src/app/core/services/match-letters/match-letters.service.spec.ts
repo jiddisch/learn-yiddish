@@ -9,7 +9,7 @@ describe('MatchLettersService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
+      imports: [HttpClientTestingModule]
     });
     service = TestBed.get(MatchLettersService);
     httpMock = TestBed.get(HttpTestingController);
@@ -26,24 +26,29 @@ describe('MatchLettersService', () => {
   it('should return an Observable<MatchLettersService[]> object from HTTP', () => {
     const testLetters = [
       {
-          "id": 0,
-          "lettersYiddish": "ער",
-          "lettersEnglish": "er"
+          id: 0,
+          lettersYiddish: "ער",
+          lettersEnglish: "er",
+          possibleLetters: ["כ", "ע", "י", "ח", "ר"]
       },
       {
-          "id": 1,
-          "lettersYiddish": "רע",
-          "lettersEnglish": "re"
+          id: 1,
+          lettersYiddish: "רע",
+          lettersEnglish: "re",
+          possibleLetters: ["ב", "ח", "ר", "ע", "י"]
       }
   ]
 
-    service.getTests$.subscribe(testLetters => {
-      expect(testLetters.length).toBe(2);
-      expect(testLetters).toEqual(testLetters);
+    service.getTests$.subscribe(testLettersResult => {
+      console.log(testLettersResult[0].possibleLetters);
+      
+      expect(testLettersResult.length).toBe(2);
+      expect(testLettersResult).toEqual(testLetters);
     });
 
     const req = httpMock.expectOne(environment.testLettersUrl);
     expect(req.request.method).toBe("GET");
+
     req.flush(testLetters);
   });
 });

@@ -20,8 +20,8 @@
         </ion-row>
 
         <ion-row>
-          <ion-col class="letters-english-col">
-
+          <ion-col class="possible-english-letters-col">
+            <div class="letter" *ngFor="let letter of test.possibleLetters">{{ letter }}</div>
           </ion-col>
         </ion-row>
 
