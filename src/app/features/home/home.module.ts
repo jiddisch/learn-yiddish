@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { HomePage } from './home/home.page';
 import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service';
 
 @NgModule({
   imports: [
@@ -10,6 +9,6 @@ import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service
     SharedModule
   ],
   declarations: [HomePage],
-  providers: [AlphabetService]
+  providers: []
 })
 export class HomePageModule { }

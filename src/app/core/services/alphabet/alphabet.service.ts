@@ -4,7 +4,9 @@ import { Observable } from 'rxjs';
 import { Alphabet } from './alphabet.model';
 import { environment } from 'src/environments/environment';
 
-@Injectable({ providedIn: 'root' })
+@Injectable({ 
+  providedIn: 'root'
+})
 export class AlphabetService {
   private readonly url: string = environment.alphabetUrl;
 

@@ -51,4 +51,9 @@ describe('MatchLettersService', () => {
 
     req.flush(testLetters);
   });
+
+  it('should shuffle a string to an array', () => {
+    const shuffle = service.shuffleStr2Arr('טער');
+    expect(shuffle).toEqual(jasmine.arrayWithExactContents(['ט', 'ר', 'ע']));
+  })
 });

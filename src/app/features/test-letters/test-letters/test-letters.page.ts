@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatchLettersService } from 'src/app/core/services/match-letters/match-letters.service';
+import { MatchLettersService } from 'src/app/core/core.module';
 
 @Component({
   selector: 'app-test-letters',

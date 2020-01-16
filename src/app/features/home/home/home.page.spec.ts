@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, inject, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, inject } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from './home.page';
@@ -11,9 +11,9 @@ describe('HomePage', () => {
   const YIDDISH_HE_LANGUAGE = 'yi-he';
   const YIDDISH_LA_LANGUAGE = 'yi-la';
 
-  const ENGLISH_TRANSLATIONS = require('../../../assets/i18n/en.json');
-  const YIDDISH_HE_TRANSLATIONS = require('../../../assets/i18n/yi-he.json');
-  const YIDDISH_LA_TRANSLATIONS = require('../../../assets/i18n/yi-la.json');
+  const ENGLISH_TRANSLATIONS = require('../../../../assets/i18n/en.json');
+  const YIDDISH_HE_TRANSLATIONS = require('../../../../assets/i18n/yi-he.json');
+  const YIDDISH_LA_TRANSLATIONS = require('../../../../assets/i18n/yi-la.json');
 
   const TRANSLATIONS = {
     [ENGLISH_LANGUAGE]: ENGLISH_TRANSLATIONS,

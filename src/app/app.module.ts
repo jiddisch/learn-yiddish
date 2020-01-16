@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
+import { IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app/app.component';
@@ -13,9 +13,9 @@ import { SharedModule } from './shared/shared.module';
   declarations: [AppComponent],
   entryComponents: [],
   imports: [
+
     // angular & ionic
     BrowserModule,
-    IonicModule.forRoot(),
 
     // core & shared
     CoreModule,

@@ -2,15 +2,25 @@ import { NgModule, Optional, SkipSelf } from '@angular/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { IonicModule } from '@ionic/angular';
+import { AlphabetService } from './services/alphabet/alphabet.service';
+import { MatchLettersService } from './services/match-letters/match-letters.service';
+import { ToolsService } from './services/tools/tools.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
+}
+
+export {
+  AlphabetService,
+  MatchLettersService
 }
 
 @NgModule({
   imports: [
 
     // angular
+    IonicModule.forRoot(),
     HttpClientModule,
 
     // 3rd party
@@ -25,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   exports: [TranslateModule]
 })
+
 export class CoreModule {
   constructor(
     @Optional()

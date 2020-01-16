@@ -24,7 +24,7 @@ export class AppComponent {
     {
       link: 'test-letters',
       icon: 'help',
-      label: 'menu.test-letters'
+      label: 'menu.testLetters'
     }
   ]
   constructor(

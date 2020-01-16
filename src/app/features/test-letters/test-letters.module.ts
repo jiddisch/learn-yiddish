@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { TestLettersPageRoutingModule } from './test-letters-routing.module';
 import { TestLettersPage } from './test-letters/test-letters.page';
 import { SharedModule } from 'src/app/shared/shared.module';
-import { MatchLettersService } from 'src/app/core/services/match-letters/match-letters.service';
 
 @NgModule({
   imports: [
@@ -10,6 +9,6 @@ import { MatchLettersService } from 'src/app/core/services/match-letters/match-l
     TestLettersPageRoutingModule
   ],
   declarations: [TestLettersPage],
-  providers: [MatchLettersService]
+  providers: []
 })
 export class TestLettersPageModule {}
