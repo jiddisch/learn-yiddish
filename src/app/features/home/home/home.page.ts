@@ -1,17 +1,23 @@
-import { Component } from '@angular/core';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-home',
-  templateUrl: 'home.page.html',
-  styleUrls: ['home.page.scss'],
+  templateUrl: 'home.page.html'
 })
-export class HomePage {
+export class HomePage implements OnInit {
+  btns: any[];
 
-  constructor(private route: Router) {}
+  constructor() {}
 
-  public goToPage(page: string): void {
-    this.route.navigate([page]);
+  ngOnInit(): void {
+    this.btns = [
+      {
+        url: '/alphabet',
+        label: 'home.startStudyAlphabetButton'
+      },
+      {
+        url: '/test-letters',
+        label: 'home.goTotestLettersButton'
+      }
+    ]
   }
-
 }

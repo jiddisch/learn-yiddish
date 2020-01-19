@@ -5,26 +5,26 @@ import { environment } from 'src/environments/environment';
 
 describe('AlphabetService', () => {
   let service: AlphabetService;
-  let httpMock: HttpTestingController;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
     service = TestBed.get(AlphabetService);
-    httpMock = TestBed.get(HttpTestingController);
+    httpTestingController = TestBed.get(HttpTestingController);
   });
 
   afterEach(() => {
-    httpMock.verify();
+    httpTestingController.verify();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return an Observable<AlphabetService[]> object from HTTP', () => {
-    const mockAlphabet = [
+  it('should return an Observable<Alphabet[]> object from HTTP', () => {
+    const alphabetMock = [
       {
         letterYiddish: "אַ",
         letterEnglish: "a",
@@ -38,11 +38,12 @@ describe('AlphabetService', () => {
     ]
 
     service.alphabet$.subscribe(alphabet => {
-      expect(alphabet.length).toBe(2);
-      expect(alphabet).toEqual(mockAlphabet);
+      expect(alphabet).toEqual(alphabetMock);
     });
-    const req = httpMock.expectOne(environment.alphabetUrl);
+
+    const req = httpTestingController.expectOne(environment.alphabetUrl);
     expect(req.request.method).toBe("GET");
-    req.flush(mockAlphabet);    
+
+    req.flush(alphabetMock);    
   });
 });

@@ -2,29 +2,30 @@ import { TestBed } from '@angular/core/testing';
 import { MatchLettersService } from './match-letters.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
+import { TestLetters } from './match-letters.model';
 
 describe('MatchLettersService', () => {
   let service: MatchLettersService;
-  let httpMock: HttpTestingController;
+  let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
     service = TestBed.get(MatchLettersService);
-    httpMock = TestBed.get(HttpTestingController);
+    httpTestingController = TestBed.get(HttpTestingController);
   });
 
   afterEach(() => {
-    httpMock.verify();
+    httpTestingController.verify();
   });
 
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should return an Observable<MatchLettersService[]> object from HTTP', () => {
-    const testLetters = [
+  it('should return an Observable<TestLetters[]> object from HTTP', () => {
+    const testLettersMock: TestLetters[] = [
       {
           id: 0,
           lettersYiddish: "ער",
@@ -33,23 +34,23 @@ describe('MatchLettersService', () => {
       },
       {
           id: 1,
-          lettersYiddish: "רע",
+          lettersYiddish: "שע",
           lettersEnglish: "re",
           possibleLetters: ["ב", "ח", "ר", "ע", "י"]
       }
   ]
 
     service.getTests$.subscribe(testLettersResult => {
-      console.log(testLettersResult[0].possibleLetters);
-      
       expect(testLettersResult.length).toBe(2);
-      expect(testLettersResult).toEqual(testLetters);
+      expect(testLettersResult[0].id).toBe(0);
+      expect(testLettersResult[0].possibleLetters.length).toBe(5);
+      expect(testLettersResult[0].possibleLetters).toEqual(jasmine.arrayContaining(['ר', 'ע']));
     });
 
-    const req = httpMock.expectOne(environment.testLettersUrl);
+    const req = httpTestingController.expectOne(environment.testLettersUrl);
     expect(req.request.method).toBe("GET");
 
-    req.flush(testLetters);
+    req.flush(testLettersMock);
   });
 
   it('should shuffle a string to an array', () => {

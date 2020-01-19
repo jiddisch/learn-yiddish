@@ -7,11 +7,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding">
-    <ion-button class="go-to-alphabet-btn" expand="block" (click)="goToPage('/alphabet')">{{ 'startStudyAlphabetButton' | translate }}</ion-button>
-  </div>
-
-  <div class="ion-padding">
-    <ion-button class="go-to-test-letters-btn" expand="block" (click)="goToPage('/test-letters')">{{ 'goTotestLettersButton' | translate }}</ion-button>
+  <div class="ion-padding" *ngFor="let btn of btns">
+    <ion-button expand="block" [routerLink]="[btn.url]">{{ btn.label | translate }}</ion-button>
   </div>
 </ion-content>

@@ -18,7 +18,7 @@ export class MatchLettersService {
   get getTests$(): Observable<TestLetters[]> {
     return this.http.get<TestLetters[]>(this.url).pipe(
       map((res) => {
-        return res.map((r) => {
+        const result = res.map((r) => {
           const yiddishLettersShuffled = this.shuffleStr2Arr(this.yiddishLetters);
           const lengthIncludedLetters = r.lettersYiddish.length;
           const yiddishPotentialLetters = yiddishLettersShuffled.slice(0, this.amountPotentialLetters - lengthIncludedLetters);
@@ -27,7 +27,7 @@ export class MatchLettersService {
 
           return {...r, possibleLetters: yiddishPotentialWithIncludedLettersShuffled};
         });
-        return res;
+        return result;
       })
     );
   }

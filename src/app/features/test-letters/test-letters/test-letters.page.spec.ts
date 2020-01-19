@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, fakeAsync } from '@angular/core/testing';
+import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
 import { MatchLettersService } from 'src/app/core/services/match-letters/match-letters.service';
@@ -24,6 +24,7 @@ describe('TestLettersPage', () => {
 
     fixture = TestBed.createComponent(TestLettersPage);
     component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
   });
 
   it('should create', () => {
@@ -31,7 +32,7 @@ describe('TestLettersPage', () => {
   });
 
   it('The slider should contain with a list of TestLetters', () => {
-      debugElement = fixture.debugElement;
+      
       fixture.detectChanges();
 
       const yiddishLetters = debugElement.queryAll(By.css('.letters-yiddish'));
@@ -42,12 +43,12 @@ describe('TestLettersPage', () => {
     });
 
     it('get an amount of possible letters', fakeAsync(() => {
-      const possibleEnglishLettersElms = debugElement.queryAll(By.css('.letter'));
-      
       component.tests$.subscribe(res => {
+        fixture.detectChanges();
+        const possibleEnglishLettersElms = debugElement.queryAll(By.css('.letter'));
         expect(possibleEnglishLettersElms.length).toBe(environment.amountPotentialLetters * res.length);
       });
-      
+      flush();
     }));
 });
 

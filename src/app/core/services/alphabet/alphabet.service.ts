@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root'
 })
 export class AlphabetService {
-  private readonly url: string = environment.alphabetUrl;
+  private readonly url = environment.alphabetUrl;
 
   constructor(private http: HttpClient) { }
 

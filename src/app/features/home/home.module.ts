@@ -1,14 +1,13 @@
 import { NgModule } from '@angular/core';
 import { HomePage } from './home/home.page';
-import { HomePageRoutingModule } from './home-routing.module';
 import { SharedModule } from 'src/app/shared/shared.module';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   imports: [
-    HomePageRoutingModule,
+    RouterModule.forChild([{ path: '', component: HomePage }]),
     SharedModule
   ],
-  declarations: [HomePage],
-  providers: []
+  declarations: [HomePage]
 })
 export class HomePageModule { }
