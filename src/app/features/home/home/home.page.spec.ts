@@ -1,4 +1,4 @@
-import { ComponentFixture, TestBed, inject, async } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from './home.page';
@@ -60,22 +60,18 @@ describe('HomePage', () => {
   });
 
   describe('navigation', () => {
-    it('clicked on button should be navigate to alphabet page', async( () => {
+    it('buttons should have the correct router link', () => {
       fixture.detectChanges();
       const alphabetLink = debugElement.query(By.css('.alphabet-btn')).nativeElement.getAttribute('ng-reflect-router-link');
       const testLettersLink = debugElement.query(By.css('.test-letters-btn')).nativeElement.getAttribute('ng-reflect-router-link');
 
       expect(alphabetLink).toEqual('/alphabet');
       expect(testLettersLink).toEqual('/test-letters');
-    }) );
-
-    xit('clicked on button should be navigate to test-letters page', () => {
-
     });
   }) ;
 
-  describe('dom text and translation', () => {
-    let translateService;
+  describe('chack text of button for all languages', () => {
+    let translateService: TranslateService;
 
     beforeEach(() => {
       translateService = TestBed.get(TranslateService);
@@ -83,16 +79,15 @@ describe('HomePage', () => {
 
     it('Should render the text in all languages', () => {
       fixture.detectChanges();
-
-      expect(htmlElement.querySelectorAll('ion-button')[0].textContent).toContain(ENGLISH_TRANSLATIONS.home.startStudyAlphabetButton);
-
+      expect(debugElement.query(By.css('.alphabet-btn')).nativeElement.textContent).toContain(ENGLISH_TRANSLATIONS.home.startStudyAlphabetButton);
+      
       translateService.use(YIDDISH_HE_LANGUAGE);
       fixture.detectChanges();
-      expect(htmlElement.querySelectorAll('ion-button')[0].textContent).toContain(YIDDISH_HE_TRANSLATIONS.home.startStudyAlphabetButton);
+      expect(debugElement.query(By.css('.alphabet-btn')).nativeElement.textContent).toContain(YIDDISH_HE_TRANSLATIONS.home.startStudyAlphabetButton);
 
       translateService.use(YIDDISH_LA_LANGUAGE);
       fixture.detectChanges();
-      expect(htmlElement.querySelector('.go-to-alphabet-btn').textContent).toContain(YIDDISH_LA_TRANSLATIONS.home.startStudyAlphabetButton);
+      expect(debugElement.query(By.css('.alphabet-btn')).nativeElement.textContent).toContain(YIDDISH_LA_TRANSLATIONS.home.startStudyAlphabetButton);
 
     });
 

@@ -2,17 +2,27 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
+import { MenuComponent } from './menu/menu.component';
+import { RouterModule } from '@angular/router';
+import { Helpers } from './helpers/helpers';
+
+export {
+    Helpers
+}
 
 @NgModule({
+    declarations: [MenuComponent],
     imports: [
         CommonModule,
         IonicModule,
-        TranslateModule
+        TranslateModule,
+        RouterModule
     ],
     exports: [
         CommonModule,
         IonicModule,
-        TranslateModule
+        TranslateModule,
+        MenuComponent
     ]
 })
 export class SharedModule {}

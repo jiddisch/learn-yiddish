@@ -1,11 +1,11 @@
 import { TestBed } from '@angular/core/testing';
-import { ToolsService } from './tools.service';
+import { Helpers } from './helpers';
 
 describe('ToolsService', () => {
-  let service: ToolsService;
+  let service: Helpers;
 
   beforeEach(() => {
-    service = TestBed.get(ToolsService);
+    service = TestBed.get(Helpers);
   });
 
   it('should be created', () => {
@@ -15,5 +15,5 @@ describe('ToolsService', () => {
   it('should shuffle a string to an array', () => {
     const shuffle = service.shuffleStr2Arr('טער');
     expect(shuffle).toEqual(jasmine.arrayWithExactContents(['ט', 'ר', 'ע']));
-  })
+  });
 });

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavLink } from 'src/app/shared/buttons.model';
+import { NavLink } from 'src/app/shared/links.model';
 
 @Component({
   templateUrl: 'home.page.html'

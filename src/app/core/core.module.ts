@@ -3,15 +3,15 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
-import { AlphabetService } from './services/alphabet/alphabet.service';
 import { MatchLettersService } from './services/match-letters/match-letters.service';
+import { LettersService } from './services/letters/letters.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
 export {
-  AlphabetService,
+  LettersService,
   MatchLettersService
 }
 

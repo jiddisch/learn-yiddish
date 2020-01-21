@@ -1,21 +1,5 @@
 <ion-app>
-  <ion-menu contentId="content1" side="start">
-    <ion-content>
-      <ion-list>
-  
-        <ion-menu-toggle>
-
-          <ion-item [routerLink]="[item.link]" *ngFor="let item of navigation">
-            <ion-icon [name]="item.icon" slot="end"></ion-icon>
-            <ion-label>{{item.label | translate}}</ion-label>
-          </ion-item>
-  
-        </ion-menu-toggle>
-  
-      </ion-list>
-  
-    </ion-content>
-  </ion-menu>
+  <app-menu></app-menu>
 
   <ion-router-outlet id="content1"></ion-router-outlet>
 </ion-app>

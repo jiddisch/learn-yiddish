@@ -1,0 +1,17 @@
+<ion-menu contentId="content1" side="start">
+  <ion-content>
+    <ion-list>
+
+      <ion-menu-toggle>
+
+        <ion-item [class]="nav.class" [routerLink]="[nav.url]" *ngFor="let nav of navigation">
+          <ion-icon [name]="nav.icon" slot="end"></ion-icon>
+          <ion-label>{{nav.label | translate}}</ion-label>
+        </ion-item>
+
+      </ion-menu-toggle>
+
+    </ion-list>
+
+  </ion-content>
+</ion-menu>

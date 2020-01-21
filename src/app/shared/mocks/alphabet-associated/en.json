@@ -1,92 +1,92 @@
 [
     {
         "letterYiddish": "אַ",
-        "letterEnglish": "a",
+        "letterforeign": "a",
         "letterName": "Pasekh Alef"
     },
     {
         "letterYiddish": "אָ",
-        "letterEnglish": "o",
+        "letterforeign": "o",
         "letterName": "Komets Alef"
     },
     {
         "letterYiddish": "ב",
-        "letterEnglish": "b",
+        "letterforeign": "b",
         "letterName": "Beys"
     },
     {
         "letterYiddish": "בֿ",
-        "letterEnglish": "b",
+        "letterforeign": "b",
         "letterName": "Veys"
     },
     {
         "letterYiddish": "ג",
-        "letterEnglish": "g",
+        "letterforeign": "g",
         "letterName": "Giml"
     },
     {
         "letterYiddish": "ד",
-        "letterEnglish": "d",
+        "letterforeign": "d",
         "letterName": "Dalet"
     },
     {
         "letterYiddish": "ה",
-        "letterEnglish": "h",
+        "letterforeign": "h",
         "letterName": "Hey"
     },
     {
         "letterYiddish": "ו",
-        "letterEnglish": "v, u",
+        "letterforeign": "v, u",
         "letterName": "Vov"
     },
     {
         "letterYiddish": "ע",
-        "letterEnglish": "e",
+        "letterforeign": "e",
         "letterName": "Ayen"
     },
     {
         "letterYiddish": "ר",
-        "letterEnglish": "r",
+        "letterforeign": "r",
         "letterName": "Reysh"
     },
     {
         "letterYiddish": "ט",
-        "letterEnglish": "t",
+        "letterforeign": "t",
         "letterName": "Tes"
     },
     {
         "letterYiddish": "י",
-        "letterEnglish": "y, i",
+        "letterforeign": "y, i",
         "letterName": "Yud"
     },
     {
         "letterYiddish": "יִ",
-        "letterEnglish": "i",
+        "letterforeign": "i",
         "letterName": "Hirek Yud"
     },
     {
         "letterYiddish": "מ",
-        "letterEnglish": "m",
+        "letterforeign": "m",
         "letterName": "Mem"
     },
     {
         "letterYiddish": "ם",
-        "letterEnglish": "m",
+        "letterforeign": "m",
         "letterName": "Shlos-Mem"
     },
     {
         "letterYiddish": "ס",
-        "letterEnglish": "s",
+        "letterforeign": "s",
         "letterName": "Samekh"
     },
     {
         "letterYiddish": "נ",
-        "letterEnglish": "n",
+        "letterforeign": "n",
         "letterName": "Nun"
     },
     {
         "letterYiddish": "ן",
-        "letterEnglish": "n",
+        "letterforeign": "n",
         "letterName": "Langer Nun"
     }
 ]
