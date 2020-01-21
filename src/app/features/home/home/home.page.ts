@@ -1,23 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { NavLink } from 'src/app/shared/buttons.model';
 
 @Component({
   templateUrl: 'home.page.html'
 })
-export class HomePage implements OnInit {
-  btns: any[];
+export class HomePage {
+  btns: NavLink[] = [
+    {
+      url: '/alphabet',
+      label: 'home.startStudyAlphabetButton',
+      class: 'alphabet-btn'
+    },
+    {
+      url: '/test-letters',
+      label: 'home.goTotestLettersButton',
+      class: 'test-letters-btn'
+    }
+  ];
 
-  constructor() {}
+  constructor() { }
 
-  ngOnInit(): void {
-    this.btns = [
-      {
-        url: '/alphabet',
-        label: 'home.startStudyAlphabetButton'
-      },
-      {
-        url: '/test-letters',
-        label: 'home.goTotestLettersButton'
-      }
-    ]
-  }
 }
+

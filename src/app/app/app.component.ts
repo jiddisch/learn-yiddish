@@ -3,6 +3,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { NavLink } from '../shared/buttons.model';
 
 @Component({
   selector: 'app-root',
@@ -10,19 +11,19 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['app.component.scss']
 })
 export class AppComponent {
-  navigation = [
+  navigation: NavLink[] = [
     {
-      link: 'home',
+      url: 'home',
       icon: 'home',
       label: 'menu.home'
     },
     {
-      link: 'alphabet',
+      url: 'alphabet',
       icon: 'logo-buffer',
       label: 'menu.alphabet'
     },
     {
-      link: 'test-letters',
+      url: 'test-letters',
       icon: 'help',
       label: 'menu.testLetters'
     }

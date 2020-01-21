@@ -1,8 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetPage } from './alphabet.page';
-import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { of, Observable } from 'rxjs';
 import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service';
 import { Alphabet } from 'src/app/core/services/alphabet/alphabet.model';
@@ -10,14 +8,14 @@ import { Alphabet } from 'src/app/core/services/alphabet/alphabet.model';
 describe('AlphabetPage', () => {
   let fixture: ComponentFixture<AlphabetPage>;
   let component: AlphabetPage;
-  let debugElement: DebugElement;
+  let compiled: HTMLElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
       imports: [IonicModule],
       providers: [
-        {provide: AlphabetService, useClass: AlphabetServiceMock}
+        {provide: AlphabetService, useClass: AlphabetServiceStub}
       ]
     });
 
@@ -30,24 +28,28 @@ describe('AlphabetPage', () => {
   });
 
   it('The slider should be present with a list of letters', () => {
-    debugElement = fixture.debugElement;
     fixture.detectChanges();
     
-    const yiddishLetter = debugElement.queryAll(By.css('.letter-yiddish'));
-    const letterName = debugElement.queryAll(By.css('.letter-name'));
+    compiled = fixture.nativeElement;
+    const yiddishLetters = compiled.querySelectorAll('.letter-yiddish');
+    const letterNames = compiled.querySelectorAll('.letter-name');
 
-    expect(yiddishLetter.length).toBe(2, 'unexpected length of letters');
-    expect(yiddishLetter[0].nativeElement.innerText).toEqual('אַ', 'unexpected letter');
-    expect(yiddishLetter[1].nativeElement.innerText).toEqual('אָ', 'unexpected letter');
-    expect(letterName[1].nativeElement.innerText).toEqual('Komets Alef', 'unexpected letter name');
+    component.alphabet$.subscribe(alphabet => {
+      expect(alphabet).toEqual(new AlphabetServiceStub().alphabetMock)
+    });
+    
+    expect(yiddishLetters.length).toBe(2);
+    expect(yiddishLetters[0].textContent).toEqual('אַ');
+    expect(yiddishLetters[1].textContent).toEqual('אָ');
+    expect(letterNames[1].textContent).toEqual('Komets Alef');
   });
 });
 
-class AlphabetServiceMock {
+class AlphabetServiceStub {
   alphabetMock: Alphabet[] = [
     {
       letterYiddish: "אַ",
-      letterEnglish: "a",
+      letterEnglish: "aa",
       letterName: "Pasekh Alef"
     },
     {

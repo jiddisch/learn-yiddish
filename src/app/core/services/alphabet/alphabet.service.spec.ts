@@ -35,7 +35,7 @@ describe('AlphabetService', () => {
         letterEnglish: "o",
         letterName: "Komets Alef"
       }
-    ]
+    ];
 
     service.alphabet$.subscribe(alphabet => {
       expect(alphabet).toEqual(alphabetMock);
@@ -44,6 +44,6 @@ describe('AlphabetService', () => {
     const req = httpTestingController.expectOne(environment.alphabetUrl);
     expect(req.request.method).toBe("GET");
 
-    req.flush(alphabetMock);    
+    req.flush(alphabetMock);
   });
 });

@@ -5,7 +5,6 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetService } from './services/alphabet/alphabet.service';
 import { MatchLettersService } from './services/match-letters/match-letters.service';
-import { ToolsService } from './services/tools/tools.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -35,13 +34,8 @@ export {
   ],
   exports: [TranslateModule]
 })
-
 export class CoreModule {
-  constructor(
-    @Optional()
-    @SkipSelf()
-    parentModule: CoreModule
-  ) {
+  constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
     if (parentModule) {
       throw new Error('CoreModule is already loaded. Import only in AppModule');
     }

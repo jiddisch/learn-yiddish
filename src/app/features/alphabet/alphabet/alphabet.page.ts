@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AlphabetService } from 'src/app/core/core.module';
 
 @Component({
@@ -6,11 +6,9 @@ import { AlphabetService } from 'src/app/core/core.module';
   templateUrl: './alphabet.page.html',
   styleUrls: ['./alphabet.page.scss'],
 })
-export class AlphabetPage implements OnInit {
+export class AlphabetPage {
   public alphabet$ = this.alphabetService.alphabet$;
 
   constructor(private alphabetService: AlphabetService) { }
-
-  ngOnInit() {}
 
 }
