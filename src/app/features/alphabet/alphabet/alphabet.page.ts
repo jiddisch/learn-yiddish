@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { LettersService } from 'src/app/core/core.module';
+import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service';
 
 @Component({
   selector: 'app-alphabet',
@@ -7,8 +7,8 @@ import { LettersService } from 'src/app/core/core.module';
   styleUrls: ['./alphabet.page.scss'],
 })
 export class AlphabetPage {
-  public alphabet$ = this.lettersService.alphabetAssociated$;
+  public alphabet$ = this.alphabetService.alphabet$;
 
-  constructor(private lettersService: LettersService) { }
+  constructor(private alphabetService: AlphabetService) { }
 
 }

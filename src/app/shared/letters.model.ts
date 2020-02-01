@@ -1,5 +1,5 @@
-export interface AlphabetAssociated {
-    letterYiddish: string;
-    letterforeign: string;
-    letterName: string;
+export interface Alphabet {
+    yiddishLetter: string;
+    foreignLetter: string;
+    name: string;
 }

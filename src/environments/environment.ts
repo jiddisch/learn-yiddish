@@ -4,8 +4,7 @@
 
 export const environment = {
   production: false,
-  amountPotentialLetters: 5,
-  mocks: '../app/shared/mocks/'
+  mocks: '../assets/mocks/'
 };
 
 /*

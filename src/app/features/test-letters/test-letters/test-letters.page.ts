@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatchLettersService } from 'src/app/core/core.module';
+import { TestLettersService } from 'src/app/core/services/test-letters/test-letters.service';
 
 @Component({
   selector: 'app-test-letters',
@@ -7,11 +7,10 @@ import { MatchLettersService } from 'src/app/core/core.module';
   styleUrls: ['./test-letters.page.scss'],
 })
 export class TestLettersPage implements OnInit {
-  public tests$ = this.matchLettersService.getTests$;
+  tests$ = this.testLettersService.possibleLetters$;
+  possibleLetters = this.testLettersService.possibleLetters$;
 
-
-
-  constructor(private matchLettersService: MatchLettersService) { }
+  constructor(private testLettersService: TestLettersService) { }
 
   ngOnInit() { }
 

@@ -1,9 +1,9 @@
 import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
-import { MatchLettersService } from 'src/app/core/services/match-letters/match-letters.service';
+import { MatchLettersService } from 'src/app/core/services/alphabet/alphabet.service';
 import { Observable, of } from 'rxjs';
-import { TestLetters } from 'src/app/core/services/match-letters/match-letters.model';
+import { TestLetters } from 'src/app/core/services/alphabet/alphabet.model';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { environment } from 'src/environments/environment';

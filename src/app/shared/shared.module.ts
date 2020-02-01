@@ -7,7 +7,7 @@ import { RouterModule } from '@angular/router';
 import { Helpers } from './helpers/helpers';
 
 export {
-    Helpers
+    Helpers // todo: move to core?
 }
 
 @NgModule({

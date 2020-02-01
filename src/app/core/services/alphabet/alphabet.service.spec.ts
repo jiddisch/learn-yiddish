@@ -1,8 +1,8 @@
 import { TestBed } from '@angular/core/testing';
-import { MatchLettersService } from './match-letters.service';
+import { MatchLettersService } from './alphabet.service';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
-import { TestLetters } from './match-letters.model';
+import { TestLetters } from './alphabet.model';
 
 describe('MatchLettersService', () => {
   let service: MatchLettersService;

@@ -15,13 +15,13 @@
  
         <ion-row>
           <ion-col class="letters-yiddish-col">
-            <div class="ion-text-center letters letters-yiddish">{{ test.lettersYiddish }}</div>
+            <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
           </ion-col>
         </ion-row>
 
         <ion-row>
           <ion-col class="possible-english-letters-col">
-            <div class="letter" *ngFor="let letter of test.possibleLetters">{{ letter }}</div>
+            <div class="letter" *ngFor="let possibleLetter of possibleLetters$ | async">{{ possibleLetter }}</div>
           </ion-col>
         </ion-row>
 
