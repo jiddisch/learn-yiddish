@@ -1,6 +1,6 @@
-export interface TestLetters {
+export interface Alphabet {
     id: number;
     yiddishLetter: string;
-    letterForeign: string;
+    foreignLetter: string;
     possibleLetters?: string[];
 }

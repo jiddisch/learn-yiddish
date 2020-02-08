@@ -1,12 +1,11 @@
 import { ComponentFixture, TestBed, fakeAsync, flush } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
-import { MatchLettersService } from 'src/app/core/services/alphabet/alphabet.service';
+import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service';
 import { Observable, of } from 'rxjs';
-import { TestLetters } from 'src/app/core/services/alphabet/alphabet.model';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { environment } from 'src/environments/environment';
+import { TestLetters } from 'src/app/core/services/test-letters/test-letters.model';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -18,7 +17,7 @@ describe('TestLettersPage', () => {
       declarations: [TestLettersPage],
       imports: [IonicModule],
       providers: [
-        { provide: MatchLettersService, useClass: MatchLettersServiceStub }
+        { provide: AlphabetService, useClass: AlphabetServiceStub }
       ]
     });
 
@@ -46,29 +45,29 @@ describe('TestLettersPage', () => {
       component.tests$.subscribe(res => {
         fixture.detectChanges();
         const possibleEnglishLettersElms = debugElement.queryAll(By.css('.letter'));
-        expect(possibleEnglishLettersElms.length).toBe(environment.amountPotentialLetters * res.length);
+        expect(possibleEnglishLettersElms.length).toBe(5 * res.length);
       });
       flush();
     }));
 });
 
-class MatchLettersServiceStub {
+class AlphabetServiceStub {
   matchLettersMock = [
     {
       id: 0,
-      lettersYiddish: 'ער',
-      lettersEnglish: 'er',
+      yiddishLetter: 'ער',
+      foreignLetter: 'er',
       possibleLetters: ['ע', 'ן', 'ר', 'ך', 'ה']
     },
     {
       id: 1,
-      lettersYiddish: 'רע',
-      lettersEnglish: 're',
+      yiddishLetter: 'רע',
+      foreignLetter: 're',
       possibleLetters: ['ע', 'ן', 'ר', 'ך', 'ה']
     }
   ];
 
   get getTests$(): Observable<TestLetters[]> {
-    return of(this.matchLettersMock);
+    return //of(this.matchLettersMock);
   }
 }

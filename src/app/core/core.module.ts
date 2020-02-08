@@ -5,6 +5,7 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetService } from './services/alphabet/alphabet.service';
 import { TestLettersService } from './services/test-letters/test-letters.service';
+import { Helpers } from '../shared/helpers/helpers';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -12,7 +13,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 export {
   TestLettersService,
-  AlphabetService
+  AlphabetService,
+  Helpers
 }
 
 @NgModule({

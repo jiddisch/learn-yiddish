@@ -4,10 +4,10 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
-import { TranslateModule } from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 
 describe('AppComponent', () => {
-  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy;
+  let statusBarSpy, splashScreenSpy, platformReadySpy, platformSpy, translateSpy;
   let fixture: ComponentFixture<AppComponent>
   let component: AppComponent;
 
@@ -16,6 +16,7 @@ describe('AppComponent', () => {
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
     platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
+    translateSpy = jasmine.createSpyObj('TranslateService', ['use']);
     
     TestBed.configureTestingModule({
       declarations: [AppComponent],
@@ -24,7 +25,8 @@ describe('AppComponent', () => {
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
-        { provide: Platform, useValue: platformSpy }
+        { provide: Platform, useValue: platformSpy },
+        { provide: TranslateService, useValue: translateSpy }
       ],
     });
 
@@ -41,6 +43,7 @@ describe('AppComponent', () => {
     await platformReadySpy;
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
     expect(splashScreenSpy.hide).toHaveBeenCalled();
+    expect(translateSpy.use).toHaveBeenCalled();
   });
 
 });

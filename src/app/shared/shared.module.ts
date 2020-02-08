@@ -4,11 +4,6 @@ import { IonicModule } from '@ionic/angular';
 import { TranslateModule } from '@ngx-translate/core';
 import { MenuComponent } from './menu/menu.component';
 import { RouterModule } from '@angular/router';
-import { Helpers } from './helpers/helpers';
-
-export {
-    Helpers // todo: move to core?
-}
 
 @NgModule({
     declarations: [MenuComponent],
