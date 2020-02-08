@@ -8,7 +8,7 @@ import { TestLettersService } from 'src/app/core/services/test-letters/test-lett
 })
 export class TestLettersPage implements OnInit {
   tests$ = this.testLettersService.possibleLetters$;
-  possibleLetters = this.testLettersService.possibleLetters$;
+  possibleLetters$ = this.testLettersService.possibleLetters$;
 
   constructor(private testLettersService: TestLettersService) { }
 
