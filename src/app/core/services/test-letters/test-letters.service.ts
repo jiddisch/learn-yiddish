@@ -1,8 +1,10 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, from, of } from 'rxjs';
+import { tap, map, mergeMap, filter, switchMap, toArray } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Helpers } from '../../core.module';
+import { AlphabetService } from '../alphabet/alphabet.service';
+import { TestLetters } from './test-letters.model';
 
 @Injectable({ providedIn: 'root' })
 export class TestLettersService {
@@ -10,32 +12,23 @@ export class TestLettersService {
   // TODO: get the amount from a UserLevelService
   private amountPotentialLetters = 5;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private alphabetService: AlphabetService) { }
 
-  get possibleLetters$(): Observable<string[]> {
+  get possibleLetters$(): Observable<TestLetters[]> {
 
     return this.http.get<string[]>(`${environment.mocks}/test-letters.json`).pipe(
-      // from(testLetters),
-      // map(letter => {
-      //   console.log(letter);
-        
-      //   return letter.split('');
-      // }),
-      // mergeMap(testLetters => {
+      switchMap(testLetters => {
+        console.log(testLetters);
 
-      //   return this.alphabetService.alphabet$.pipe(
-      //     from(alphabet),
-      //     filter(letter => testLetters.includes(letter.yiddishLetter)),
-      //     map(alphabetFiltered => {
+        return this.alphabetService.alphabet$.pipe(
 
-      //       return alphabetFiltered.foreignLetter
-      //     }),
-      //     mergeMap(letter => {
+          map(alphabets => {
+            
+            return alphabets.map(alphabet => ({ yiddishLetters: '', rightAnswer: '', possibleForeignLetters: [''] }))
+          })
 
-      //       return of(letter);
-      //     })
-      //   )
-      // })
+        )
+      })
     );
   }
 

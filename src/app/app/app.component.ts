@@ -10,9 +10,13 @@ import { TranslateService } from '@ngx-translate/core';
 })
 export class AppComponent {
 
-  constructor(private platform: Platform, private splashScreen: SplashScreen, private statusBar: StatusBar, private translate: TranslateService) {
-    this.initializeApp();
-  }
+  constructor(
+    private platform: Platform,
+    private splashScreen: SplashScreen,
+    private statusBar: StatusBar,
+    private translate: TranslateService) {
+      this.initializeApp();
+    }
 
   initializeApp() {
     this.platform.ready().then(() => {

@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Alphabet } from 'src/app/shared/letters.model';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
+import { Alphabet } from './alphabet.model';
 
 @Injectable({ providedIn: 'root' })
 export class AlphabetService {
@@ -12,15 +12,7 @@ export class AlphabetService {
   constructor(private http: HttpClient) { }
 
   get alphabet$(): Observable<Alphabet[]> {
-    let url: string;
-
-    switch(this.language) {
-      case 'en': {
-        url = `${environment.mocks}alphabet/${this.language}.json`;
-      }
-    }
-
-    return this.http.get<Alphabet[]>(url);
+    return this.http.get<Alphabet[]>(`${environment.mocks}alphabet/${this.language}.json`);
   }
 
 }

@@ -1,5 +1,5 @@
 export interface TestLetters {
-    yiddishLetter: string;
-    foreignLetter: string;
-    letterName: string;
+    yiddishLetters: string;
+    rightAnswer: string;
+    possibleForeignLetters: string[];
 }

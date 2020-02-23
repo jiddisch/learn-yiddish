@@ -11,12 +11,6 @@ export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
-export {
-  TestLettersService,
-  AlphabetService,
-  Helpers
-}
-
 @NgModule({
   imports: [
 
@@ -34,7 +28,8 @@ export {
     })
     
   ],
-  exports: [TranslateModule]
+  exports: [TranslateModule],
+  providers: [TestLettersService, AlphabetService, Helpers]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {
