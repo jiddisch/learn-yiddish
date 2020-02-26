@@ -7,8 +7,7 @@ import { TestLettersService } from 'src/app/core/services/test-letters/test-lett
   styleUrls: ['./test-letters.page.scss'],
 })
 export class TestLettersPage implements OnInit {
-  tests$ = this.testLettersService.possibleLetters$;
-  possibleLetters$ = this.testLettersService.possibleLetters$;
+  tests$ = this.testLettersService.tests$;
 
   constructor(private testLettersService: TestLettersService) { }
 

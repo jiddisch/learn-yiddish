@@ -1,92 +1,74 @@
 [
     {
         "yiddishLetter": "אַ",
-        "foreignLetter": "a",
         "letterName": "Pasekh Alef"
     },
     {
         "yiddishLetter": "אָ",
-        "foreignLetter": "o",
         "letterName": "Komets Alef"
     },
     {
         "yiddishLetter": "ב",
-        "foreignLetter": "b",
         "letterName": "Beys"
     },
     {
         "yiddishLetter": "בֿ",
-        "foreignLetter": "b",
         "letterName": "Veys"
     },
     {
         "yiddishLetter": "ג",
-        "foreignLetter": "g",
         "letterName": "Giml"
     },
     {
         "yiddishLetter": "ד",
-        "foreignLetter": "d",
         "letterName": "Dalet"
     },
     {
         "yiddishLetter": "ה",
-        "foreignLetter": "h",
         "letterName": "Hey"
     },
     {
         "yiddishLetter": "ו",
-        "foreignLetter": "v, u",
         "letterName": "Vov"
     },
     {
         "yiddishLetter": "ע",
-        "foreignLetter": "e",
         "letterName": "Ayen"
     },
     {
         "yiddishLetter": "ר",
-        "foreignLetter": "r",
         "letterName": "Reysh"
     },
     {
         "yiddishLetter": "ט",
-        "foreignLetter": "t",
         "letterName": "Tes"
     },
     {
         "yiddishLetter": "י",
-        "foreignLetter": "y, i",
         "letterName": "Yud"
     },
     {
         "yiddishLetter": "יִ",
-        "foreignLetter": "i",
         "letterName": "Hirek Yud"
     },
     {
         "yiddishLetter": "מ",
-        "foreignLetter": "m",
         "letterName": "Mem"
     },
     {
         "yiddishLetter": "ם",
-        "foreignLetter": "m",
         "letterName": "Shlos-Mem"
     },
     {
         "yiddishLetter": "ס",
-        "foreignLetter": "s",
         "letterName": "Samekh"
     },
     {
         "yiddishLetter": "נ",
-        "foreignLetter": "n",
         "letterName": "Nun"
     },
     {
         "yiddishLetter": "ן",
-        "foreignLetter": "n",
         "letterName": "Langer Nun"
     }
 ]

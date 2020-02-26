@@ -1,9 +1,5 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <app-toolbar></app-toolbar>
 </ion-header>
 
 <ion-content>
@@ -12,10 +8,10 @@
     <ion-slide *ngFor="let letter of alphabet$ | async">
 
       <ion-grid>
- 
+
         <ion-row>
           <ion-col class="letter-yiddish-col">
-            <div class="ion-text-center letter letter-yiddish">{{ letter.letterYiddish }}</div>
+            <div class="ion-text-center letter letter-yiddish">{{ letter.yiddishLetter }}</div>
           </ion-col>
         </ion-row>
 

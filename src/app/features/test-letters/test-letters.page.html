@@ -1,18 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button autoHide="false"></ion-menu-button>
-    </ion-buttons>
-  </ion-toolbar>
+  <app-toolbar></app-toolbar>
 </ion-header>
 
 <ion-content>
-  
+
   <ion-slides [pager]="true" dir="rtl">
     <ion-slide *ngFor="let test of tests$ | async">
 
       <ion-grid>
- 
+
         <ion-row>
           <ion-col class="letters-yiddish-col">
             <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
@@ -21,7 +17,7 @@
 
         <ion-row>
           <ion-col class="possible-english-letters-col">
-            <div class="letter" *ngFor="let possibleLetter of possibleLetters$ | async">{{ possibleLetter }}</div>
+            <div class="letter" *ngFor="let possibleLetter of test.possibleLetters">{{ possibleLetter }}</div>
           </ion-col>
         </ion-row>
 

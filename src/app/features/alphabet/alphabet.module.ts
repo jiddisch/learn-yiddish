@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { AlphabetPage } from './alphabet/alphabet.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { AlphabetPage } from './alphabet.page';
 
 @NgModule({
   imports: [

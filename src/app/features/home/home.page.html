@@ -1,0 +1,9 @@
+<ion-header>
+  <app-toolbar></app-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="ion-padding" *ngFor="let btn of btns">
+    <ion-button [expand]="'block'" [class]="btn.class" [routerLink]="[btn.url]">{{ btn.label | translate }}</ion-button>
+  </div>
+</ion-content>

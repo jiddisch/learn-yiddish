@@ -1,18 +1,18 @@
 import { TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
-import { TestLetters } from './alphabet.model';
-import { AlphabetService } from '../../core.module';
+import { TestLetters } from '../test-letters/test-letters.model';
+import { YiddishAlphabetService } from './yiddish-alphabet.service';
 
 describe('MatchLettersService', () => {
-  let service: AlphabetService;
+  let service: YiddishAlphabetService;
   let httpTestingController: HttpTestingController;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule]
     });
-    service = TestBed.get(AlphabetService);
+    service = TestBed.get(YiddishAlphabetService);
     httpTestingController = TestBed.get(HttpTestingController);
   });
 

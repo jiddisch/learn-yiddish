@@ -5,6 +5,8 @@ import { NavLink } from 'src/app/shared/links.model';
   templateUrl: 'home.page.html'
 })
 export class HomePage {
+  // TODO: on RTL put the button on right
+  
   btns: NavLink[] = [
     {
       url: '/alphabet',

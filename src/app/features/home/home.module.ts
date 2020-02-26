@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
-import { HomePage } from './home/home.page';
 import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { HomePage } from './home.page';
 
 @NgModule({
   imports: [

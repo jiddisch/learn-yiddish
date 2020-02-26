@@ -1,0 +1,74 @@
+[
+  {
+      "yiddishLetter": "אַ",
+      "foreignLetter": ["a"]
+  },
+  {
+      "yiddishLetter": "אָ",
+      "foreignLetter": ["o"]
+  },
+  {
+      "yiddishLetter": "ב",
+      "foreignLetter": ["b"]
+  },
+  {
+      "yiddishLetter": "בֿ",
+      "foreignLetter": ["b"]
+  },
+  {
+      "yiddishLetter": "ג",
+      "foreignLetter": ["g"]
+  },
+  {
+      "yiddishLetter": "ד",
+      "foreignLetter": ["d"]
+  },
+  {
+      "yiddishLetter": "ה",
+      "foreignLetter": ["h"]
+  },
+  {
+      "yiddishLetter": "ו",
+      "foreignLetter": ["v", "u"]
+  },
+  {
+      "yiddishLetter": "ע",
+      "foreignLetter": ["e"]
+  },
+  {
+      "yiddishLetter": "ר",
+      "foreignLetter": ["r"]
+  },
+  {
+      "yiddishLetter": "ט",
+      "foreignLetter": ["t"]
+  },
+  {
+      "yiddishLetter": "י",
+      "foreignLetter": ["y", "i"]
+  },
+  {
+      "yiddishLetter": "יִ",
+      "foreignLetter": ["i"]
+  },
+  {
+      "yiddishLetter": "מ",
+      "foreignLetter": ["m"]
+  },
+  {
+      "yiddishLetter": "ם",
+      "foreignLetter": ["m"]
+  },
+  {
+      "yiddishLetter": "ס",
+      "foreignLetter": ["s"]
+  },
+  {
+      "yiddishLetter": "נ",
+      "foreignLetter": ["n"]
+  },
+  {
+      "yiddishLetter": "ן",
+      "foreignLetter": ["n"]
+  }
+]

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service';
+import { YiddishAlphabetService } from 'src/app/core/services/yiddish-alphabet/yiddish-alphabet.service';
 
 @Component({
   selector: 'app-alphabet',
@@ -9,6 +9,6 @@ import { AlphabetService } from 'src/app/core/services/alphabet/alphabet.service
 export class AlphabetPage {
   public alphabet$ = this.alphabetService.alphabet$;
 
-  constructor(private alphabetService: AlphabetService) { }
+  constructor(private alphabetService: YiddishAlphabetService) { }
 
 }
