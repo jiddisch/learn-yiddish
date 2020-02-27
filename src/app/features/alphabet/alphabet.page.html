@@ -4,14 +4,26 @@
 
 <ion-content>
 
-  <ion-slides dir="rtl">
+  <ion-slides #slidesElm dir="rtl" [options]="slideOpts" [pager]="true">
     <ion-slide *ngFor="let letter of alphabet$ | async">
 
       <ion-grid>
 
         <ion-row>
+          <ion-col>
+            <ion-item-divider color="light"></ion-item-divider>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
           <ion-col class="letter-yiddish-col">
             <div class="ion-text-center letter letter-yiddish">{{ letter.yiddishLetter }}</div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="desc">Yiddish Letter</div>
           </ion-col>
         </ion-row>
 
@@ -29,6 +41,12 @@
 
         <ion-row>
           <ion-col>
+            <div class="desc">English Letter</div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
             <ion-item-divider color="light"></ion-item-divider>
           </ion-col>
         </ion-row>
@@ -36,6 +54,12 @@
         <ion-row>
           <ion-col class="ion-padding-bottom">
             <div class="ion-text-center letter-name">{{ letter.letterName }}</div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="desc">Name of the Letter in Yiddish</div>
           </ion-col>
         </ion-row>
 

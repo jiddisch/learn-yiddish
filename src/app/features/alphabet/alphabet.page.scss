@@ -1,11 +1,11 @@
 .letter-yiddish {
-    font-size: 44vh;
+    font-size: 30vh;
     line-height: 0.7em;
     font-family: 'Varela Round', sans-serif;
 }
 
 .letter-foreign {
-    font-size: 18vh;
+    font-size: 16vh;
     line-height: 1em;
 }
 
@@ -15,11 +15,19 @@
 }
 
 .letter-yiddish-col {
-    margin-bottom: 12vh;
+    margin-bottom: 6vh;
 }
 
-.letter-foreign-col {
-    margin-bottom: 5vh;
+.desc {
+  color: #ccc;
+}
+
+ion-grid {
+  height: 100%;
+}
+
+ion-slides {
+  height: 90vh;
 }
 
 ion-item-divider {
