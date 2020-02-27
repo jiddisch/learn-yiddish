@@ -30,9 +30,7 @@ export class TestLettersService {
             const letters = [];
             res.alphabet.map(letter => {
               if (letter.foreignLetter.length > 1) {
-                letter.foreignLetter.map(val => {
-                  letters.push(val);
-                })
+                letter.foreignLetter.map(val => (letters.push(val)))
               } else {
                 letters.push(letter.foreignLetter.join())
               }

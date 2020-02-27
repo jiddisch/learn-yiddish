@@ -16,3 +16,11 @@
 .letters-english-col {
     margin-bottom: 5vh;
 }
+
+ion-grid {
+  height: calc(100vh - 100px);
+}
+
+ion-slides {
+  height: calc(100vh - 56px);
+}

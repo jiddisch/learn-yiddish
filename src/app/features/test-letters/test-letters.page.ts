@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { TestLettersService } from 'src/app/core/services/test-letters/test-letters.service';
 
 @Component({
@@ -6,15 +6,16 @@ import { TestLettersService } from 'src/app/core/services/test-letters/test-lett
   templateUrl: './test-letters.page.html',
   styleUrls: ['./test-letters.page.scss'],
 })
-export class TestLettersPage implements OnInit {
+export class TestLettersPage {
   tests$ = this.testLettersService.tests$;
 
   constructor(private testLettersService: TestLettersService) { }
 
-  ngOnInit() { }
-
-  test(lettersEnglish: string): void {
-    // test if lettersEnglish match the input ng-model
+  testLetter(rightAnswer: string, possibleLetter: string): void {
+    if (rightAnswer === possibleLetter) {
+      console.log(true);
+    } else {
+      console.log(false);
+    }
   }
-
 }
