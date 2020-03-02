@@ -18,8 +18,4 @@ export class AlphabetPage {
 
   constructor(private alphabetService: YiddishAlphabetService) { }
 
-  ionViewWillEnter() {
-
-  }
-
 }

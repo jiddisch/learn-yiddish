@@ -6,7 +6,7 @@
   <div class="play-alert alert-success" *ngIf="isSuccess === 2" [@inOutAnimation]></div>
   <div class="play-alert alert-failed" *ngIf="isSuccess === 1" [@inOutAnimation]></div>
 
-  <ion-slides #slidesElm [options]="slideOpts" [pager]="true" dir="rtl">
+  <ion-slides #slidesElm [options]="slideOpts" [pager]="true">
     <ion-slide *ngFor="let test of tests$ | async">
 
       <ion-grid>

@@ -15,7 +15,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   imports: [
 
     // angular
-    IonicModule.forRoot(),
+    IonicModule.forRoot({hardwareBackButton: false}),
     HttpClientModule,
 
     // 3rd party

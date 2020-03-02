@@ -17,6 +17,14 @@
     margin-bottom: 5vh;
 }
 
+.letter {
+  font-size: 10vw;
+  border: 1px solid;
+  border-radius: 50%;
+  padding: 12px;
+  line-height: 11vw;
+}
+
 ion-grid {
   height: calc(100vh - 100px);
 }

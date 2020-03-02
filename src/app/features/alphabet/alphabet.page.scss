@@ -1,21 +1,29 @@
 .letter-yiddish {
-    font-size: 30vh;
-    line-height: 0.7em;
+    font-size: 26vh;
+    line-height: 1em;
     font-family: 'Varela Round', sans-serif;
 }
 
 .letter-foreign {
     font-size: 16vh;
-    line-height: 1em;
+    line-height: .8em;
 }
 
 .letter-name {
     font-size: 8vh;
-    line-height: 2em;
+    line-height: 1.4em;
 }
 
 .letter-yiddish-col {
     margin-bottom: 6vh;
+}
+
+.letter-foreign-col {
+  margin-bottom: 5vh;
+}
+
+.letter-name-col {
+  margin-bottom: 2vh;
 }
 
 .desc {

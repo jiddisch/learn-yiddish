@@ -4,7 +4,7 @@
 
 <ion-content>
 
-  <ion-slides #slidesElm dir="rtl" [options]="slideOpts" [pager]="true">
+  <ion-slides #slidesElm [options]="slideOpts">
     <ion-slide *ngFor="let letter of alphabet$ | async">
 
       <ion-grid>
@@ -52,7 +52,7 @@
         </ion-row>
 
         <ion-row>
-          <ion-col class="ion-padding-bottom">
+          <ion-col class="ion-padding-bottom letter-name-col">
             <div class="ion-text-center letter-name">{{ letter.letterName }}</div>
           </ion-col>
         </ion-row>

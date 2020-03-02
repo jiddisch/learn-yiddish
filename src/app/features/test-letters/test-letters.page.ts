@@ -46,6 +46,7 @@ export class TestLettersPage {
   testLetter(rightAnswer: string, possibleLetter: string): void {
     if (rightAnswer === possibleLetter) {
       this.isSuccess = 2;
+      this.slides.slideNext();
     } else {
       this.isSuccess = 1;
     }
