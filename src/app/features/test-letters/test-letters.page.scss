@@ -1,20 +1,20 @@
-.letters-yiddish {
-    font-size: 44vh;
-    line-height: 0.7em;
-    font-family: 'Varela Round', sans-serif;
-}
-
-.letters-english {
-    font-size: 18vh;
-    line-height: 1em;
-}
-
 .letters-yiddish-col {
     margin-bottom: 12vh;
+
+    .letters-yiddish {
+      font-size: 44vh;
+      line-height: 0.7em;
+      font-family: 'Varela Round', sans-serif;
+  }
 }
 
 .letters-english-col {
     margin-bottom: 5vh;
+
+    .letters-english {
+      font-size: 18vh;
+      line-height: 1em;
+  }
 }
 
 .letter {
@@ -23,6 +23,7 @@
   border-radius: 50%;
   padding: 12px;
   line-height: 11vw;
+  text-align: center;
 }
 
 ion-grid {
@@ -48,4 +49,8 @@ ion-slides {
   &.alert-failed {
       background: url(../../../assets/images/fail.svg);
   }
+}
+
+.swiper-container {
+  height: 90vh;
 }

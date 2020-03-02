@@ -1,21 +1,27 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { YiddishAlphabetService } from 'src/app/core/services/yiddish-alphabet/yiddish-alphabet.service';
-import { IonSlides } from '@ionic/angular';
-import { SwiperOptions } from 'swiper';
+import Swiper, { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-alphabet',
   templateUrl: './alphabet.page.html',
   styleUrls: ['./alphabet.page.scss']
 })
-export class AlphabetPage {
-  @ViewChild('slidesElm', {static: false}) slides: IonSlides;
+export class AlphabetPage implements OnInit {
   public alphabet$ = this.alphabetService.alphabet$;
-  public slideOpts: SwiperOptions = {
-    width: window.innerWidth,
-    speed: 400
-  };
+  slideOptions: SwiperOptions;
 
   constructor(private alphabetService: YiddishAlphabetService) { }
+
+  ngOnInit(): void {
+    this.slideOptions = {
+      width: window.innerWidth,
+      speed: 400
+    };
+
+    setTimeout(() => {
+      new Swiper('.swiper-container', this.slideOptions);
+    }, 100);
+  }
 
 }

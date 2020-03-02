@@ -1,8 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
 import { TestLettersService } from 'src/app/core/services/test-letters/test-letters.service';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { SwiperOptions } from 'swiper';
 import { IonSlides } from '@ionic/angular';
+import Swiper, { SwiperOptions } from 'swiper';
 
 @Component({
   selector: 'app-test-letters',
@@ -29,18 +29,27 @@ import { IonSlides } from '@ionic/angular';
   ]
 })
 export class TestLettersPage {
-  @ViewChild('slidesElm', {static: false}) slides: IonSlides;
   tests$ = this.testLettersService.tests$;
   public isSuccess: 0 | 1 | 2;
-  public slideOpts: SwiperOptions = {
-    width: window.innerWidth,
-    speed: 400
-  };
+  slides: Swiper;
+  slideOptions: SwiperOptions;
 
   constructor(private testLettersService: TestLettersService) { }
 
   ionViewWillEnter() {
     this.isSuccess = 0;
+
+    this.slideOptions = {
+      width: window.innerWidth,
+      speed: 400,
+      pagination: {
+        el: '.swiper-pagination',
+      },
+    };
+
+    setTimeout(() => {
+      this.slides = new Swiper('.swiper-container', this.slideOptions);
+    }, 100);
   }
 
   testLetter(rightAnswer: string, possibleLetter: string): void {

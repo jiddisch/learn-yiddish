@@ -6,25 +6,29 @@
   <div class="play-alert alert-success" *ngIf="isSuccess === 2" [@inOutAnimation]></div>
   <div class="play-alert alert-failed" *ngIf="isSuccess === 1" [@inOutAnimation]></div>
 
-  <ion-slides #slidesElm [options]="slideOpts" [pager]="true">
-    <ion-slide *ngFor="let test of tests$ | async">
+  <div class="swiper-container">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide" *ngFor="let test of tests$ | async">
 
-      <ion-grid>
+        <ion-grid>
 
-        <ion-row>
-          <ion-col class="letters-yiddish-col">
-            <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
-          </ion-col>
-        </ion-row>
+          <ion-row>
+            <ion-col class="letters-yiddish-col">
+              <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
+            </ion-col>
+          </ion-row>
 
-        <ion-row>
-          <ion-col class="possible-english-letters-col" *ngFor="let possibleLetter of test.possibleLetters">
-            <div class="letter" (click)="testLetter(test.foreignLetter, possibleLetter)">{{ possibleLetter }}</div>
-          </ion-col>
-        </ion-row>
+          <ion-row>
+            <ion-col class="possible-english-letters-col" *ngFor="let possibleLetter of test.possibleLetters">
+              <div class="letter" (click)="testLetter(test.foreignLetter, possibleLetter)">{{ possibleLetter }}</div>
+            </ion-col>
+          </ion-row>
 
-      </ion-grid>
+        </ion-grid>
 
-    </ion-slide>
-  </ion-slides>
+      </div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+
 </ion-content>
