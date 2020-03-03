@@ -25,6 +25,38 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
+@import "./assets/fonts/stylesheet.css";
+
 .header-md:after {
     background-image: none;
+}
+
+.btn-container {
+  text-align: center;
+}
+
+.btn-3d {
+    font-size: 3vh;
+    font-family: 'OldNewspaperTypes';
+    padding: 20px 60px;
+    color: #000;
+    border-radius: 6px;
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+}
+
+.btn-3d.blue {
+	background-color: #F0D264;
+	box-shadow: 0 0 0 1px #F0D264 inset,
+				0 0 0 2px rgba(255,255,255,0.15) inset,
+				0 8px 0 0 rgba(196, 172, 83, .7),
+				0 8px 0 1px rgba(0,0,0,.4),
+				0 8px 8px 1px rgba(0,0,0,0.5);
+}
+
+ion-content, ion-item {
+  --background: #f2eecb;
+}
+
+ion-toolbar {
+  --background: #f2eecb;
 }

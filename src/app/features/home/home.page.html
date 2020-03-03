@@ -3,7 +3,7 @@
 </ion-header>
 
 <ion-content>
-  <div class="ion-padding" *ngFor="let btn of btns">
-    <ion-button [expand]="'block'" [class]="btn.class" [routerLink]="[btn.url]">{{ btn.label | translate }}</ion-button>
+  <div class="btn-container ion-padding" *ngFor="let btn of btns">
+    <div class="{{btn.class}} btn-3d blue" [routerLink]="[btn.url]">{{ btn.label | translate }}</div>
   </div>
 </ion-content>

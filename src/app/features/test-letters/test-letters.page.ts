@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { TestLettersService } from 'src/app/core/services/test-letters/test-letters.service';
 import { animate, style, transition, trigger } from '@angular/animations';
-import { IonSlides } from '@ionic/angular';
 import Swiper, { SwiperOptions } from 'swiper';
 
 @Component({

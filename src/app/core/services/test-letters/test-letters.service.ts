@@ -18,7 +18,7 @@ export class TestLettersService {
   get tests$(): Observable<any> { // TestLetters[]
 
     return forkJoin({
-      testLetters: this.http.get<TestsLevel[]>(`${environment.mocks}/test-letters.json`).pipe(map(res => res[0].test)),
+      testLetters: this.http.get<TestsLevel[]>(`${environment.mocks}test-letters.json`).pipe(map(res => res[0].test)),
       alphabet: this.yiddishAlphabetService.alphabet$
     }).pipe(
       switchMap(res => {
