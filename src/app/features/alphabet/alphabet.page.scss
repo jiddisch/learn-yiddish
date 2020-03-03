@@ -1,5 +1,5 @@
 .letter-yiddish-col {
-    margin-bottom: 6vh;
+  margin-bottom: 3vh;
 
     .letter-yiddish {
       font-size: 26vh;
@@ -9,26 +9,25 @@
 }
 
 .letter-foreign-col {
-  margin-bottom: 5vh;
 
   .letter-foreign {
     font-size: 16vh;
-    line-height: .8em;
+    line-height: 1.2em;
 }
 }
 
 .letter-name-col {
-  margin-bottom: 2vh;
 
   .letter-name {
     font-size: 8vh;
     line-height: 1.4em;
-}
+  }
 }
 
 .desc {
-  color: #ccc;
+  color: #31311b;
   text-align: center;
+  font-family: "OldNewspaperTypes";
 }
 
 ion-grid {
@@ -36,8 +35,7 @@ ion-grid {
 }
 
 ion-item-divider {
-    width: 100vw;
-    min-height: 2px;
+    min-height: 0;
 }
 
 .swiper-container {

@@ -16,7 +16,11 @@ export class AlphabetPage implements OnInit {
   ngOnInit(): void {
     this.slideOptions = {
       width: window.innerWidth,
-      speed: 400
+      speed: 400,
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true,
+      },
     };
 
     setTimeout(() => {
