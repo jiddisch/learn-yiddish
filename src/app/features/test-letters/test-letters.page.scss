@@ -18,12 +18,14 @@
 }
 
 .letter {
+  font-family: "OldNewspaperTypes";
   font-size: 10vw;
   border: 1px solid;
   border-radius: 50%;
   padding: 12px;
-  line-height: 11vw;
+  line-height: 12vw;
   text-align: center;
+  padding-top: 6px;
 }
 
 ion-grid {

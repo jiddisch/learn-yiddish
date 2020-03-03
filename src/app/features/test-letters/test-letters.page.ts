@@ -43,6 +43,7 @@ export class TestLettersPage {
       speed: 400,
       pagination: {
         el: '.swiper-pagination',
+        clickable: true
       },
     };
 

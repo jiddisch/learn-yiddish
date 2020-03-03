@@ -39,52 +39,10 @@ export class TestLettersService {
           })
         );
       }),
-      toArray()
+      toArray(),
+      map(res => this.helpers.shuffleArray(res))
     );
 
   }
-
-  // const letters = res.alphabet.map(letter => letter.foreignLetter.join());
-  /*
-      tap((testLetters) => {
-        this.testLetters = testLetters;
-      }),
-      mergeMap(testLetters => {
-        return this.alphabetService.alphabet$.pipe(
-          filter(letter => this.getAllYiddishLetters().includes(this.testLetters));
-        )
-      }),
-
-      map(alphabet => {
-        this.alphabet = alphabet;
-        const foreignLetters = this.convertYiddishLettersToForeign();
-        console.log(foreignLetters);
-
-        return of(this.getRandomForeignLettersExcludingParam(foreignLetters));
-      })
-  */
-
-  // private convertYiddishLettersToForeign(): string[] {
-  //   const allYiddishLetters = this.getAllYiddishLetters();
-  //   return this.alphabet.filter(letter => allYiddishLetters.includes(this.testLetters)).map(l => l.foreignLetter);
-  // }
-
-  // private getAllYiddishLetters(): string[] {
-  //   return this.alphabet.map(letter => letter.yiddishLetter);
-  // }
-
-  // private getAllForeignLetters(): string[] {
-  //   return this.alphabet.map(letter => letter.foreignLetter);
-  // }
-
-  // private getRandomForeignLettersExcludingParam(foreignLetters: string[]): string[] {
-  //   const allForeignLetters = this.getAllForeignLetters();
-
-  //   const transform = this.helpers.shuffleArray(allForeignLetters.filter(letter => !foreignLetters.includes(letter)))
-  //                       .slice(0, this.amountPotentialLetters - foreignLetters.length)
-  //                       .concat(foreignLetters);
-
-  //   return this.helpers.shuffleArray(transform);
-  // }
 
 }
