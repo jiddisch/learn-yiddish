@@ -27,6 +27,7 @@
     "@ngx-translate/core": "^11.0.1",
     "@ngx-translate/http-loader": "^4.0.0",
     "cordova-android": "8.1.0",
+    "cordova-res": "^0.9.0",
     "core-js": "^3.6.4",
     "rxjs": "~6.5.4",
     "swiper": "^5.3.6",

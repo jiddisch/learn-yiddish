@@ -1,7 +1,6 @@
 @font-face {
     font-family: 'OldNewspaperTypes';
-    src: url('OldNewspaperTypes.woff2') format('woff2'),
-        url('OldNewspaperTypes.woff') format('woff');
+    src: url('OldNewspaperTypes.woff2') format('woff2'), url('OldNewspaperTypes.woff') format('woff');
     font-weight: 500;
     font-style: normal;
 }

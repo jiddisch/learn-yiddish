@@ -27,6 +27,9 @@
 
 @import "./assets/fonts/stylesheet.css";
 
+:root {
+  --ion-font-family: "OldNewspaperTypes"
+}
 .header-md:after {
     background-image: none;
 }
@@ -37,7 +40,6 @@
 
 .btn-3d {
     font-size: 3vh;
-    font-family: 'OldNewspaperTypes';
     padding: 20px 60px;
     color: #000;
     border-radius: 6px;
