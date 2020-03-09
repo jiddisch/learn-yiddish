@@ -1,8 +1,10 @@
 {
     "home.startStudyAlphabetButton": "Learn the Alphabet",
     "home.goTotestLettersButton": "Test Letters",
-    "testButton": "Test",
     "menu.home": "Home",
     "menu.alphabet": "Alphabet",
-    "menu.testLetters": "Exercises on Letters"
+    "menu.testLetters": "Exercises on Letters",
+    "menu.settings": "Settings",
+    "settings.dismiss": "Dismiss",
+    "settings.languageTitle": "Language"
 }

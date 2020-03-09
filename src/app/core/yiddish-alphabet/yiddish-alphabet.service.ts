@@ -11,15 +11,23 @@ export class YiddishAlphabetService {
   // TODO: get the language from a UserSettingsService
   private language = 'en';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {}
 
   get alphabet$(): Observable<YiddishAlphabet[]> {
     return forkJoin({
-      yiddish: this.http.get<YiddishAlphabet[]>(`${environment.mocks}yiddish-alphabet.json`),
-      foreign: this.http.get<ForeignAlphabet[]>(`${environment.mocks}foreign-letters/${this.language}.json`)
+      yiddish: this.http.get<YiddishAlphabet[]>(
+        `${environment.mocks}yiddish-alphabet.json`
+      ),
+      foreign: this.http.get<ForeignAlphabet[]>(
+        `${environment.mocks}foreign-letters/${this.language}.json`
+      )
     }).pipe(
-      map((res) => res.yiddish.map(item => ({ ...item, ...res.foreign.find(val => val.yiddishLetter === item.yiddishLetter) })))
+      map(res =>
+        res.yiddish.map(item => ({
+          ...item,
+          ...res.foreign.find(val => val.yiddishLetter === item.yiddishLetter)
+        }))
+      )
     );
   }
-
 }

@@ -1,0 +1,15 @@
+<ion-header>
+  <app-toolbar></app-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item lines="inset">
+      <ion-icon class="ion-padding" name="language-outline"></ion-icon>
+      <ion-label>{{ 'settings.languageTitle' | translate }}</ion-label>
+      <ion-select value="en" okText="Ok" cancelText="{{'settings.dismiss' | translate}}" (ionChange)="changeLang($event)">
+        <ion-select-option *ngFor="let option of langOptions" [value]="option.lang">{{ option.text }}</ion-select-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -4,6 +4,7 @@
 
 export const environment = {
   production: false,
+  i18nPrefix: '',
   mocks: '../assets/mocks/'
 };
 

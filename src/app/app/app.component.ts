@@ -32,6 +32,12 @@ export class AppComponent {
       icon: 'help',
       label: 'menu.testLetters',
       class: 'test-letters-item'
+    },
+    {
+      url: '/settings',
+      icon: 'settings-outline',
+      label: 'menu.settings',
+      class: 'settings-item'
     }
   ]
 
@@ -48,7 +54,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.translate.use('en');
+      this.translate.setDefaultLang('en');
     });
   }
 

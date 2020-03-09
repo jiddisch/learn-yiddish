@@ -25,11 +25,10 @@
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
 
-@import "./assets/fonts/stylesheet.css";
-
 :root {
-  --ion-font-family: "OldNewspaperTypes"
+  --ion-font-family: ""
 }
+
 .header-md:after {
     background-image: none;
 }
@@ -55,10 +54,6 @@
 				0 8px 8px 1px rgba(0,0,0,0.5);
 }
 
-ion-content, ion-item {
-  --background: #f2eecb;
-}
-
-ion-toolbar {
+ion-content, ion-item, ion-toolbar {
   --background: #f2eecb;
 }
