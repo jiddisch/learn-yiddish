@@ -11,7 +11,6 @@ import { NavLink } from '../shared/links.model';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-
   // TODO: menu on the right if lang = rtl
 
   navigation: NavLink[] = [
@@ -39,16 +38,17 @@ export class AppComponent {
       label: 'menu.settings',
       class: 'settings-item'
     }
-  ]
+  ];
 
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private translate: TranslateService,
-    private navCtrl: NavController) {
-      this.initializeApp();
-    }
+    private navController: NavController
+  ) {
+    this.initializeApp();
+  }
 
   initializeApp() {
     this.platform.ready().then(() => {
@@ -59,7 +59,6 @@ export class AppComponent {
   }
 
   route(url: string): void {
-    this.navCtrl.navigateRoot(url);
+    this.navController.navigateRoot(url);
   }
-
 }

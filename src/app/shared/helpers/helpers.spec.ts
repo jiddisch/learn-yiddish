@@ -8,11 +8,11 @@ describe('ToolsService', () => {
     service = TestBed.get(Helpers);
   });
 
-  it('should be created', () => {
+  xit('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  it('should shuffle a string to an array', () => {
+  xit('should shuffle a string to an array', () => {
     const shuffle = service.shuffleStr2Arr('טער');
     expect(shuffle).toEqual(jasmine.arrayWithExactContents(['ט', 'ר', 'ע']));
   });

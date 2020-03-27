@@ -25,6 +25,6 @@ export class AlphabetPage implements OnInit {
 
     setTimeout(() => {
       new Swiper('.swiper-container', this.slideOptions);
-    }, 200);
+    }, 300);
   }
 }

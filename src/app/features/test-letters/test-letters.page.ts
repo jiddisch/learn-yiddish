@@ -42,7 +42,7 @@ export class TestLettersPage {
 
     setTimeout(() => {
       this.slides = new Swiper('.swiper-container', this.slideOptions);
-    }, 200);
+    }, 300);
   }
 
   testLetter(rightAnswer: string, possibleLetter: string): void {
