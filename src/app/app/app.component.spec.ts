@@ -5,10 +5,8 @@ import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
-import { SharedModule } from '../shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HomePage } from '../features/home/home.page';
-import { CoreModule } from '../core/core.module';
 
 describe('AppComponent', () => {
   let statusBarSpy, splashScreenSpy, platformSpy, translateSpy, platformReadySpy, navigationSpy;
@@ -25,12 +23,10 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA], // ?
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
         TranslateModule.forRoot(),
-        RouterTestingModule.withRoutes([{path: 'home', component: HomePage}]),
-        SharedModule,
-        CoreModule
+        RouterTestingModule.withRoutes([{path: 'home', component: HomePage}])
       ],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
