@@ -3,7 +3,7 @@ import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
-import { NavLink } from '../shared/links.model';
+import { NavLink } from '../@shared/links.model';
 
 @Component({
   selector: 'app-root',

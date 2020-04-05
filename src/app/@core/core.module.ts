@@ -3,10 +3,11 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
-import { Helpers } from '../shared/helpers/helpers';
+import { Helpers } from '../@shared/helpers/helpers';
 import { TestLettersService } from './test-letters/test-letters.service';
 import { YiddishAlphabetService } from './yiddish-alphabet/yiddish-alphabet.service';
 import { environment } from 'src/environments/environment';
+import { UserSettingsService } from './user-settings/user-settings.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -32,7 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   exports: [TranslateModule],
-  providers: [TestLettersService, YiddishAlphabetService, Helpers]
+  providers: [TestLettersService, YiddishAlphabetService, Helpers, UserSettingsService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

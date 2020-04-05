@@ -1,4 +1,4 @@
-export interface ForeignAlphabet {
+export interface ForeignLetters {
   yiddishLetter: string;
   letterName: string;
 }

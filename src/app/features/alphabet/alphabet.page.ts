@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
-import { YiddishAlphabetService } from 'src/app/core/yiddish-alphabet/yiddish-alphabet.service';
+import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
 
 @Component({
   selector: 'app-alphabet',
@@ -8,7 +8,7 @@ import { YiddishAlphabetService } from 'src/app/core/yiddish-alphabet/yiddish-al
   styleUrls: ['./alphabet.page.scss']
 })
 export class AlphabetPage implements OnInit {
-  public alphabet$ = this.alphabetService.alphabet$;
+  public alphabet$ = this.alphabetService.alphabet$();
   slideOptions: SwiperOptions;
 
   constructor(private alphabetService: YiddishAlphabetService) {}

@@ -1,19 +1,40 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { AlphabetPage } from './alphabet.page';
-import { of, Observable } from 'rxjs';
-import { YiddishAlphabetService } from 'src/app/core/yiddish-alphabet/yiddish-alphabet.service';
-import { TestLetters } from 'src/app/core/test-letters/test-letters.model';
+import { HttpClientModule } from '@angular/common/http';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { Observable, of } from 'rxjs';
+import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
+import { YiddishAlphabetClient } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.model';
+
+class AlphabetServiceStub {
+  alphabetMock: YiddishAlphabetClient[] = [
+    {
+      yiddishLetter: 'אַ',
+      letterName: 'Pasekh Alef',
+      foreignLetter: ['a']
+    },
+    {
+      yiddishLetter: 'אָ',
+      letterName: 'Komets Alef',
+      foreignLetter: ['o']
+    }
+  ];
+
+  get alphabet$(): Observable<YiddishAlphabetClient[]> {
+    return of(this.alphabetMock);
+  }
+}
 
 describe('AlphabetPage', () => {
   let fixture: ComponentFixture<AlphabetPage>;
   let component: AlphabetPage;
-  let compiled: HTMLElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
-      imports: [IonicModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
+      imports: [IonicModule, HttpClientModule],
       providers: [
         { provide: YiddishAlphabetService, useClass: AlphabetServiceStub }
       ]
@@ -23,45 +44,22 @@ describe('AlphabetPage', () => {
     component = fixture.componentInstance;
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('The slider should be present wxith a list of letters', () => {
-    fixture.detectChanges();
-
-    compiled = fixture.nativeElement;
-    const yiddishLetters = compiled.querySelectorAll('.letter-yiddish');
-    const letterNames = compiled.querySelectorAll('.letter-name');
-
-    component.alphabet$.subscribe(alphabet => {
-      // expect(alphabet).toEqual(new AlphabetServiceStub().alphabetMock)
+  it('slideOptions should be defined', () => {
+    component.alphabet$.subscribe(res => {
+      expect(res.length).toBe(2);
+      // expect(res[0].yiddishLetters).toEqual('אַ');
+      // expect(res[1].yiddishLetters).toEqual('אָ');
+      // expect(res[1].textContent).toEqual('Komets Alef');
     });
 
-    expect(yiddishLetters.length).toBe(2);
-    expect(yiddishLetters[0].textContent).toEqual('אַ');
-    expect(yiddishLetters[1].textContent).toEqual('אָ');
-    expect(letterNames[1].textContent).toEqual('Komets Alef');
+    expect(component.slideOptions).not.toBeDefined();
+    fixture.detectChanges();
+    expect(component.slideOptions).toBeDefined();
   });
+
 });
 
-class AlphabetServiceStub {
-  alphabetMock: TestLetters[] = [
-    {
-      yiddishLetters: 'אַ',
-      foreignLetter: 'aa',
-      letterName: 'Pasekh Alef',
-      possibleLetters: []
-    },
-    {
-      yiddishLetters: 'אָ',
-      foreignLetter: 'o',
-      letterName: 'Komets Alef',
-      possibleLetters: []
-    }
-  ];
-
-  get alphabet$(): Observable<TestLetters[]> {
-    return of(this.alphabetMock);
-  }
-}

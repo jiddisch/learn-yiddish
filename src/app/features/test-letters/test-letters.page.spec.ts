@@ -9,7 +9,7 @@ import { TestLettersPage } from './test-letters.page';
 import { Observable, of } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { YiddishAlphabetService } from 'src/app/core/yiddish-alphabet/yiddish-alphabet.service';
+import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -51,7 +51,7 @@ describe('TestLettersPage', () => {
   });
 
   xit('get an amount of possible letters', fakeAsync(() => {
-    component.tests$.subscribe(res => {
+    component.testsType1$.subscribe(res => {
       fixture.detectChanges();
       const possibleEnglishLettersElms = debugElement.queryAll(
         By.css('.letter')

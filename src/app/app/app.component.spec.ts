@@ -6,10 +6,17 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { AppComponent } from './app.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
-import { HomePage } from '../features/home/home.page';
+import { SharedModule } from '../@shared/shared.module';
+
+class NavControllerMock {
+  navigateRoot = () => {};
+}
 
 describe('AppComponent', () => {
-  let statusBarSpy, splashScreenSpy, platformSpy, translateSpy, platformReadySpy, navigationSpy;
+  let statusBarSpy,
+    splashScreenSpy,
+    platformSpy,
+    platformReadySpy;
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
 
@@ -18,34 +25,29 @@ describe('AppComponent', () => {
     splashScreenSpy = jasmine.createSpyObj('SplashScreen', ['hide']);
     platformReadySpy = Promise.resolve();
     platformSpy = jasmine.createSpyObj('Platform', { ready: platformReadySpy });
-    translateSpy = jasmine.createSpyObj('TranslateService', ['setDefaultLang']);
-    navigationSpy = jasmine.createSpyObj('NavController', ['navigateRoot']);
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [
-        TranslateModule.forRoot(),
-        RouterTestingModule.withRoutes([{path: 'home', component: HomePage}])
+        SharedModule,
+        RouterTestingModule,
+        TranslateModule.forRoot()
       ],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
-        { provide: TranslateService, useValue: translateSpy },
-        { provide: NavController, useValue: navigationSpy}
+        TranslateService,
+        { provide: NavController, useClass: NavControllerMock }
       ]
-    });
+    }).compileComponents();
   }));
 
   beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
-  });
-
-  afterEach(() => {
-    fixture.destroy();
-    component = null;
+    fixture.detectChanges();
   });
 
   it('should create the app', () => {
@@ -53,17 +55,21 @@ describe('AppComponent', () => {
   });
 
   it('should initialize the app', async () => {
+    const transService = fixture.debugElement.injector.get(TranslateService);
+    spyOn(transService, 'setDefaultLang');
+
     expect(platformSpy.ready).toHaveBeenCalled();
     await platformReadySpy;
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
     expect(splashScreenSpy.hide).toHaveBeenCalled();
-    expect(translateSpy.setDefaultLang).toHaveBeenCalled();
+    expect(transService.setDefaultLang).toHaveBeenCalled();
   });
 
-  xit('route should call navCtrl', () => {
+  it('should call the navigation with the param url', () => {
+    const navCtrl = fixture.debugElement.injector.get(NavController);
+    spyOn(navCtrl, 'navigateRoot');
+
     component.route('home');
-    expect(navigationSpy).toHaveBeenCalledWith('home');
+    expect(navCtrl.navigateRoot).toHaveBeenCalledWith('home');
   });
-
 });
-

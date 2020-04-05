@@ -1,11 +1,11 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, from, of, forkJoin } from 'rxjs';
-import { tap, map, mergeMap, filter, switchMap, toArray } from 'rxjs/operators';
+import { Observable, from, forkJoin } from 'rxjs';
+import { map, switchMap, toArray } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { TestLetters, TestsLevel } from './test-letters.model';
+import { TestsLevels, TestLettersType1 } from './test-letters.model';
 import { YiddishAlphabetService } from '../yiddish-alphabet/yiddish-alphabet.service';
-import { Helpers } from 'src/app/shared/helpers/helpers';
+import { Helpers } from 'src/app/@shared/helpers/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TestLettersService {
@@ -18,14 +18,14 @@ export class TestLettersService {
     private helpers: Helpers
   ) {}
 
-  get tests$(): Observable<any> {
-    // TestLetters[]
+  // TODO: get type and level of the game
+  get testsType1$(): Observable<TestLettersType1[]> {
 
     return forkJoin({
       testLetters: this.http
-        .get<TestsLevel[]>(`${environment.mocks}test-letters.json`)
+        .get<TestsLevels[]>(`${environment.mocks}test-levels.json`)
         .pipe(map(res => res[0].test)),
-      alphabet: this.yiddishAlphabetService.alphabet$
+      alphabet: this.yiddishAlphabetService.alphabet$()
     }).pipe(
       switchMap(res => {
         return from(

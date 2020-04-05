@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { animate, style, transition, trigger } from '@angular/animations';
 import Swiper, { SwiperOptions } from 'swiper';
-import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
+import { TestLettersService } from 'src/app/@core/test-letters/test-letters.service';
 
 @Component({
   selector: 'app-test-letters',
@@ -21,7 +21,7 @@ import { TestLettersService } from 'src/app/core/test-letters/test-letters.servi
   ]
 })
 export class TestLettersPage {
-  tests$ = this.testLettersService.tests$;
+  testsType1$ = this.testLettersService.testsType1$;
   public isSuccess: 0 | 1 | 2;
   slides: Swiper;
   slideOptions: SwiperOptions;

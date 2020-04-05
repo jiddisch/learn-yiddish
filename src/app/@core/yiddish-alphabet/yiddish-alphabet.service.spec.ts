@@ -4,46 +4,62 @@ import {
   HttpTestingController
 } from '@angular/common/http/testing';
 import { environment } from 'src/environments/environment';
-import { TestLetters } from '../test-letters/test-letters.model';
 import { YiddishAlphabetService } from './yiddish-alphabet.service';
+import { YiddishAlphabetClient } from './yiddish-alphabet.model';
+import { UserSettingsService } from '../user-settings/user-settings.service';
+import { of, Observable } from 'rxjs';
+
+class MockUserSettingsService {
+  language$ () { return of() };
+}
 
 describe('MatchLettersService', () => {
   let service: YiddishAlphabetService;
   let httpTestingController: HttpTestingController;
+  let userSettingsSpy;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
+      imports: [HttpClientTestingModule],
+      providers: [
+        { provide: UserSettingsService, useClass: MockUserSettingsService }
+      ]
     });
-    service = TestBed.get(YiddishAlphabetService);
-    httpTestingController = TestBed.get(HttpTestingController);
+    service = TestBed.inject(YiddishAlphabetService);
+    httpTestingController = TestBed.inject(HttpTestingController);
+    userSettingsSpy = jasmine.createSpyObj('')
   });
 
   afterEach(() => {
     httpTestingController.verify();
   });
 
-  xit('should be created', () => {
+  it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
+  it('should call the userSettings service', () => {
+    const userSettingsService = TestBed.inject(UserSettingsService);
+    spyOn(userSettingsService, 'language$').and.returnValue(of('en'));
+    service.alphabet$().subscribe();
+    expect(userSettingsService.language$).toHaveBeenCalled();
+  });
+
   xit('should return an Observable<TestLetters[]> object from HTTP', () => {
-    const testLettersMock: TestLetters[] = [
+    const testLettersMock: YiddishAlphabetClient[] = [
       {
         letterName: '',
-        yiddishLetters: 'ער',
-        foreignLetter: 'er',
-        possibleLetters: ['כ', 'ע', 'י', 'ח', 'ר']
+        yiddishLetter: 'ר',
+        foreignLetter: ['r']
       },
       {
         letterName: '',
-        yiddishLetters: 'שע',
-        foreignLetter: 're',
-        possibleLetters: ['ב', 'ח', 'ר', 'ע', 'י']
+        yiddishLetter: 'ע',
+        foreignLetter: ['e']
       }
     ];
 
-    service.alphabet$.subscribe(testLettersResult => {
+    service.alphabet$().subscribe((testLettersResult) => {
       expect(testLettersResult.length).toBe(2);
       // expect(testLettersResult[0].id).toBe(0);
       // expect(testLettersResult[0].possibleLetters.length).toBe(5);
@@ -51,7 +67,7 @@ describe('MatchLettersService', () => {
     });
 
     const req = httpTestingController.expectOne(
-      `${environment.mocks}alphabet/en.json`
+      `${environment.mocks}foreign-letters/en.json`
     );
     expect(req.request.method).toBe('GET');
 
