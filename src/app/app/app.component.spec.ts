@@ -72,4 +72,8 @@ describe('AppComponent', () => {
     component.route('home');
     expect(navCtrl.navigateRoot).toHaveBeenCalledWith('home');
   });
+
+  it('navigation should exist', () => {
+    expect(component.navigation).not.toBeUndefined();
+  });
 });

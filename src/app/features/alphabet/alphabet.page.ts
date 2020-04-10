@@ -8,7 +8,7 @@ import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-a
   styleUrls: ['./alphabet.page.scss']
 })
 export class AlphabetPage implements OnInit {
-  public alphabet$ = this.alphabetService.alphabet$();
+  alphabet$ = this.alphabetService.alphabet$();
   slideOptions: SwiperOptions;
 
   constructor(private alphabetService: YiddishAlphabetService) {}
