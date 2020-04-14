@@ -23,7 +23,7 @@ describe('HomePage', () => {
   });
 
   it('btns should exist', () => {
-    expect(component.btns).not.toBeUndefined();
+    expect(component.btns).toBeTruthy();
   });
 
 });

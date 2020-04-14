@@ -13,10 +13,7 @@ class NavControllerMock {
 }
 
 describe('AppComponent', () => {
-  let statusBarSpy,
-    splashScreenSpy,
-    platformSpy,
-    platformReadySpy;
+  let statusBarSpy, splashScreenSpy, platformSpy, platformReadySpy;
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
 
@@ -29,11 +26,7 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [
-        SharedModule,
-        RouterTestingModule,
-        TranslateModule.forRoot()
-      ],
+      imports: [SharedModule, RouterTestingModule, TranslateModule.forRoot()],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },

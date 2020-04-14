@@ -25,4 +25,17 @@ describe('SettingsPage', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('should have the langOptions variable', () => {
+    expect(component.langOptions).toBeTruthy();
+  });
+
+  it('changeLang function should change translation', () => {
+    const event = new CustomEvent('ionChange', {detail: {value: 'yi-he'}});
+    const service = fixture.debugElement.injector.get(TranslateService);
+    spyOn(service, 'use');
+
+    component.changeLang(event);
+    expect(service.use).toHaveBeenCalledWith(event.detail.value);
+  });
 });

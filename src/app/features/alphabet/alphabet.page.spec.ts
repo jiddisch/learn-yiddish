@@ -4,7 +4,13 @@ import { AlphabetPage } from './alphabet.page';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
-import { of, Subscriber } from 'rxjs';
+import { of } from 'rxjs';
+
+class MockYiddishAlphabetService {
+  alphabet$() {
+    return of([]);
+  }
+}
 
 describe('AlphabetPage', () => {
   let fixture: ComponentFixture<AlphabetPage>;
@@ -15,7 +21,9 @@ describe('AlphabetPage', () => {
       declarations: [AlphabetPage],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [IonicModule, HttpClientModule],
-      providers: [YiddishAlphabetService]
+      providers: [
+        {provide: YiddishAlphabetService, useClass: MockYiddishAlphabetService}
+      ]
     });
 
     fixture = TestBed.createComponent(AlphabetPage);
@@ -27,15 +35,14 @@ describe('AlphabetPage', () => {
   });
 
   it('alphabet$ should be observable', () => {
-    const service = fixture.debugElement.injector.get(YiddishAlphabetService);
-    spyOn(service, 'alphabet$').and.returnValue(of([]));
-
-    expect(component.alphabet$.subscribe()).toBeInstanceOf(Subscriber);
+    expect(component.alphabet$.subscribe()).toBeTruthy();
   });
 
   it('slideOptions should be defined', () => {
     expect(component.slideOptions).not.toBeDefined();
+
     fixture.detectChanges();
+
     expect(component.slideOptions).toBeDefined();
   });
 });

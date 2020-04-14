@@ -15,7 +15,7 @@ export class SettingsPage {
 
   constructor(private translate: TranslateService) {}
 
-  changeLang(e) {
+  changeLang(e: CustomEvent) {
     this.translate.use(e.detail.value);
   }
 }
