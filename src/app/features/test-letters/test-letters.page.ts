@@ -21,7 +21,7 @@ import { TestLettersService } from 'src/app/@core/test-letters/test-letters.serv
   ]
 })
 export class TestLettersPage {
-  testsType1$ = this.testLettersService.testsType1$;
+  testsType1$ = this.testLettersService.testsType1$();
   public isSuccess: 0 | 1 | 2;
   slides: Swiper;
   slideOptions: SwiperOptions;

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, from, forkJoin } from 'rxjs';
-import { map, switchMap, toArray } from 'rxjs/operators';
+import { map, switchMap, toArray, tap } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { TestsLevels, TestLettersType1 } from './test-letters.model';
 import { YiddishAlphabetService } from '../yiddish-alphabet/yiddish-alphabet.service';
@@ -19,32 +19,31 @@ export class TestLettersService {
   ) {}
 
   // TODO: get type and level of the game
-  get testsType1$(): Observable<TestLettersType1[]> {
-
+  testsType1$(): Observable<TestLettersType1[]> {
     return forkJoin({
       testLetters: this.http
         .get<TestsLevels[]>(`${environment.mocks}test-levels.json`)
-        .pipe(map(res => res[0].test)),
+        .pipe(map((res) => {
+          return res[0].test;
+        })),
       alphabet: this.yiddishAlphabetService.alphabet$()
     }).pipe(
-      switchMap(res => {
+      switchMap((res) => {
         return from(
-          res.alphabet.filter(val =>
+          res.alphabet.filter((val) =>
             res.testLetters.includes(val.yiddishLetter)
           )
         ).pipe(
-          map(item => ({
+          map((item) => ({
             ...item,
             foreignLetter:
-              item.foreignLetter[
-                Math.floor(Math.random() * item.foreignLetter.length)
-              ]
+              item.foreignLetter
           })),
-          map(item => {
+          map((item) => {
             const letters = [];
-            res.alphabet.map(letter => {
+            res.alphabet.map((letter) => {
               if (letter.foreignLetter.length > 1) {
-                letter.foreignLetter.map(val => letters.push(val));
+                letter.foreignLetter.map((val) => letters.push(val));
               } else {
                 letters.push(letter.foreignLetter.join());
               }
@@ -53,7 +52,7 @@ export class TestLettersService {
               ...item,
               possibleLetters: this.helpers.shuffleArray([
                 ...letters
-                  .filter(val => !val.includes(item.foreignLetter))
+                  .filter((val) => !val.includes(item.foreignLetter))
                   .slice(0, this.amountOfPossibleLetters - 1),
                 item.foreignLetter
               ])
@@ -62,7 +61,10 @@ export class TestLettersService {
         );
       }),
       toArray(),
-      map(res => this.helpers.shuffleArray(res))
+      map((res) => this.helpers.shuffleArray(res)),
+      tap(res => {
+        console.log(res);
+      })
     );
   }
 }
