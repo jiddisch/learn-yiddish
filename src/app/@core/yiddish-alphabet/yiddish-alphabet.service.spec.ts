@@ -5,7 +5,7 @@ import {
 } from '@angular/common/http/testing';
 import { YiddishAlphabetService } from './yiddish-alphabet.service';
 import { UserSettingsService } from '../user-settings/user-settings.service';
-import { of, Subscriber, Observable } from 'rxjs';
+import { of, Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 
 describe('YiddishAlphabetService', () => {
@@ -36,7 +36,7 @@ describe('YiddishAlphabetService', () => {
     expect(abService.alphabet$()).toBeInstanceOf(Observable);
   });
 
-  it('should call the userSettings service', () => {
+  it('should merge data from 2 sources', () => {
     const req1Mock = [
       {
         yiddishLetter: 'אַ',
