@@ -23,48 +23,56 @@ export class TestLettersService {
     return forkJoin({
       testLetters: this.http
         .get<TestsLevels[]>(`${environment.mocks}test-levels.json`)
-        .pipe(map((res) => {
-          return res[0].test;
-        })),
+        .pipe(map((res) => res[0].test)),
       alphabet: this.yiddishAlphabetService.alphabet$()
     }).pipe(
       switchMap((res) => {
         return from(
-          res.alphabet.filter((val) =>
-            res.testLetters.includes(val.yiddishLetter)
-          )
+          res.alphabet.filter((val) => {
+            return res.testLetters.includes(val.yiddishLetter);
+          })
         ).pipe(
-          map((item) => ({
-            ...item,
-            foreignLetter:
-              item.foreignLetter
-          })),
           map((item) => {
-            const letters = [];
+            const allLetters = [];
             res.alphabet.map((letter) => {
               if (letter.foreignLetter.length > 1) {
-                letter.foreignLetter.map((val) => letters.push(val));
+                letter.foreignLetter.map((val) => allLetters.push(val));
               } else {
-                letters.push(letter.foreignLetter.join());
+                allLetters.push(letter.foreignLetter.join());
               }
             });
+
             return {
               ...item,
-              possibleLetters: this.helpers.shuffleArray([
-                ...letters
-                  .filter((val) => !val.includes(item.foreignLetter))
-                  .slice(0, this.amountOfPossibleLetters - 1),
-                item.foreignLetter
-              ])
+              possibleLetters:
+                item.foreignLetter.length > 1
+                  ? this.helpers.shuffleArray([
+                      ...allLetters
+                        .filter((val) => !val.includes(item.foreignLetter))
+                        .slice(
+                          0,
+                          this.amountOfPossibleLetters -
+                            item.foreignLetter.length
+                        ),
+                      item.foreignLetter[0],
+                      item.foreignLetter[1]
+                    ])
+                  : this.helpers.shuffleArray([
+                      ...allLetters
+                        .filter((val) => !val.includes(item.foreignLetter))
+                        .slice(
+                          0,
+                          this.amountOfPossibleLetters -
+                            item.foreignLetter.length
+                        ),
+                      item.foreignLetter[0]
+                    ])
             };
           })
         );
       }),
       toArray(),
-      map((res) => this.helpers.shuffleArray(res)),
-      tap(res => {
-        console.log(res);
-      })
+      map((res) => this.helpers.shuffleArray(res))
     );
   }
 }

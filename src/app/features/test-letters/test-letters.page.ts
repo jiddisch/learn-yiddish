@@ -46,7 +46,7 @@ export class TestLettersPage {
   }
 
   testLetter(rightAnswer: string, possibleLetter: string): void {
-    if (rightAnswer === possibleLetter) {
+    if (rightAnswer[0] === possibleLetter || rightAnswer[1] !== undefined && rightAnswer[1] === possibleLetter) {
       this.isSuccess = 2;
       this.slides.slideNext();
     } else {

@@ -1,8 +1,6 @@
-export interface YiddishAlphabetServer {
+export interface YiddishAlphabet {
   yiddishLetter: string;
   letterName: string;
-}
-
-export interface YiddishAlphabetClient extends YiddishAlphabetServer {
   foreignLetter?: string[];
 }
+

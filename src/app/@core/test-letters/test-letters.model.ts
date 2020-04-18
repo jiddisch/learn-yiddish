@@ -1,7 +1,7 @@
 export interface TestLettersType1 {
   yiddishLetter: string;
   letterName: string;
-  foreignLetter: string[];
+  foreignLetter?: string | string[];
   possibleLetters: string[];
 }
 
