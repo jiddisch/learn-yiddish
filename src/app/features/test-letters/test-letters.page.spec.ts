@@ -2,14 +2,17 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  flush
+  flush,
+  tick
 } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
-import { Observable, of } from 'rxjs';
-import { DebugElement } from '@angular/core';
+import { Observable } from 'rxjs';
+import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import Swiper from 'swiper';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -19,7 +22,8 @@ describe('TestLettersPage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestLettersPage],
-      imports: [IonicModule],
+      imports: [IonicModule, HttpClientTestingModule],
+      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: YiddishAlphabetService, useClass: YiddishAlphabetService }
       ]
@@ -30,36 +34,46 @@ describe('TestLettersPage', () => {
     debugElement = fixture.debugElement;
   });
 
-  xit('should create', () => {
+  it('should create', () => {
     expect(component).toBeTruthy();
   });
 
-  xit('The slider should contain with a list of TestLetters', () => {
-    fixture.detectChanges();
-
-    const yiddishLetters = debugElement.queryAll(By.css('.letters-yiddish'));
-
-    expect(yiddishLetters.length).toBe(2, 'unexpected length of letters');
-    expect(yiddishLetters[0].nativeElement.innerText).toEqual(
-      'ער',
-      'unexpected letter'
-    );
-    expect(yiddishLetters[1].nativeElement.innerText).toEqual(
-      'רע',
-      'unexpected letter'
-    );
+  it('should have an observable testsType1$', () => {
+    expect(component.testsType1$).toBeInstanceOf(Observable);
   });
 
-  xit('get an amount of possible letters', fakeAsync(() => {
-    component.testsType1$.subscribe(res => {
-      fixture.detectChanges();
-      const possibleEnglishLettersElms = debugElement.queryAll(
-        By.css('.letter')
-      );
-      expect(possibleEnglishLettersElms.length).toBe(5 * res.length);
-    });
-    flush();
+  it('should have a variable isSuccess', () => {
+    expect(component.isSuccess).toBeUndefined();
+    component.ionViewWillEnter();
+    expect(component.isSuccess).toBe(0);
+  });
+
+  it('slides need to be initilize after 300ms', fakeAsync(() => {
+    expect(component.slides).toBeUndefined();
+    component.ionViewWillEnter();
+    expect(component.slides).toBeUndefined();
+    tick(300);
+    expect(component.slides).toBeInstanceOf(Swiper);
   }));
+
+  it('should have a variable slideOptions', () => {
+    expect(component.slideOptions).toBeUndefined();
+    component.ionViewWillEnter();
+    expect(component.slideOptions).toBeDefined();
+  });
+
+  xit('testLetter should test match of letters', () => {
+    // component.testLetter(['b'], 'b');
+    // should call slideNext
+    // should set isSuccess to 2
+    // should reset isSuccess to 0 after 500ms
+
+    // component.testLetter(['b'], ['v']);
+    // should not call slideNext
+    // should set isSuccess to 1
+    // should reset isSuccess to 0 after 500ms
+
+  });
 });
 
 class AlphabetServiceStub {
@@ -79,6 +93,6 @@ class AlphabetServiceStub {
   ];
 
   get getTests$(): Observable<TestLettersPage[]> {
-    return; //of(this.matchLettersMock);
+    return; // of(this.matchLettersMock);
   }
 }

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { Observable, forkJoin } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
-import { map, mergeMap } from 'rxjs/operators';
+import { map, mergeMap, tap } from 'rxjs/operators';
 import { YiddishAlphabet } from './yiddish-alphabet.model';
 import { ForeignLetters } from './foreign-letters.model';
 import { UserSettingsService } from '../user-settings/user-settings.service';

@@ -19,8 +19,8 @@
           </ion-row>
 
           <ion-row>
-            <ion-col class="possible-english-letters-col" *ngFor="let possibleLetter of test.possibleLetters">
-              <div class="letter" (click)="testLetter(test.foreignLetter, possibleLetter)">{{ possibleLetter }}</div>
+            <ion-col *ngFor="let possibleLetter of test.possibleLetters">
+              <div [class]="isPicked(possibleLetter) ? 'active letter' : 'letter'" (click)="testLetter(possibleLetter)">{{ possibleLetter }}</div>
             </ion-col>
           </ion-row>
 
