@@ -1,5 +1,6 @@
 <ion-header>
   <app-toolbar></app-toolbar>
+  <div class="indicator" *ngIf="sliders">{{this.currentSlide + 1 | number}} / {{sliders.length | json}}</div>
 </ion-header>
 
 <ion-content>
@@ -12,7 +13,7 @@
 
         <ion-grid>
 
-          <ion-row>
+          <ion-row class="no-wrap">
             <ion-col class="letters-yiddish-col">
               <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
             </ion-col>

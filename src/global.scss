@@ -10,27 +10,27 @@
  */
 
 /* Core CSS required for Ionic components to work properly */
-@import "~@ionic/angular/css/core.css";
+@import '~@ionic/angular/css/core.css';
 
 /* Basic CSS for apps built with Ionic */
-@import "~@ionic/angular/css/normalize.css";
-@import "~@ionic/angular/css/structure.css";
-@import "~@ionic/angular/css/typography.css";
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
 @import '~@ionic/angular/css/display.css';
 
 /* Optional CSS utils that can be commented out */
-@import "~@ionic/angular/css/padding.css";
-@import "~@ionic/angular/css/float-elements.css";
-@import "~@ionic/angular/css/text-alignment.css";
-@import "~@ionic/angular/css/text-transformation.css";
-@import "~@ionic/angular/css/flex-utils.css";
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
 
 :root {
-  --ion-font-family: ""
+  --ion-font-family: '';
 }
 
 .header-md:after {
-    background-image: none;
+  background-image: none;
 }
 
 .btn-container {
@@ -38,22 +38,21 @@
 }
 
 .btn-3d {
-    font-size: 3vh;
-    padding: 20px 60px;
-    color: #000;
-    border-radius: 6px;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  font-size: 3vh;
+  padding: 20px 60px;
+  color: #000;
+  border-radius: 6px;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
 }
 
 .btn-3d.blue {
-	background-color: #F0D264;
-	box-shadow: 0 0 0 1px #F0D264 inset,
-				0 0 0 2px rgba(255,255,255,0.15) inset,
-				0 8px 0 0 rgba(196, 172, 83, .7),
-				0 8px 0 1px rgba(0,0,0,.4),
-				0 8px 8px 1px rgba(0,0,0,0.5);
+  background-color: #ceb7a3;
+  box-shadow: 0 0 0 1px #bdb272 inset, 0 0 0 2px rgba(255, 255, 255, 0.15) inset,
+    0 8px 0 0 #b7a596, 0 8px 0 1px #c3ab95, 0 8px 8px 1px rgba(234, 54, 54, 0.5);
 }
 
-ion-content, ion-item, ion-toolbar {
-  --background: #f2eecb;
+ion-content,
+ion-item,
+ion-toolbar {
+  --background: #f1dfcf;
 }

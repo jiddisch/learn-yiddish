@@ -32,6 +32,7 @@ export class TestLettersPage {
   slides: Swiper;
   slideOptions: SwiperOptions;
   sliders: TestLetters[];
+  currentSlide = 0;
 
   pickedLetters: string[];
   possibleLetters: string[];
@@ -56,9 +57,9 @@ export class TestLettersPage {
       this.slides = new Swiper('.swiper-container', this.slideOptions);
 
       this.slides.on('slideChange', () => {
-        const i = this.slides.activeIndex;
-        this.possibleLetters = this.sliders[i].possibleLetters;
-        this.rightLetters = this.sliders[i].transcribedLetter;
+        this.currentSlide = this.slides.activeIndex;
+        this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
+        this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
       });
     }, 300);
 

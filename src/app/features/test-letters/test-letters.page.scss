@@ -3,12 +3,16 @@
 
     .letters-yiddish {
       font-size: 44vh;
-      line-height: 0.7em;
+      line-height: 1em;
   }
 }
 
 .active {
   background-color: greenyellow;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
 }
 
 .letter {
@@ -27,6 +31,14 @@ ion-grid {
 
 ion-slides {
   height: calc(100vh - 56px);
+}
+
+.indicator {
+  position: absolute;
+  right: 12px;
+  top: calc(56px / 2 - 18px /2);
+  z-index: 99;
+  color: #82825d;
 }
 
 .play-alert {
