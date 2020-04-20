@@ -15,13 +15,13 @@ const routes: Routes = [
         m => m.AlphabetPageModule
       )
   },
-  // {
-  //   path: 'test-letters',
-  //   loadChildren: () =>
-  //     import('./features/test-letters/test-letters.module').then(
-  //       m => m.TestLettersPageModule
-  //     )
-  // },
+  {
+    path: 'test-letters',
+    loadChildren: () =>
+      import('./features/test-letters/test-letters.module').then(
+        m => m.TestLettersPageModule
+      )
+  },
   {
     path: 'settings',
     loadChildren: () =>
