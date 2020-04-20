@@ -1,0 +1,236 @@
+[
+  {
+    "yiddishLetter": "א",
+    "letterName": "שטומער אַלף",
+    "transcribedLetterName": "ShTUMER ALEF",
+    "transcribedLetter": ["Ø"]
+  },
+  {
+    "yiddishLetter": "אַ",
+    "letterName": "פּתח אַלף",
+    "transcribedLetterName": "PASEKh-ALEF",
+    "transcribedLetter": ["A"]
+  },
+  {
+    "yiddishLetter": "אָ",
+    "letterName": "קמץ אַלף",
+    "transcribedLetterName": "KOMETS-ALEF",
+    "transcribedLetter": ["O"]
+  },
+  {
+    "yiddishLetter": "ב",
+    "letterName": "בית",
+    "transcribedLetterName": "BEYS",
+    "transcribedLetter": ["B"]
+  },
+  {
+    "yiddishLetter": "בֿ",
+    "letterName": "בֿית",
+    "transcribedLetterName": "VEYS",
+    "transcribedLetter": ["V"]
+  },
+  {
+    "yiddishLetter": "ג",
+    "letterName": "גימל",
+    "transcribedLetterName": "GIML",
+    "transcribedLetter": ["G"]
+  },
+  {
+    "yiddishLetter": "ד",
+    "letterName": "דלתּ",
+    "transcribedLetterName": "DALET",
+    "transcribedLetter": ["D"]
+  },
+  {
+    "yiddishLetter": "ה",
+    "letterName": "הא",
+    "transcribedLetterName": "HEY",
+    "transcribedLetter": ["H"]
+  },
+  {
+    "yiddishLetter": "ו",
+    "letterName": "װאָװ",
+    "transcribedLetterName":"VOV",
+    "transcribedLetter": ["U"]
+  },
+  {
+    "yiddishLetter": "וּ",
+    "letterName": "מלופּן װאָװ",
+    "transcribedLetterName": "MELUPM VOV",
+    "transcribedLetter": ["U"]
+  },
+  {
+    "yiddishLetter": "װ",
+    "letterName": "צװײ װאָװן",
+    "transcribedLetterName": "TsVEY VOVN",
+    "transcribedLetter": ["V"]
+  },
+  {
+    "yiddishLetter": "ױ",
+    "letterName": "װאָװ יוד",
+    "transcribedLetterName": "VOV YUD",
+    "transcribedLetter": ["OY"]
+  },
+  {
+    "yiddishLetter": "ז",
+    "letterName": "זיין",
+    "transcribedLetterName": "ZAYEN",
+    "transcribedLetter": ["Z"]
+  },
+  {
+    "yiddishLetter": "ח",
+    "letterName": "חית",
+    "transcribedLetterName": "KhES",
+    "transcribedLetter": ["Kh"]
+  },
+  {
+    "yiddishLetter": "ט",
+    "letterName": "טית",
+    "transcribedLetterName": "TES",
+    "transcribedLetter": ["T"]
+  },
+  {
+    "yiddishLetter": "י",
+    "letterName": "יוד",
+    "transcribedLetterName": "YUD",
+    "transcribedLetter": ["I", "Y"]
+  },
+  {
+    "yiddishLetter": "ײ",
+    "letterName": "צװײ יודן",
+    "transcribedLetterName": "TsVEY YUDN",
+    "transcribedLetter": ["EY"]
+  },
+  {
+    "yiddishLetter": "ײַ",
+    "letterName": "פּתח צװײ יודן",
+    "transcribedLetterName": "PASEKh TsVEY YUDN",
+    "transcribedLetter": ["AY"]
+  },
+  {
+    "yiddishLetter": "כּ",
+    "letterName": "כּף",
+    "transcribedLetterName": "KOF",
+    "transcribedLetter": ["K"]
+  },
+  {
+    "yiddishLetter": "כ",
+    "letterName": "כף",
+    "transcribedLetterName": "KhOF",
+    "transcribedLetter": ["Kh"]
+  },
+  {
+    "yiddishLetter": "ך",
+    "letterName": "לאַנגער כף",
+    "transcribedLetterName": "LANGER KhOF",
+    "transcribedLetter": ["Kh"]
+  },
+  {
+    "yiddishLetter": "ל",
+    "letterName": "למד",
+    "transcribedLetterName": "LAMED",
+    "transcribedLetter": ["L"]
+  },
+  {
+    "yiddishLetter": "מ",
+    "letterName": "מם",
+    "transcribedLetterName": "MEM",
+    "transcribedLetter": ["M"]
+  },
+  {
+    "yiddishLetter": "ם",
+    "letterName": "שלאָס-מם",
+    "transcribedLetterName": "ShLOS-MEM",
+    "transcribedLetter": ["M"]
+  },
+  {
+    "yiddishLetter": "נ",
+    "letterName": "נון",
+    "transcribedLetterName": "NUN",
+    "transcribedLetter": ["N"]
+  },
+  {
+    "yiddishLetter": "ן",
+    "letterName": "לאַנגער נון",
+    "transcribedLetterName": "LANGER NUN",
+    "transcribedLetter": ["N"]
+  },
+  {
+    "yiddishLetter": "ס",
+    "letterName": "סמך",
+    "transcribedLetterName": "SAMEKh",
+    "transcribedLetter": ["S"]
+  },
+  {
+    "yiddishLetter": "ע",
+    "letterName": "עין",
+    "transcribedLetterName": "AYEN",
+    "transcribedLetter": ["E"]
+  },
+  {
+    "yiddishLetter": "פּ",
+    "letterName": "פּא",
+    "transcribedLetterName": "PEY",
+    "transcribedLetter": ["P"]
+  },
+  {
+    "yiddishLetter": "פֿ",
+    "letterName": "פא",
+    "transcribedLetterName": "FEY",
+    "transcribedLetter": ["F"]
+  },
+  {
+    "yiddishLetter": "ף",
+    "letterName": "לאַנגער פֿא",
+    "transcribedLetterName": "LANGER FEY",
+    "transcribedLetter": ["F"]
+  },
+  {
+    "yiddishLetter": "צ",
+    "letterName": "צדיק",
+    "transcribedLetterName": "TsADEK",
+    "transcribedLetter": ["Ts"]
+  },
+  {
+    "yiddishLetter": "ץ",
+    "letterName": "לאַנגער צדיק",
+    "transcribedLetterName": "LANGER TsADEK",
+    "transcribedLetter": ["Ts"]
+  },
+  {
+    "yiddishLetter": "ק",
+    "letterName": "קוף",
+    "transcribedLetterName": "KUF",
+    "transcribedLetter": ["K"]
+  },
+  {
+    "yiddishLetter": "ר",
+    "letterName": "ריש",
+    "transcribedLetterName": "REYSh",
+    "transcribedLetter": ["R"]
+  },
+  {
+    "yiddishLetter": "ש",
+    "letterName": "שין",
+    "transcribedLetterName": "ShIN",
+    "transcribedLetter": ["Sh"]
+  },
+  {
+    "yiddishLetter": "שׂ",
+    "letterName": "שׂין",
+    "transcribedLetterName": "SIN",
+    "transcribedLetter": ["S"]
+  },
+  {
+    "yiddishLetter": "תּ",
+    "letterName": "תּװ",
+    "transcribedLetterName": "TOF",
+    "transcribedLetter": ["T"]
+  },
+  {
+    "yiddishLetter": "ת",
+    "letterName": "תװ",
+    "transcribedLetterName": "SOF",
+    "transcribedLetter": ["S"]
+  }
+]

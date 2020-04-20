@@ -5,9 +5,9 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
 import { Helpers } from '../@shared/helpers/helpers';
 import { TestLettersService } from './test-letters/test-letters.service';
-import { YiddishAlphabetService } from './yiddish-alphabet/yiddish-alphabet.service';
 import { environment } from 'src/environments/environment';
 import { UserSettingsService } from './user-settings/user-settings.service';
+import { AlphabetService } from './alphabet/alphabet.service';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -33,7 +33,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     })
   ],
   exports: [TranslateModule],
-  providers: [TestLettersService, YiddishAlphabetService, Helpers, UserSettingsService]
+  providers: [TestLettersService, AlphabetService, Helpers, UserSettingsService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
-import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
+import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 
 @Component({
   selector: 'app-alphabet',
@@ -11,7 +11,7 @@ export class AlphabetPage implements OnInit {
   alphabet$ = this.alphabetService.alphabet$();
   slideOptions: SwiperOptions;
 
-  constructor(private alphabetService: YiddishAlphabetService) {}
+  constructor(private alphabetService: AlphabetService) {}
 
   ngOnInit(): void {
     this.slideOptions = {
@@ -25,6 +25,6 @@ export class AlphabetPage implements OnInit {
 
     setTimeout(() => {
       new Swiper('.swiper-container', this.slideOptions);
-    }, 300);
+    }, 400);
   }
 }

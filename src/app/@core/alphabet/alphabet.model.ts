@@ -1,8 +1,10 @@
-export interface TestLettersType1 {
+export interface Alphabet {
   yiddishLetter: string;
   letterName: string;
   transcribedLetterName: string;
   transcribedLetter: string[];
-  possibleLetters?: string[];
 }
 
+export interface AlphabetTest extends Alphabet {
+  possibleAnswer: string[];
+}
