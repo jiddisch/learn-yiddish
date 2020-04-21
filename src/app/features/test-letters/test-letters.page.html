@@ -4,8 +4,6 @@
 </ion-header>
 
 <ion-content>
-  <div class="play-alert alert-success" *ngIf="isSuccess === 2" [@inOutAnimation]></div>
-  <div class="play-alert alert-failed" *ngIf="isSuccess === 1" [@inOutAnimation]></div>
 
   <div class="swiper-container">
     <div class="swiper-wrapper">
@@ -20,8 +18,8 @@
           </ion-row>
 
           <ion-row class="no-wrap">
-            <ion-col *ngFor="let possibleLetter of test.possibleLetters">
-              <div [class]="isPicked(possibleLetter) ? 'success letter' : 'letter'" (click)="testLetter(possibleLetter)">{{ possibleLetter }}</div>
+            <ion-col *ngFor="let possibleLetter of test.possibleLetters; let i = index">
+              <div [class]="test.selectedIndex === i ? isSuccess + ' letter' : ' letter'" (click)="testLetter(possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
             </ion-col>
           </ion-row>
 

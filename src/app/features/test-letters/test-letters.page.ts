@@ -28,12 +28,12 @@ export class TestLettersPage {
     this.possibleLetters = res[0].possibleLetters;
     this.rightLetters = res[0].transcribedLetter;
   }));
-  isSuccess: 0 | 1 | 2;
   slides: Swiper;
   slideOptions: SwiperOptions;
   sliders: TestLetters[];
   currentSlide = 0;
-
+  isSuccess: string;
+  changeSlideSpeed = 200;
   pickedLetters: string[];
   possibleLetters: string[];
   rightLetters: string[];
@@ -41,7 +41,6 @@ export class TestLettersPage {
   constructor(private testLettersService: TestLettersService) {}
 
   ionViewWillEnter() {
-    this.isSuccess = 0;
     this.pickedLetters = [];
 
     this.slideOptions = {
@@ -61,12 +60,20 @@ export class TestLettersPage {
         this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
         this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
       });
-    }, 300);
+    }, this.changeSlideSpeed);
 
   }
 
-  isPicked(pickedLetter: string): boolean {
-    return this.pickedLetters && this.pickedLetters.includes(pickedLetter);
+  isPicked(pickedLetter: string): void {
+    if (this.pickedLetters && this.pickedLetters.includes(pickedLetter)) {
+      this.isSuccess = 'success';
+    } else {
+      this.isSuccess = 'failed';
+    }
+
+    setTimeout(() => {
+      this.isSuccess = '';
+    }, this.changeSlideSpeed);
   }
 
   testLetter(possibleLetter: string): void {
@@ -75,19 +82,15 @@ export class TestLettersPage {
         this.pickedLetters.push(possibleLetter);
 
         if (this.pickedLetters.sort().join() === this.rightLetters.sort().join()) {
-          this.isSuccess = 2;
-          this.slides.slideNext();
-          this.pickedLetters.length = 0;
+          setTimeout(() => {
+            this.slides.slideNext();
+            this.pickedLetters.length = 0;
+          }, this.changeSlideSpeed)
         }
       } else {
         this.pickedLetters = this.pickedLetters.filter(val => val !== possibleLetter);
       }
-    } else {
-      this.isSuccess = 1;
     }
-
-    setTimeout(() => {
-      this.isSuccess = 0;
-    }, 500);
+    this.isPicked(possibleLetter);
   }
 }

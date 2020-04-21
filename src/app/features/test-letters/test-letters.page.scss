@@ -45,23 +45,6 @@ ion-slides {
   color: #82825d;
 }
 
-.play-alert {
-  background-size: cover;
-  background-repeat: no-repeat;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-
-  &.alert-success {
-      background: url(../../../assets/images/success.svg);
-  }
-
-  &.alert-failed {
-      background: url(../../../assets/images/fail.svg);
-  }
-}
-
 .swiper-container {
   height: 90vh;
 }
