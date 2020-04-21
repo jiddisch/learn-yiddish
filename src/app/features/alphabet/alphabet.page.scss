@@ -47,3 +47,11 @@ ion-item-divider {
 .swiper-container {
   height: 90vh;
 }
+
+.indicator {
+  position: absolute;
+  right: 12px;
+  top: calc(56px / 2 - 18px /2);
+  z-index: 99;
+  color: #82825d;
+}

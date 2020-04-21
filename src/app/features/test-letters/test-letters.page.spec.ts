@@ -42,12 +42,6 @@ describe('TestLettersPage', () => {
     expect(component.data$).toBeInstanceOf(Observable);
   });
 
-  it('should have a variable isSuccess', () => {
-    expect(component.isSuccess).toBeUndefined();
-    component.ionViewWillEnter();
-    expect(component.isSuccess).toBe(0);
-  });
-
   it('slides need to be initilize after 300ms', fakeAsync(() => {
     expect(component.slides).toBeUndefined();
     component.ionViewWillEnter();

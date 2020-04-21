@@ -46,9 +46,9 @@ export class TestLettersPage {
     this.slideOptions = {
       width: window.innerWidth,
       speed: 400,
-      pagination: {
-        el: '.swiper-pagination',
-        clickable: true
+      scrollbar: {
+        el: '.swiper-scrollbar',
+        draggable: true
       }
     };
 
@@ -71,9 +71,11 @@ export class TestLettersPage {
       this.isSuccess = 'failed';
     }
 
-    setTimeout(() => {
-      this.isSuccess = '';
-    }, this.changeSlideSpeed);
+    if(this.pickedLetters.length === 0 || this.pickedLetters.length === this.rightLetters.length) {
+      setTimeout(() => {
+        this.isSuccess = '';
+      }, this.changeSlideSpeed);
+    }
   }
 
   testLetter(possibleLetter: string): void {
@@ -87,8 +89,6 @@ export class TestLettersPage {
             this.pickedLetters.length = 0;
           }, this.changeSlideSpeed)
         }
-      } else {
-        this.pickedLetters = this.pickedLetters.filter(val => val !== possibleLetter);
       }
     }
     this.isPicked(possibleLetter);

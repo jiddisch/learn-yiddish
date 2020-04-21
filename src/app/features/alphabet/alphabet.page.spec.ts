@@ -39,10 +39,8 @@ describe('AlphabetPage', () => {
   });
 
   it('slideOptions should be defined', () => {
-    expect(component.slideOptions).not.toBeDefined();
-
-    fixture.detectChanges();
-
+    expect(component.slideOptions).toBeUndefined();
+    component.ionViewWillEnter();
     expect(component.slideOptions).toBeDefined();
   });
 });

@@ -1,5 +1,6 @@
 <ion-header>
   <app-toolbar></app-toolbar>
+  <div class="indicator" *ngIf="slidersLength">{{currentSlide + 1 | number}} / {{slidersLength | json}}</div>
 </ion-header>
 
 <ion-content>
