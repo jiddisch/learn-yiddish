@@ -10,9 +10,9 @@ import { TestLettersPage } from './test-letters.page';
 import { Observable } from 'rxjs';
 import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { By } from '@angular/platform-browser';
-import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import Swiper from 'swiper';
+import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -25,7 +25,7 @@ describe('TestLettersPage', () => {
       imports: [IonicModule, HttpClientTestingModule],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
-        { provide: YiddishAlphabetService, useClass: YiddishAlphabetService }
+        { provide: AlphabetService, useClass: AlphabetService }
       ]
     });
 
@@ -39,7 +39,7 @@ describe('TestLettersPage', () => {
   });
 
   it('should have an observable testsType1$', () => {
-    expect(component.testsType1$).toBeInstanceOf(Observable);
+    expect(component.data$).toBeInstanceOf(Observable);
   });
 
   it('should have a variable isSuccess', () => {

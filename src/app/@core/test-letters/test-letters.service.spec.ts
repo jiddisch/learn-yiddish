@@ -7,61 +7,68 @@ import {
 } from '@angular/common/http/testing';
 import { Observable, of } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { YiddishAlphabetService } from '../yiddish-alphabet/yiddish-alphabet.service';
-import { YiddishAlphabet } from '../yiddish-alphabet/yiddish-alphabet.model';
+import { AlphabetService } from '../alphabet/alphabet.service';
+import { Alphabet } from '../alphabet/alphabet.model';
 
 describe('TestLettersService', () => {
   let service: TestLettersService;
   let httpTestingController: HttpTestingController;
-  let alphabetService: YiddishAlphabetService;
-  let alphabetMock: YiddishAlphabet[];
+  let alphabetService: AlphabetService;
+  let alphabetMock: Alphabet[];
   let req: TestRequest;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
       imports: [HttpClientTestingModule],
-      providers: [YiddishAlphabetService]
+      providers: [AlphabetService]
     });
 
     service = TestBed.inject(TestLettersService);
     httpTestingController = TestBed.inject(HttpTestingController);
 
-    alphabetService = TestBed.inject(YiddishAlphabetService);
+    alphabetService = TestBed.inject(AlphabetService);
     alphabetMock = [
       {
         yiddishLetter: 'אַ',
         letterName: 'Pasekh Alef',
-        foreignLetter: ['a']
+        transcribedLetter: ['a'],
+        transcribedLetterName: ''
       },
       {
         yiddishLetter: 'אָ',
         letterName: 'Komets Alef',
-        foreignLetter: ['o']
+        transcribedLetter: ['o'],
+        transcribedLetterName: ''
       },
       {
         yiddishLetter: 'ב',
         letterName: 'Beys',
-        foreignLetter: ['b']
+        transcribedLetter: ['b'],
+        transcribedLetterName: ''
       },
       {
         yiddishLetter: 'בֿ',
         letterName: 'Veys',
-        foreignLetter: ['v']
+        transcribedLetter: ['v'],
+        transcribedLetterName: ''
       },
       {
         yiddishLetter: 'ג',
         letterName: 'Giml',
-        foreignLetter: ['g']
+        transcribedLetter: ['g'],
+        transcribedLetterName: ''
       },
       {
         yiddishLetter: 'ד',
         letterName: 'Dalet',
-        foreignLetter: ['d']
+        transcribedLetter: ['d'],
+        transcribedLetterName: ''
       },
       {
         yiddishLetter: 'ו',
         letterName: 'Vov',
-        foreignLetter: ['v', 'u']
+        transcribedLetter: ['v', 'u'],
+        transcribedLetterName: ''
       }
     ];
 
@@ -77,7 +84,7 @@ describe('TestLettersService', () => {
   });
 
   it('should have an observable TestLettersType1$', () => {
-    expect(service.testsType1$()).toBeInstanceOf(Observable);
+    expect(service.data$()).toBeInstanceOf(Observable);
   });
 
   it('should return observable TestLettersType1$[]', () => {
@@ -89,12 +96,12 @@ describe('TestLettersService', () => {
       }
     ];
 
-    service.testsType1$().subscribe((res) => {
+    service.data$().subscribe((res) => {
       expect(res.length).toBe(1);
 
       expect(res[0].yiddishLetter).toEqual('ב');
       expect(res[0].letterName).toEqual('Beys');
-      expect(res[0].foreignLetter).toEqual(['b']);
+      expect(res[0].transcribedLetter).toEqual(['b']);
       expect(res[0].possibleLetters).toContain('b');
       expect(res[0].possibleLetters.length).toBe(5);
     });
@@ -116,14 +123,14 @@ describe('TestLettersService', () => {
       }
     ];
 
-    service.testsType1$().subscribe((res) => {
+    service.data$().subscribe((res) => {
       expect(res.length).toBe(1);
 
       expect(res[0].yiddishLetter).toEqual('ו');
       expect(res[0].letterName).toEqual('Vov');
-      expect(res[0].foreignLetter).toEqual(['v', 'u']);
+      expect(res[0].transcribedLetter).toEqual(['v', 'u']);
       expect(res[0].possibleLetters).toContain('v');
-      expect(res[0].foreignLetter.length).toBe(2);
+      expect(res[0].transcribedLetter.length).toBe(2);
       expect(res[0].possibleLetters.length).toBe(5);
     });
 

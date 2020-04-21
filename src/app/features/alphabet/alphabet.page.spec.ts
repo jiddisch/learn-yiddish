@@ -3,8 +3,8 @@ import { IonicModule } from '@ionic/angular';
 import { AlphabetPage } from './alphabet.page';
 import { HttpClientModule } from '@angular/common/http';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { YiddishAlphabetService } from 'src/app/@core/yiddish-alphabet/yiddish-alphabet.service';
 import { of } from 'rxjs';
+import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 
 class MockYiddishAlphabetService {
   alphabet$() {
@@ -22,7 +22,7 @@ describe('AlphabetPage', () => {
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       imports: [IonicModule, HttpClientModule],
       providers: [
-        {provide: YiddishAlphabetService, useClass: MockYiddishAlphabetService}
+        {provide: AlphabetService, useClass: MockYiddishAlphabetService}
       ]
     });
 

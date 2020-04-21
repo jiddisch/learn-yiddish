@@ -13,15 +13,15 @@
 
         <ion-grid>
 
-          <ion-row class="no-wrap">
+          <ion-row>
             <ion-col class="letters-yiddish-col">
               <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
             </ion-col>
           </ion-row>
 
-          <ion-row>
+          <ion-row class="no-wrap">
             <ion-col *ngFor="let possibleLetter of test.possibleLetters">
-              <div [class]="isPicked(possibleLetter) ? 'active letter' : 'letter'" (click)="testLetter(possibleLetter)">{{ possibleLetter }}</div>
+              <div [class]="isPicked(possibleLetter) ? 'success letter' : 'letter'" (click)="testLetter(possibleLetter)">{{ possibleLetter }}</div>
             </ion-col>
           </ion-row>
 
