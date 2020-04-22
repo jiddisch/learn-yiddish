@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { TestLetters } from './test-letters.model';
 import { Helpers } from 'src/app/@shared/helpers/helpers';
@@ -19,18 +19,21 @@ export class TestLettersService {
       .pipe(
         map((res) => {
           return res.map((item) => {
+
             // getting all letters of the alphabet
             const allLetters = [];
             res.map((letter) => {
-              if (letter.transcribedLetter.length > 1) {
-                letter.transcribedLetter.map((val) => allLetters.push(val));
-              } else {
-                allLetters.push(letter.transcribedLetter.join());
+              if(!allLetters.includes(letter.transcribedLetter[0])) {
+                if (letter.transcribedLetter.length > 1) {
+                  letter.transcribedLetter.map((val) => allLetters.push(val));
+                } else {
+                  allLetters.push(letter.transcribedLetter.join());
+                }
               }
             });
             this.helpers.shuffleArray(allLetters);
 
-            // add a new property of possibleLetters including the current transcribedLetter
+            // adds a new property of possibleLetters including the current transcribedLetter
             return {
               ...item,
               possibleLetters: this.helpers.shuffleArray(
