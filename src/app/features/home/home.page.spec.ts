@@ -22,7 +22,7 @@ describe('HomePage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('btns should exist', () => {
+  it('btns variable should exist', () => {
     expect(component.btns).toBeTruthy();
   });
 

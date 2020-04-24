@@ -18,9 +18,10 @@ export class AlphabetPage {
   pickedLetters: string[];
   slidersLength: number;
   slides: Swiper;
+  changeSlideSpeed = 200;
   currentSlide = 0;
 
-  constructor(private alphabetService: AlphabetService) {}
+  constructor(private alphabetService: AlphabetService) { }
 
   ionViewWillEnter(): void {
     this.slideOptions = {
@@ -31,13 +32,15 @@ export class AlphabetPage {
         draggable: true
       }
     };
+  }
 
+  ionViewDidEnter() {
     setTimeout(() => {
       this.slides = new Swiper('.swiper-container', this.slideOptions);
 
       this.slides.on('slideChange', () => {
         this.currentSlide = this.slides.activeIndex;
       });
-    }, 400);
+    }, this.changeSlideSpeed);
   }
 }
