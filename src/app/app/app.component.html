@@ -6,8 +6,8 @@
         <ion-menu-toggle>
 
           <ion-item [class]="nav.class" (click)="route(nav.url)" *ngFor="let nav of navigation">
-            <ion-icon [name]="nav.icon" [slot]="'end'"></ion-icon>
-            <ion-label>{{nav.label | translate}}</ion-label>
+            <ion-icon color="primary" [name]="nav.icon" [slot]="'end'"></ion-icon>
+            <ion-label color="primary">{{nav.label | translate}}</ion-label>
           </ion-item>
 
         </ion-menu-toggle>
