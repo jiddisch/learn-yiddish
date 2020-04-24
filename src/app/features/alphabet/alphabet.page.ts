@@ -18,7 +18,7 @@ export class AlphabetPage {
   pickedLetters: string[];
   slidersLength: number;
   slides: Swiper;
-  changeSlideSpeed = 200;
+  changeSlideSpeed = 400;
   currentSlide = 0;
 
   constructor(private alphabetService: AlphabetService) { }
