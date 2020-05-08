@@ -7,6 +7,8 @@ import { AppComponent } from './app.component';
 import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../@shared/shared.module';
+import { StorageService } from '../@core/storage/storage.service';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 class NavControllerMock {
   navigateRoot = () => {};
@@ -26,12 +28,13 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [AppComponent],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [SharedModule, RouterTestingModule, TranslateModule.forRoot()],
+      imports: [SharedModule, RouterTestingModule, TranslateModule.forRoot(), NgxWebstorageModule.forRoot()],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
         { provide: Platform, useValue: platformSpy },
         TranslateService,
+        StorageService,
         { provide: NavController, useClass: NavControllerMock }
       ]
     }).compileComponents();

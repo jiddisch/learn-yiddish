@@ -1,9 +1,10 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
-
+import {NgxWebstorageModule} from 'ngx-webstorage';
 import { SettingsPage } from './settings.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TranslateService, TranslateModule } from '@ngx-translate/core';
+import { StorageService } from 'src/app/@core/storage/storage.service';
 
 describe('SettingsPage', () => {
   let component: SettingsPage;
@@ -13,8 +14,8 @@ describe('SettingsPage', () => {
     TestBed.configureTestingModule({
       declarations: [ SettingsPage ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [IonicModule, TranslateModule.forRoot()],
-      providers: [TranslateService]
+      imports: [IonicModule, TranslateModule.forRoot(), NgxWebstorageModule.forRoot()],
+      providers: [TranslateService, StorageService]
     }).compileComponents();
 
     fixture = TestBed.createComponent(SettingsPage);

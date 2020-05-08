@@ -8,6 +8,8 @@ import { TestLettersService } from './test-letters/test-letters.service';
 import { environment } from 'src/environments/environment';
 import { UserSettingsService } from './user-settings/user-settings.service';
 import { AlphabetService } from './alphabet/alphabet.service';
+import { StorageService } from './storage/storage.service';
+import {NgxWebstorageModule} from 'ngx-webstorage';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -30,10 +32,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         useFactory: HttpLoaderFactory,
         deps: [HttpClient]
       }
-    })
+    }),
+    NgxWebstorageModule.forRoot({prefix: 'ly'}),
   ],
-  exports: [TranslateModule],
-  providers: [TestLettersService, AlphabetService, Helpers, UserSettingsService]
+  exports: [TranslateModule, NgxWebstorageModule],
+  providers: [TestLettersService, AlphabetService, Helpers, UserSettingsService, StorageService]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

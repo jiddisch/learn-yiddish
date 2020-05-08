@@ -1,7 +1,8 @@
 {
-    "home.startStudyAlphabetButton": "Lomir onheybn lernen dem alef-beys",
+    "home.startStudyAlphabetButton": "lernen dem alef-beys",
     "home.goTotestLettersButton": "Test Letters",
     "menu.home": "Home",
     "menu.alphabet": "Alphabet",
-    "menu.testLetters": "Exercises on Letters"
+    "menu.testLetters": "Exercises on Letters",
+    "general.confirm": "Maskem zayn"
 }

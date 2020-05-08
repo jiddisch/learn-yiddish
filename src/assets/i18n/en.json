@@ -6,5 +6,9 @@
     "menu.testLetters": "Exercises on Letters",
     "menu.settings": "Settings",
     "settings.dismiss": "Dismiss",
-    "settings.languageTitle": "Language"
+    "settings.languageTitle": "Language",
+    "general.confirm": "Confirm",
+    "alphabet.yiddishCharacter": "Yiddish Character",
+    "alphabet.transcription": "Transcription",
+    "alphabet.letterName": "Letter name"
 }

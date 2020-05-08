@@ -1,10 +1,14 @@
 {
-    "home.startStudyAlphabetButton": "לאמיר אנהייבן לערנען דעם אלף-בית",
-    "home.goTotestLettersButton": "Test Letters",
+    "home.startStudyAlphabetButton": "דער אלף־בית",
+    "home.goTotestLettersButton": "אותיות פֿערהער",
     "menu.home": "היים",
-    "menu.alphabet": "אלף בית",
-    "menu.testLetters": "Exercises on Letters",
-    "menu.settings": "איינשטעלונגען",
-    "settings.dismiss": "אנולירן",
-    "settings.languageTitle": "שפראך"
+    "menu.alphabet": "אלף־בית",
+    "menu.testLetters": "אותיות פֿערהער",
+    "menu.settings": "אײַנשטעלונגען",
+    "settings.dismiss": "מבטל זײַן",
+    "settings.languageTitle": "שפּראַך",
+    "general.confirm": "מסכּים זײַן",
+    "alphabet.yiddishCharacter": "דער ייִדישער אות",
+    "alphabet.transcription": "די טראַנסקריפּציע",
+    "alphabet.letterName": "דער נאָמען פֿונעם אות"
 }
