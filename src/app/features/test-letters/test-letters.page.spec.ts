@@ -2,17 +2,17 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  flush,
   tick
 } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
 import { Observable } from 'rxjs';
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import Swiper from 'swiper';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
+import { SharedModule } from 'src/app/@shared/shared.module';
+import { environment } from 'src/environments/environment';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -22,11 +22,8 @@ describe('TestLettersPage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestLettersPage],
-      imports: [IonicModule, HttpClientTestingModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      providers: [
-        { provide: AlphabetService, useClass: AlphabetService }
-      ]
+      imports: [IonicModule, SharedModule, HttpClientTestingModule],
+      providers: [AlphabetService]
     });
 
     fixture = TestBed.createComponent(TestLettersPage);
@@ -42,11 +39,11 @@ describe('TestLettersPage', () => {
     expect(component.data$).toBeInstanceOf(Observable);
   });
 
-  it('slides need to be initilize after 300ms', fakeAsync(() => {
+  it('slides need to be initilize after Xms', fakeAsync(() => {
     expect(component.slides).toBeUndefined();
     component.ionViewWillEnter();
     expect(component.slides).toBeUndefined();
-    tick(300);
+    tick(environment.initialSlidesDelay);
     expect(component.slides).toBeInstanceOf(Swiper);
   }));
 

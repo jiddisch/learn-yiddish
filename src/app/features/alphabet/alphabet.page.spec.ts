@@ -10,6 +10,8 @@ import { of, Observable } from 'rxjs';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 import Swiper from 'swiper';
 import { SharedModule } from 'src/app/@shared/shared.module';
+import { DebugElement } from '@angular/core';
+import { environment } from 'src/environments/environment';
 
 class MockAlphabetService {
   alphabet$() {
@@ -20,6 +22,7 @@ class MockAlphabetService {
 describe('AlphabetPage', () => {
   let fixture: ComponentFixture<AlphabetPage>;
   let component: AlphabetPage;
+  let debugElement: DebugElement;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
@@ -30,6 +33,7 @@ describe('AlphabetPage', () => {
 
     fixture = TestBed.createComponent(AlphabetPage);
     component = fixture.componentInstance;
+    debugElement = fixture.debugElement;
   });
 
   it('should create', () => {
@@ -56,20 +60,15 @@ describe('AlphabetPage', () => {
   it('slides need to be initilize after Xms', fakeAsync(() => {
     expect(component.slides).toBeUndefined();
     component.ionViewDidEnter();
-    expect(component.slides).toBeUndefined();
-    tick(component.changeSlideSpeed);
+    expect(component.slides).toBeUndefined();    
+    tick(environment.initialSlidesDelay);
     expect(component.slides).toBeInstanceOf(Swiper);
-    console.log(component.slides);
   }));
-
-  it('changeSlideSpeed has to be defined', () => {
-    expect(component.changeSlideSpeed).toBeDefined();
-  });
 
   it('currentSlide should be defined and updated', fakeAsync(() => {
     expect(component.currentSlide).toBe(0);
     component.ionViewDidEnter();
-    tick(component.changeSlideSpeed);
+    tick(environment.initialSlidesDelay);
     component.slides.slideTo(1);
     expect(component.currentSlide).toBe(1);
   }));

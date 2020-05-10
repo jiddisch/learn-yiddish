@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 import { tap, } from 'rxjs/operators';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-alphabet',
@@ -17,7 +18,6 @@ export class AlphabetPage {
   slideOptions: SwiperOptions;
   slidersLength: number;
   slides: Swiper;
-  changeSlideSpeed = 400;
   currentSlide = 0;
 
   constructor(private alphabetService: AlphabetService) { }
@@ -40,6 +40,6 @@ export class AlphabetPage {
       this.slides.on('slideChange', () => {
         this.currentSlide = this.slides.activeIndex;
       });
-    }, this.changeSlideSpeed);
+    }, environment.initialSlidesDelay);
   }
 }

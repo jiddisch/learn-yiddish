@@ -4,6 +4,7 @@ import Swiper, { SwiperOptions } from 'swiper';
 import { TestLettersService } from 'src/app/@core/test-letters/test-letters.service';
 import { tap } from 'rxjs/operators';
 import { TestLetters } from 'src/app/@core/test-letters/test-letters.model';
+import { environment } from './../../../environments/environment';
 
 @Component({
   selector: 'app-test-letters',
@@ -60,7 +61,7 @@ export class TestLettersPage {
         this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
         this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
       });
-    }, this.changeSlideSpeed);
+    }, environment.initialSlidesDelay);
 
   }
 
@@ -74,7 +75,7 @@ export class TestLettersPage {
     if(this.pickedLetters.length === 0 || this.pickedLetters.length === this.rightLetters.length) {
       setTimeout(() => {
         this.isSuccess = '';
-      }, this.changeSlideSpeed);
+      }, environment.initialSlidesDelay);
     }
   }
 
@@ -87,7 +88,7 @@ export class TestLettersPage {
           setTimeout(() => {
             this.slides.slideNext();
             this.pickedLetters.length = 0;
-          }, this.changeSlideSpeed)
+          }, environment.initialSlidesDelay)
         }
       }
     }
