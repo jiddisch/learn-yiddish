@@ -10,6 +10,7 @@ import { UserSettingsService } from './user-settings/user-settings.service';
 import { AlphabetService } from './alphabet/alphabet.service';
 import { StorageService } from './storage/storage.service';
 import {NgxWebstorageModule} from 'ngx-webstorage';
+import { IconsModule } from './icons.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -34,6 +35,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       }
     }),
     NgxWebstorageModule.forRoot({prefix: 'ly'}),
+    IconsModule
   ],
   exports: [TranslateModule, NgxWebstorageModule],
   providers: [TestLettersService, AlphabetService, Helpers, UserSettingsService, StorageService]

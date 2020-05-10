@@ -1,3 +1,9 @@
+@import './../../theme/variables.scss';
+
 .list-md {
   padding: 0;
+}
+
+fa-icon {
+  color: $primary-color;
 }

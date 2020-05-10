@@ -1,12 +1,17 @@
-import { ComponentFixture, TestBed, fakeAsync, tick } from '@angular/core/testing';
+import {
+  ComponentFixture,
+  TestBed,
+  fakeAsync,
+  tick
+} from '@angular/core/testing';
 import { AlphabetPage } from './alphabet.page';
 import { HttpClientModule } from '@angular/common/http';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { of, Observable } from 'rxjs';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 import Swiper from 'swiper';
+import { SharedModule } from 'src/app/@shared/shared.module';
 
-class MockYiddishAlphabetService {
+class MockAlphabetService {
   alphabet$() {
     return of([]);
   }
@@ -19,11 +24,8 @@ describe('AlphabetPage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [AlphabetPage],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [HttpClientModule],
-      providers: [
-        {provide: AlphabetService, useClass: MockYiddishAlphabetService}
-      ]
+      imports: [SharedModule, HttpClientModule],
+      providers: [{ provide: AlphabetService, useClass: MockAlphabetService }]
     });
 
     fixture = TestBed.createComponent(AlphabetPage);
@@ -34,7 +36,7 @@ describe('AlphabetPage', () => {
     expect(component).toBeTruthy();
   });
 
-  it('alphabet$ should be observable', () => {
+  it('alphabet$ should be instance of Observable', () => {
     expect(component.alphabet$).toBeInstanceOf(Observable);
   });
 
@@ -47,7 +49,7 @@ describe('AlphabetPage', () => {
   it('slideLength should be defined', () => {
     expect(component.slidersLength).toBeUndefined();
     component.alphabet$.subscribe(() => {
-      expect(component.slidersLength).toBe(0);
+      expect(component.slidersLength).not.toBeUndefined();
     });
   });
 
@@ -57,31 +59,18 @@ describe('AlphabetPage', () => {
     expect(component.slides).toBeUndefined();
     tick(component.changeSlideSpeed);
     expect(component.slides).toBeInstanceOf(Swiper);
+    console.log(component.slides);
   }));
 
-  it('slidersLength has to be defined', () => {
+  it('changeSlideSpeed has to be defined', () => {
     expect(component.changeSlideSpeed).toBeDefined();
   });
 
-  it('slides.on event should be executed', fakeAsync (() => {
-    const slides = new Swiper('', component.slideOptions);
-    spyOn(slides, 'on');
-
-    component.ionViewWillEnter();
-    tick(component.changeSlideSpeed);
-    slides.on('slideChange', () => {});
-    expect(slides.on).toHaveBeenCalled();
-  }));
-
-  xit('currentSlide should be defined and updated', fakeAsync (() => {
-    const slides = new Swiper('', component.slideOptions);
-    spyOn(slides, 'on').and.callFake(() => {
-      component.currentSlide++;
-    });
-
+  it('currentSlide should be defined and updated', fakeAsync(() => {
     expect(component.currentSlide).toBe(0);
-    component.ionViewWillEnter();
+    component.ionViewDidEnter();
     tick(component.changeSlideSpeed);
+    component.slides.slideTo(1);
     expect(component.currentSlide).toBe(1);
   }));
 });

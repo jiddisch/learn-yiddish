@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
-import { tap } from 'rxjs/operators';
+import { tap, } from 'rxjs/operators';
 
 @Component({
   selector: 'app-alphabet',
@@ -15,7 +15,6 @@ export class AlphabetPage {
     })
   );
   slideOptions: SwiperOptions;
-  pickedLetters: string[];
   slidersLength: number;
   slides: Swiper;
   changeSlideSpeed = 400;

@@ -23,19 +23,19 @@ export class AppComponent {
     },
     {
       url: '/alphabet',
-      icon: 'logo-buffer',
+      icon: 'font',
       label: 'menu.alphabet',
       class: 'alphabet-item'
     },
     {
       url: '/test-letters',
-      icon: 'help',
+      icon: 'question',
       label: 'menu.testLetters',
       class: 'test-letters-item'
     },
     {
       url: '/settings',
-      icon: 'settings-outline',
+      icon: 'cog',
       label: 'menu.settings',
       class: 'settings-item'
     }

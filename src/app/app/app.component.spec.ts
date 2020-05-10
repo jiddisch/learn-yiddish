@@ -1,4 +1,3 @@
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { TestBed, async, ComponentFixture } from '@angular/core/testing';
 import { Platform, NavController } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
@@ -8,7 +7,10 @@ import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { RouterTestingModule } from '@angular/router/testing';
 import { SharedModule } from '../@shared/shared.module';
 import { StorageService } from '../@core/storage/storage.service';
-import {NgxWebstorageModule} from 'ngx-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
+import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
+import { By } from '@angular/platform-browser';
+import { MockComponent, MockedComponent, MockRender } from 'ng-mocks';
 
 class NavControllerMock {
   navigateRoot = () => {};
@@ -27,8 +29,13 @@ describe('AppComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [AppComponent],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
-      imports: [SharedModule, RouterTestingModule, TranslateModule.forRoot(), NgxWebstorageModule.forRoot()],
+      imports: [
+        SharedModule,
+        RouterTestingModule,
+        TranslateModule.forRoot(),
+        NgxWebstorageModule.forRoot(),
+        FontAwesomeTestingModule
+      ],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
         { provide: SplashScreen, useValue: splashScreenSpy },
@@ -51,14 +58,17 @@ describe('AppComponent', () => {
   });
 
   it('should initialize the app', async () => {
-    const transService = fixture.debugElement.injector.get(TranslateService);
-    spyOn(transService, 'setDefaultLang');
-
+    const translateService = fixture.debugElement.injector.get(TranslateService);
+    spyOn(translateService, 'setDefaultLang');
     expect(platformSpy.ready).toHaveBeenCalled();
     await platformReadySpy;
     expect(statusBarSpy.styleDefault).toHaveBeenCalled();
     expect(splashScreenSpy.hide).toHaveBeenCalled();
-    expect(transService.setDefaultLang).toHaveBeenCalled();
+    expect(translateService.setDefaultLang).toHaveBeenCalled();
+  });
+
+  it('navigation should exist', () => {
+    expect(component.navigation).not.toBeUndefined();
   });
 
   it('should call the navigation with the param url', () => {
@@ -69,7 +79,11 @@ describe('AppComponent', () => {
     expect(navCtrl.navigateRoot).toHaveBeenCalledWith('home');
   });
 
-  it('navigation should exist', () => {
-    expect(component.navigation).not.toBeUndefined();
+  it('should call route by clicking on an item', () => {
+    spyOn(component, 'route');
+    const item = fixture.debugElement.query(By.css('ion-item')).nativeElement;
+    item.click();
+    expect(component.route).toHaveBeenCalledWith(component.navigation[0].url);
   });
+
 });
