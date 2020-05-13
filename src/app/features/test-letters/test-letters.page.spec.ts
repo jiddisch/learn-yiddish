@@ -42,7 +42,7 @@ describe('TestLettersPage', () => {
     expect(component.data$).toBeInstanceOf(Observable);
   });
 
-  it('slides need to be initilize after Xms', fakeAsync(() => {
+  xit('slides need to be initilize after Xms', fakeAsync(() => {
     expect(component.slides).toBeUndefined();
     component.ionViewWillEnter();
     expect(component.slides).toBeUndefined();
