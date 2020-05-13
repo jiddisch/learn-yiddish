@@ -2,18 +2,18 @@ import {
   ComponentFixture,
   TestBed,
   fakeAsync,
-  flush,
   tick
 } from '@angular/core/testing';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
 import { Observable } from 'rxjs';
 import { DebugElement } from '@angular/core';
-import { By } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import Swiper from 'swiper';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 import { ToolbarComponent } from 'src/app/@shared/toolbar/toolbar.component';
+import { environment } from 'src/environments/environment';
+import { SharedModule } from 'src/app/@shared/shared.module';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -23,15 +23,15 @@ describe('TestLettersPage', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
       declarations: [TestLettersPage, ToolbarComponent],
-      imports: [IonicModule, HttpClientTestingModule],
-      providers: [
-        { provide: AlphabetService, useClass: AlphabetService }
-      ]
+      imports: [IonicModule, SharedModule, HttpClientTestingModule],
+      providers: [AlphabetService]
     });
 
     fixture = TestBed.createComponent(TestLettersPage);
     component = fixture.componentInstance;
     debugElement = fixture.debugElement;
+
+    // fixture.detectChanges();
   });
 
   it('should create', () => {
@@ -42,11 +42,11 @@ describe('TestLettersPage', () => {
     expect(component.data$).toBeInstanceOf(Observable);
   });
 
-  it('slides need to be initilize after 300ms', fakeAsync(() => {
+  it('slides need to be initilize after Xms', fakeAsync(() => {
     expect(component.slides).toBeUndefined();
     component.ionViewWillEnter();
     expect(component.slides).toBeUndefined();
-    tick(300);
+    tick(environment.initialSlidesDelay);
     expect(component.slides).toBeInstanceOf(Swiper);
   }));
 

@@ -5,7 +5,8 @@
 export const environment = {
   production: false,
   i18nPrefix: '',
-  mocks: '../assets/mocks/'
+  mocks: '../assets/mocks/',
+  initialSlidesDelay: 200
 };
 
 /*
