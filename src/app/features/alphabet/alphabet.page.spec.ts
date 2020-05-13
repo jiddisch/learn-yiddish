@@ -59,7 +59,6 @@ describe('AlphabetPage', () => {
     expect(component.slides).toBeUndefined();
     tick(component.changeSlideSpeed);
     expect(component.slides).toBeInstanceOf(Swiper);
-    console.log(component.slides);
   }));
 
   it('changeSlideSpeed has to be defined', () => {

@@ -8,11 +8,12 @@ import {
 import { IonicModule } from '@ionic/angular';
 import { TestLettersPage } from './test-letters.page';
 import { Observable } from 'rxjs';
-import { DebugElement, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { DebugElement } from '@angular/core';
 import { By } from '@angular/platform-browser';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import Swiper from 'swiper';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
+import { ToolbarComponent } from 'src/app/@shared/toolbar/toolbar.component';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;
@@ -21,9 +22,8 @@ describe('TestLettersPage', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [TestLettersPage],
+      declarations: [TestLettersPage, ToolbarComponent],
       imports: [IonicModule, HttpClientTestingModule],
-      schemas: [CUSTOM_ELEMENTS_SCHEMA],
       providers: [
         { provide: AlphabetService, useClass: AlphabetService }
       ]
