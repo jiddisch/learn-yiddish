@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { animate, style, transition, trigger } from '@angular/animations';
 import Swiper, { SwiperOptions } from 'swiper';
 import { TestLettersService } from 'src/app/@core/test-letters/test-letters.service';
 import { tap } from 'rxjs/operators';
@@ -12,11 +11,13 @@ import { environment } from './../../../environments/environment';
   styleUrls: ['./test-letters.page.scss']
 })
 export class TestLettersPage {
-  data$ = this.testLettersService.data$().pipe(tap(res => {
-    this.sliders= res;
-    this.possibleLetters = res[0].possibleLetters;
-    this.rightLetters = res[0].transcribedLetter;
-  }));
+  data$ = this.testLettersService.data$().pipe(
+    tap((res) => {
+      this.sliders = res;
+      this.possibleLetters = res[0].possibleLetters;
+      this.rightLetters = res[0].transcribedLetter;
+    })
+  );
   slides: Swiper;
   slideOptions: SwiperOptions;
   sliders: TestLetters[];
@@ -26,6 +27,7 @@ export class TestLettersPage {
   pickedLetters: string[];
   possibleLetters: string[];
   rightLetters: string[];
+  selectedIndex: number;
 
   constructor(private testLettersService: TestLettersService) {}
 
@@ -40,17 +42,24 @@ export class TestLettersPage {
         draggable: true
       }
     };
+  }
 
-    setTimeout(() => {
-      this.slides = new Swiper('.swiper-container', this.slideOptions);
+  ionViewDidEnter() {
+      setTimeout(() => {
+        this.slides = new Swiper('.swiper-container-t', this.slideOptions);
 
-      this.slides.on('slideChange', () => {
-        this.currentSlide = this.slides.activeIndex;
-        this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
-        this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
-      });
-    }, environment.initialSlidesDelay);
+        this.slides.on('slideChange', () => {
+          this.currentSlide = this.slides.activeIndex;
+          this.possibleLetters = this.sliders[
+            this.currentSlide
+          ].possibleLetters;
+          this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
+        });
+      }, environment.initialSlidesDelay);
+  }
 
+  ionViewWillLeave() {
+    this.slides = undefined;
   }
 
   isPicked(pickedLetter: string): void {
@@ -60,7 +69,10 @@ export class TestLettersPage {
       this.isSuccess = 'failed';
     }
 
-    if(this.pickedLetters.length === 0 || this.pickedLetters.length === this.rightLetters.length) {
+    if (
+      this.pickedLetters.length === 0 ||
+      this.pickedLetters.length === this.rightLetters.length
+    ) {
       setTimeout(() => {
         this.isSuccess = '';
       }, environment.initialSlidesDelay);
@@ -72,11 +84,13 @@ export class TestLettersPage {
       if (!this.pickedLetters.includes(possibleLetter)) {
         this.pickedLetters.push(possibleLetter);
 
-        if (this.pickedLetters.sort().join() === this.rightLetters.sort().join()) {
+        if (
+          this.pickedLetters.sort().join() === this.rightLetters.sort().join()
+        ) {
           setTimeout(() => {
             this.slides.slideNext();
             this.pickedLetters.length = 0;
-          }, environment.initialSlidesDelay)
+          }, environment.initialSlidesDelay);
         }
       }
     }

@@ -3,14 +3,16 @@ import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { IonicModule } from '@ionic/angular';
-import { Helpers } from '../@shared/helpers/helpers';
 import { TestLettersService } from './test-letters/test-letters.service';
 import { environment } from 'src/environments/environment';
-import { UserSettingsService } from './user-settings/user-settings.service';
 import { AlphabetService } from './alphabet/alphabet.service';
 import { StorageService } from './storage/storage.service';
-import {NgxWebstorageModule} from 'ngx-webstorage';
+import { NgxWebstorageModule } from 'ngx-webstorage';
 import { IconsModule } from './icons.module';
+import { RouteReuseStrategy } from '@angular/router';
+import { IonicRouteStrategy } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(
@@ -22,11 +24,8 @@ export function HttpLoaderFactory(http: HttpClient) {
 
 @NgModule({
   imports: [
-    // angular
     IonicModule.forRoot({ hardwareBackButton: false }),
     HttpClientModule,
-
-    // 3rd party
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
@@ -34,11 +33,22 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
-    NgxWebstorageModule.forRoot({prefix: 'ly'}),
+    NgxWebstorageModule.forRoot({ prefix: 'ly' }),
     IconsModule
   ],
-  exports: [TranslateModule, NgxWebstorageModule],
-  providers: [TestLettersService, AlphabetService, Helpers, UserSettingsService, StorageService]
+  exports: [
+    TranslateModule,
+    NgxWebstorageModule,
+    IonicModule,
+  ],
+  providers: [
+    TestLettersService,
+    AlphabetService,
+    StorageService,
+    StatusBar,
+    SplashScreen,
+    { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
+  ]
 })
 export class CoreModule {
   constructor(@Optional() @SkipSelf() parentModule: CoreModule) {

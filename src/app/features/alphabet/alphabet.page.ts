@@ -35,11 +35,15 @@ export class AlphabetPage {
 
   ionViewDidEnter() {
     setTimeout(() => {
-      this.slides = new Swiper('.swiper-container', this.slideOptions);
+      this.slides = new Swiper('.swiper-container-a', this.slideOptions);
 
       this.slides.on('slideChange', () => {
         this.currentSlide = this.slides.activeIndex;
       });
     }, environment.initialSlidesDelay);
+  }
+
+  ionViewWillLeave() {
+    this.slides = undefined;
   }
 }

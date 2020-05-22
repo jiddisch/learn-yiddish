@@ -1,13 +1,13 @@
 {
   "name": "learn-yiddish",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
     "start": "ionic serve",
     "build": "ng build",
-    "test": "ng test",
+    "test": "ng lint && ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pretty-quick": "pretty-quick"
@@ -35,7 +35,7 @@
     "cordova-android": "8.1.0",
     "cordova-res": "^0.9.0",
     "core-js": "^3.6.5",
-    "ng-mocks": "^9.2.0",
+    "ng-mocks": "^9.4.0",
     "ngx-webstorage": "^5.0.0",
     "rxjs": "~6.5.5",
     "swiper": "^5.3.8",

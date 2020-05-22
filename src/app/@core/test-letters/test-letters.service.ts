@@ -36,6 +36,7 @@ export class TestLettersService {
             // adds a new property of possibleLetters including the current transcribedLetter
             return {
               ...item,
+              selectedIndex: 0,
               possibleLetters: Helpers.shuffleArray(
                 [
                   ...allLetters

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Platform, NavController } from '@ionic/angular';
+import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
@@ -46,7 +46,6 @@ export class AppComponent {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     private translate: TranslateService,
-    private navController: NavController,
     private storageService: StorageService
   ) {
     this.initializeApp();
@@ -60,7 +59,4 @@ export class AppComponent {
     });
   }
 
-  route(url: string): void {
-    this.navController.navigateRoot(url);
-  }
 }
