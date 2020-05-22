@@ -10,7 +10,9 @@ import { StorageService } from '../@core/storage/storage.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { FontAwesomeTestingModule } from '@fortawesome/angular-fontawesome/testing';
 import { By } from '@angular/platform-browser';
-import { MockComponent, MockedComponent, MockRender } from 'ng-mocks';
+import { DebugElement } from '@angular/core';
+import { Location } from '@angular/common';
+import { routes } from '../app-routing.module';
 
 class NavControllerMock {
   navigateRoot = () => {};
@@ -20,6 +22,8 @@ describe('AppComponent', () => {
   let statusBarSpy, splashScreenSpy, platformSpy, platformReadySpy;
   let fixture: ComponentFixture<AppComponent>;
   let component: AppComponent;
+  let location: Location;
+  let debugElement: DebugElement;
 
   beforeEach(async(() => {
     statusBarSpy = jasmine.createSpyObj('StatusBar', ['styleDefault']);
@@ -31,10 +35,10 @@ describe('AppComponent', () => {
       declarations: [AppComponent],
       imports: [
         SharedModule,
-        RouterTestingModule,
         TranslateModule.forRoot(),
         NgxWebstorageModule.forRoot(),
-        FontAwesomeTestingModule
+        FontAwesomeTestingModule,
+        RouterTestingModule.withRoutes(routes)
       ],
       providers: [
         { provide: StatusBar, useValue: statusBarSpy },
@@ -45,19 +49,18 @@ describe('AppComponent', () => {
         { provide: NavController, useClass: NavControllerMock }
       ]
     }).compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(AppComponent);
     component = fixture.debugElement.componentInstance;
-    fixture.detectChanges();
-  });
+    debugElement = fixture.debugElement;
+    location = TestBed.inject(Location);
+  }));
 
   it('should create the app', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should initialize the app', async () => {
+  xit('should initialize the app', async () => {
     const translateService = fixture.debugElement.injector.get(TranslateService);
     spyOn(translateService, 'setDefaultLang');
     expect(platformSpy.ready).toHaveBeenCalled();
@@ -71,19 +74,16 @@ describe('AppComponent', () => {
     expect(component.navigation).not.toBeUndefined();
   });
 
-  it('should call the navigation with the param url', () => {
-    const navCtrl = fixture.debugElement.injector.get(NavController);
-    spyOn(navCtrl, 'navigateRoot');
+  xit('clicking on a menu-item should navigate to the url', async( () => {
+    fixture.detectChanges();
+    const menuItem = debugElement.query(By.css('.home-item')).nativeElement;
+    console.log(menuItem);
 
-    component.route('home');
-    expect(navCtrl.navigateRoot).toHaveBeenCalledWith('home');
-  });
+    menuItem.click();
+    fixture.whenStable().then(() => {
+      expect(location.path()).toBe('/home');
+    });
 
-  it('should call route by clicking on an item', () => {
-    spyOn(component, 'route');
-    const item = fixture.debugElement.query(By.css('ion-item')).nativeElement;
-    item.click();
-    expect(component.route).toHaveBeenCalledWith(component.navigation[0].url);
-  });
+  }) );
 
 });

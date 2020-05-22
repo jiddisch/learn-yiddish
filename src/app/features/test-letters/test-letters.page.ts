@@ -9,19 +9,7 @@ import { environment } from './../../../environments/environment';
 @Component({
   selector: 'app-test-letters',
   templateUrl: './test-letters.page.html',
-  styleUrls: ['./test-letters.page.scss'],
-  animations: [
-    trigger('inOutAnimation', [
-      transition(':enter', [
-        style({ height: 0, width: 0 }),
-        animate('1s ease-out', style({ height: 182, width: 172 }))
-      ]),
-      transition(':leave', [
-        style({ height: 182, width: 172 }),
-        animate('1s ease-in', style({ height: 0, width: 0 }))
-      ])
-    ])
-  ]
+  styleUrls: ['./test-letters.page.scss']
 })
 export class TestLettersPage {
   data$ = this.testLettersService.data$().pipe(tap(res => {

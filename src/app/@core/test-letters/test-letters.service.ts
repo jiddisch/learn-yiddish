@@ -11,7 +11,7 @@ export class TestLettersService {
   // TODO: get the amount from a UserLevelService
   private amountOfPossibleLetters = 5;
 
-  constructor(private http: HttpClient, private helpers: Helpers) {}
+  constructor(private http: HttpClient) {}
 
   data$(): Observable<TestLetters[]> {
     return this.http
@@ -31,12 +31,12 @@ export class TestLettersService {
                 }
               }
             });
-            this.helpers.shuffleArray(allLetters);
+            Helpers.shuffleArray(allLetters);
 
             // adds a new property of possibleLetters including the current transcribedLetter
             return {
               ...item,
-              possibleLetters: this.helpers.shuffleArray(
+              possibleLetters: Helpers.shuffleArray(
                 [
                   ...allLetters
                     .filter((val) => !val.includes(item.transcribedLetter))
@@ -54,7 +54,7 @@ export class TestLettersService {
             };
           });
         }),
-        map((res) => this.helpers.shuffleArray(res))
+        map((res) => Helpers.shuffleArray(res))
       );
   }
 }
