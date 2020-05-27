@@ -45,7 +45,7 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private readonly translateService: TranslateService,
+    private translateService: TranslateService,
     private storageService: StorageService
   ) {
     this.initializeApp();

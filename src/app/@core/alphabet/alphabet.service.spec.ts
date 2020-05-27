@@ -1,19 +1,24 @@
-import { TestBed } from '@angular/core/testing';
-
 import { AlphabetService } from './alphabet.service';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { createServiceFactory, SpectatorService } from '@ngneat/spectator';
+import { Observable } from 'rxjs';
 
 describe('AlphabetService', () => {
-  let service: AlphabetService;
+  let spectator: SpectatorService<AlphabetService>;
+  const createService = createServiceFactory({
+    service: AlphabetService,
+    imports: [HttpClientTestingModule]
+  });
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule]
-    });
-    service = TestBed.inject(AlphabetService);
+    spectator = createService();
   });
 
   it('should be created', () => {
-    expect(service).toBeTruthy();
+    expect(spectator).toBeTruthy();
+  });
+
+  it('should have observable alphabet$', () => {
+    expect(spectator.service.alphabet$()).toBeInstanceOf(Observable);
   });
 });

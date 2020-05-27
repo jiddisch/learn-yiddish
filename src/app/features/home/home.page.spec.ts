@@ -19,7 +19,6 @@ describe('HomePage', () => {
   });
   let spectator: Spectator<HomePage>;
   let fixture: ComponentFixture<HomePage>;
-  let element: HTMLElement;
   let component: HomePage;
   let location: Location;
   let debugElement: DebugElement;
@@ -28,7 +27,6 @@ describe('HomePage', () => {
     spectator = createComponent();
     fixture = spectator.fixture;
     component = spectator.component;
-    element = spectator.element;
     debugElement = spectator.debugElement;
     location = spectator.inject(Location);
   });
@@ -41,23 +39,21 @@ describe('HomePage', () => {
     expect(component.btns).toBeDefined();
   });
 
-  it('clicking on the first button should navigate to the /alphabet page', async(() => {
+  it('clicking on the first button should navigate to the /alphabet page', async( async () => {
     const button = spectator.query('.alphabet-btn');
 
     spectator.click(button);
 
-    fixture.whenStable().then(() => {
-      expect(location.path()).toBe('/alphabet');
-    });
+    await fixture.whenStable();
+    expect(location.path()).toBe('/alphabet');
   }));
 
-  it('clicking on the second button should navigate to the /test-letters page', async(() => {
+  it('clicking on the second button should navigate to the /test-letters page', async( async () => {
     const button = spectator.query('.test-letters-btn');
 
     spectator.click(button);
 
-    fixture.whenStable().then(() => {
-      expect(location.path()).toBe('/test-letters');
-    });
-  }));
+    await fixture.whenStable();
+    expect(location.path()).toBe('/test-letters');
+  }) );
 });
