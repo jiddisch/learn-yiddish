@@ -60,7 +60,7 @@ describe('AlphabetPage', () => {
   it('slides need to be initilize after Xms', fakeAsync(() => {
     expect(component.slides).toBeUndefined();
     component.ionViewDidEnter();
-    expect(component.slides).toBeUndefined();    
+    expect(component.slides).toBeUndefined();
     tick(environment.initialSlidesDelay);
     expect(component.slides).toBeInstanceOf(Swiper);
   }));

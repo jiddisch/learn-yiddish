@@ -1,11 +1,11 @@
 <ion-app>
-  <ion-menu [contentId]="'content1'" [side]="'start'" [swipeGesture]="false">
+  <ion-menu contentId="content1" side="start" [swipeGesture]="false">
     <ion-content>
       <ion-list>
 
         <ion-menu-toggle>
 
-          <ion-item class="{{nav.class}}" [routerLink]="['/' + nav.url]" routerLinkActive="active" *ngFor="let nav of navigation">
+          <ion-item [class]="nav.class" [routerLink]="['/' + nav.url]" routerLinkActive="active" *ngFor="let nav of navigation">
               <fa-icon color="primary" slot="end" [icon]="['fas', nav.icon]"></fa-icon>
             <ion-label color="primary">{{nav.label | translate}}</ion-label>
           </ion-item>
