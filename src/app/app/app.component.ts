@@ -2,9 +2,9 @@ import { Component } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { TranslateService } from '@ngx-translate/core';
 import { NavLink } from '../@shared/links.model';
 import { StorageService } from '../@core/storage/storage.service';
+import { TranslocoService }  from '@ngneat/transloco';
 
 @Component({
   selector: 'app-root',
@@ -18,25 +18,25 @@ export class AppComponent {
     {
       url: '/home',
       icon: 'home',
-      label: 'menu.home',
+      label: 'home',
       class: 'home-item'
     },
     {
       url: '/alphabet',
       icon: 'font',
-      label: 'menu.alphabet',
+      label: 'alphabet',
       class: 'alphabet-item'
     },
     {
       url: '/test-letters',
       icon: 'question',
-      label: 'menu.testLetters',
+      label: 'testLetters',
       class: 'test-letters-item'
     },
     {
       url: '/settings',
       icon: 'cog',
-      label: 'menu.settings',
+      label: 'settings',
       class: 'settings-item'
     }
   ];
@@ -45,8 +45,8 @@ export class AppComponent {
     private platform: Platform,
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
-    private translateService: TranslateService,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private translocoService: TranslocoService
   ) {
     this.initializeApp();
   }
@@ -56,8 +56,9 @@ export class AppComponent {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.storageService.getItem('language').then((defLang: string) => {
-        this.translateService.setDefaultLang(defLang || 'en');
+        this.translocoService.setActiveLang(defLang || 'en');
       });
+      this.translocoService.setFallbackLangForMissingTranslation({fallbackLang: 'en'});
     });
   }
 

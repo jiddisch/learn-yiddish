@@ -2,19 +2,21 @@ import { ComponentFixture, async } from '@angular/core/testing';
 import { HomePage } from './home.page';
 import { SharedModule } from 'src/app/@shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
-import { TranslateModule } from '@ngx-translate/core';
 import { Location } from '@angular/common';
 import { routes } from 'src/app/app-routing.module';
 import { DebugElement } from '@angular/core';
 import { Spectator, createComponentFactory } from '@ngneat/spectator';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { getTranslocoModule } from 'src/app/transloco-testing.module';
 
 describe('HomePage', () => {
   const createComponent = createComponentFactory({
     component: HomePage,
     imports: [
       SharedModule,
-      TranslateModule.forRoot(),
-      RouterTestingModule.withRoutes(routes)
+      RouterTestingModule.withRoutes(routes),
+      HttpClientTestingModule,
+      getTranslocoModule()
     ]
   });
   let spectator: Spectator<HomePage>;

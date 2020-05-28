@@ -2,12 +2,12 @@
   <app-toolbar></app-toolbar>
 </ion-header>
 
-<ion-content>
+<ion-content *transloco="let t">
   <ion-list>
     <ion-item lines="inset">
       <ion-icon class="ion-padding" name="language-outline"></ion-icon>
-      <ion-label>{{ 'settings.languageTitle' | translate }}</ion-label>
-      <ion-select value="{{lang}}" okText="{{ 'general.confirm' | translate }}" cancelText="{{'settings.dismiss' | translate}}" (ionChange)="changeLang($event)">
+      <ion-label>{{ t('settings.languageTitle') }}</ion-label>
+      <ion-select value="{{lang}}" okText="{{ t('general.confirm') }}" cancelText="{{ t('settings.dismiss') }}" (ionChange)="changeLang($event)">
         <ion-select-option *ngFor="let option of langOptions" [value]="option.lang">{{ option.text }}</ion-select-option>
       </ion-select>
     </ion-item>

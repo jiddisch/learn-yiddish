@@ -3,7 +3,7 @@
   <div class="indicator" *ngIf="slidersLength">{{currentSlide + 1 | number}} / {{slidersLength | json}}</div>
 </ion-header>
 
-<ion-content>
+<ion-content *transloco="let t; read: 'alphabet'">
 
   <div class="swiper-container-a">
     <div class="swiper-wrapper">
@@ -25,7 +25,7 @@
 
           <ion-row>
             <ion-col>
-              <div class="desc">{{ 'alphabet.yiddishCharacter' | translate }}</div>
+              <div class="desc">{{ t('yiddishCharacter') }}</div>
             </ion-col>
           </ion-row>
 
@@ -43,7 +43,7 @@
 
           <ion-row>
             <ion-col>
-              <div class="desc">{{ 'alphabet.transcription' | translate }}</div>
+              <div class="desc">{{ t('transcription') }}</div>
             </ion-col>
           </ion-row>
 
@@ -67,7 +67,7 @@
 
           <ion-row>
             <ion-col>
-              <div class="desc">{{ 'alphabet.letterName' | translate }}</div>
+              <div class="desc">{{ t('letterName') }}</div>
             </ion-col>
           </ion-row>
 

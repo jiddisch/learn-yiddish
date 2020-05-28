@@ -1,10 +1,7 @@
 import { NgModule, Optional, SkipSelf } from '@angular/core';
-import { TranslateHttpLoader } from '@ngx-translate/http-loader';
-import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
+import { HttpClientModule } from '@angular/common/http';
 import { IonicModule } from '@ionic/angular';
 import { TestLettersService } from './test-letters/test-letters.service';
-import { environment } from 'src/environments/environment';
 import { AlphabetService } from './alphabet/alphabet.service';
 import { StorageService } from './storage/storage.service';
 import { NgxWebstorageModule } from 'ngx-webstorage';
@@ -13,33 +10,20 @@ import { RouteReuseStrategy } from '@angular/router';
 import { IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-
-export function HttpLoaderFactory(http: HttpClient) {
-  return new TranslateHttpLoader(
-    http,
-    `${environment.i18nPrefix}/assets/i18n/`,
-    '.json'
-  );
-}
+import { TranslocoRootModule } from '../transloco-root.module';
 
 @NgModule({
   imports: [
     IonicModule.forRoot({ hardwareBackButton: false }),
     HttpClientModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
-    }),
     NgxWebstorageModule.forRoot({ prefix: 'ly' }),
-    IconsModule
+    IconsModule,
+    TranslocoRootModule
   ],
   exports: [
-    TranslateModule,
     NgxWebstorageModule,
     IonicModule,
+    TranslocoRootModule
   ],
   providers: [
     TestLettersService,
