@@ -55,7 +55,9 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.translateService.setDefaultLang(this.storageService.getItem('language') || 'en');
+      this.storageService.getItem('language').then((defLang: string) => {
+        this.translateService.setDefaultLang(defLang || 'en');
+      });
     });
   }
 

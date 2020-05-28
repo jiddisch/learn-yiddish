@@ -8,12 +8,12 @@ export class StorageService {
 
   constructor(private localStorageService: LocalStorageService) { }
 
-  getItem(key: string): any {
-    return this.localStorageService.retrieve(key);
+  getItem<T>(key: string): Promise<T> {
+    return Promise.resolve(this.localStorageService.retrieve(key));
   }
 
-  setItem(value: string, attribute: any): any {
-    return this.localStorageService.store(value, attribute)
+  setItem(value: string, attribute: any): Promise<void> {
+    return Promise.resolve(this.localStorageService.store(value, attribute));
   }
 
 }

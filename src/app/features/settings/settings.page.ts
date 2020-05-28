@@ -21,11 +21,14 @@ export class SettingsPage {
   ) {}
 
   ionViewWillEnter() {
-    this.lang = this.storageService.getItem('language');
+    this.storageService.getItem('language').then((defLang: string) => {
+      this.lang = defLang;
+    });
   }
 
   changeLang(e: CustomEvent) {
-    this.lang = this.storageService.setItem('language', e.detail.value);
-    this.translate.use(this.lang);
+    this.storageService.setItem('language', e.detail.value).then(() => {
+      this.translate.use(e.detail.value);
+    });
   }
 }
