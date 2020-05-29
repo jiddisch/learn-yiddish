@@ -1,13 +1,13 @@
 {
   "name": "learn-yiddish",
-  "version": "0.0.15",
+  "version": "0.0.16",
   "author": "Ionic Framework",
   "homepage": "https://ionicframework.com/",
   "scripts": {
     "ng": "ng",
     "start": "ionic serve",
     "build": "ng build",
-    "test": "ng lint && ng test",
+    "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
     "pretty-quick": "pretty-quick",
@@ -16,7 +16,7 @@
   },
     "husky": {
       "hooks": {
-        "pre-commit": "npm run test"
+
       }
     },
   "private": true,

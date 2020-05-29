@@ -19,7 +19,8 @@
 
           <ion-row class="no-wrap">
             <ion-col *ngFor="let possibleLetter of test.possibleLetters; let i = index">
-              <div [class]="test.selectedIndex === i ? isSuccess + ' letter' : ' letter'" (click)="testLetter(possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
+              <div [class]="test.selectedIndex === i ? isSuccess + ' letter' : ' letter'"
+                (click)="testLetter(possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
             </ion-col>
           </ion-row>
 

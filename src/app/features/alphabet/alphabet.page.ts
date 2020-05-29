@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
 import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
 import { tap, } from 'rxjs/operators';
@@ -7,7 +7,8 @@ import { environment } from './../../../environments/environment';
 @Component({
   selector: 'app-alphabet',
   templateUrl: './alphabet.page.html',
-  styleUrls: ['./alphabet.page.scss']
+  styleUrls: ['./alphabet.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlphabetPage {
   alphabet$ = this.alphabetService.alphabet$().pipe(
@@ -20,7 +21,7 @@ export class AlphabetPage {
   slides: Swiper;
   currentSlide = 0;
 
-  constructor(private alphabetService: AlphabetService) { }
+  constructor(private alphabetService: AlphabetService, private cd: ChangeDetectorRef) { }
 
   ionViewWillEnter(): void {
     this.slideOptions = {
@@ -39,6 +40,7 @@ export class AlphabetPage {
 
       this.slides.on('slideChange', () => {
         this.currentSlide = this.slides.activeIndex;
+        this.cd.detectChanges();
       });
     }, environment.initialSlidesDelay);
   }

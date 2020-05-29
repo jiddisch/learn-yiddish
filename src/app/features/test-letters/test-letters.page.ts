@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
 import { TestLettersService } from 'src/app/@core/test-letters/test-letters.service';
 import { tap } from 'rxjs/operators';
@@ -8,7 +8,8 @@ import { environment } from './../../../environments/environment';
 @Component({
   selector: 'app-test-letters',
   templateUrl: './test-letters.page.html',
-  styleUrls: ['./test-letters.page.scss']
+  styleUrls: ['./test-letters.page.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestLettersPage {
   data$ = this.testLettersService.data$().pipe(
@@ -29,7 +30,7 @@ export class TestLettersPage {
   rightLetters: string[];
   selectedIndex: number;
 
-  constructor(private testLettersService: TestLettersService) {}
+  constructor(private testLettersService: TestLettersService, private cd: ChangeDetectorRef) {}
 
   ionViewWillEnter() {
     this.pickedLetters = [];
@@ -50,10 +51,9 @@ export class TestLettersPage {
 
         this.slides.on('slideChange', () => {
           this.currentSlide = this.slides.activeIndex;
-          this.possibleLetters = this.sliders[
-            this.currentSlide
-          ].possibleLetters;
+          this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
           this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
+          this.cd.detectChanges();
         });
       }, environment.initialSlidesDelay);
   }
@@ -75,6 +75,7 @@ export class TestLettersPage {
     ) {
       setTimeout(() => {
         this.isSuccess = '';
+        this.cd.detectChanges();
       }, environment.initialSlidesDelay);
     }
   }

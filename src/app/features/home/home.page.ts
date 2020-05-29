@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { NavLink } from 'src/app/@shared/links.model';
 
 @Component({
   selector: 'app-home',
-  templateUrl: 'home.page.html'
+  templateUrl: 'home.page.html',
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomePage {
   // TODO: on RTL put the button on right
