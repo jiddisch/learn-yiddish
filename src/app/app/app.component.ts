@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
@@ -9,7 +9,8 @@ import { TranslocoService }  from '@ngneat/transloco';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
-  styleUrls: ['./app.component.scss']
+  styleUrls: ['./app.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppComponent {
   // TODO: menu on the right if lang = rtl
@@ -55,7 +56,7 @@ export class AppComponent {
     this.platform.ready().then(() => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
-      this.storageService.getItem('language').then((defLang: string) => {
+      this.storageService.getItem$('language').subscribe((defLang: string) => {
         this.translocoService.setActiveLang(defLang || 'en');
       });
       this.translocoService.setFallbackLangForMissingTranslation({fallbackLang: 'en'});

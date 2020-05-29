@@ -24,13 +24,13 @@ export class SettingsPage {
   ) {}
 
   ionViewWillEnter() {
-    this.storageService.getItem('language').then((defLang: string) => {
+    this.storageService.getItem$('language').subscribe((defLang: string) => {
       this.lang = defLang || 'en';
     });
   }
 
   changeLang(e: CustomEvent) {
-    this.storageService.setItem('language', e.detail.value).then(() => {
+    this.storageService.setItem$('language', e.detail.value).subscribe(() => {
       this.translocoService.setActiveLang(e.detail.value);
     });
   }
