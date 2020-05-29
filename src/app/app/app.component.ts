@@ -2,8 +2,8 @@ import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { NavLink } from '../@shared/links.model';
-import { StorageService } from '../@core/storage/storage.service';
+import { NavLink } from '../shared/links.model';
+import { StorageService } from '../core/storage/storage.service';
 import { TranslocoService }  from '@ngneat/transloco';
 
 @Component({

@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
 import { TestLetters } from './test-letters.model';
-import { Helpers } from 'src/app/@shared/helpers/helpers';
+import { Helpers } from 'src/app/shared/helpers/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TestLettersService {

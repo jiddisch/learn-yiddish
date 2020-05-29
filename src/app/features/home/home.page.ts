@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
-import { NavLink } from 'src/app/@shared/links.model';
+import { NavLink } from 'src/app/shared/links.model';
 
 @Component({
   selector: 'app-home',

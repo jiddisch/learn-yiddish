@@ -14,11 +14,9 @@
     "format:write": "prettier projects/**/*.{ts,json,md,scss} --write",
     "format:test": "prettier projects/**/*.{ts,json,md,scss} --list-different"
   },
-    "husky": {
-      "hooks": {
-
-      }
-    },
+  "husky": {
+    "hooks": {}
+  },
   "private": true,
   "dependencies": {
     "@angular/animations": "^9.1.9",

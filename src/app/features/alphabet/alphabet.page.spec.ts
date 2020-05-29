@@ -7,9 +7,9 @@ import {
 import { AlphabetPage } from './alphabet.page';
 import { HttpClientModule } from '@angular/common/http';
 import { of, Observable } from 'rxjs';
-import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
+import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
 import Swiper from 'swiper';
-import { SharedModule } from 'src/app/@shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { DebugElement } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { getTranslocoModule } from 'src/app/transloco-testing.module';

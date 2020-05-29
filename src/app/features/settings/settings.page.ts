@@ -1,5 +1,5 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { StorageService } from 'src/app/@core/storage/storage.service';
+import { StorageService } from 'src/app/core/storage/storage.service';
 import { TranslocoService }  from '@ngneat/transloco';
 
 @Component({

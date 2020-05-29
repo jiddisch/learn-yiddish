@@ -3,7 +3,7 @@ import { IonicModule } from '@ionic/angular';
 import {NgxWebstorageModule} from 'ngx-webstorage';
 import { SettingsPage } from './settings.page';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { StorageService } from 'src/app/@core/storage/storage.service';
+import { StorageService } from 'src/app/core/storage/storage.service';
 import { getTranslocoModule } from 'src/app/transloco-testing.module';
 
 describe('SettingsPage', () => {

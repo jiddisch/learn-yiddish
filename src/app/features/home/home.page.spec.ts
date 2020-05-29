@@ -1,6 +1,6 @@
 import { ComponentFixture, async } from '@angular/core/testing';
 import { HomePage } from './home.page';
-import { SharedModule } from 'src/app/@shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 import { RouterTestingModule } from '@angular/router/testing';
 import { Location } from '@angular/common';
 import { routes } from 'src/app/app-routing.module';

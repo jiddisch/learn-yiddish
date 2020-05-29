@@ -1,6 +1,6 @@
 import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
-import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
+import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
 import { tap, } from 'rxjs/operators';
 import { environment } from './../../../environments/environment';
 

@@ -10,10 +10,10 @@ import { Observable } from 'rxjs';
 import { DebugElement } from '@angular/core';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import Swiper from 'swiper';
-import { AlphabetService } from 'src/app/@core/alphabet/alphabet.service';
-import { ToolbarComponent } from 'src/app/@shared/toolbar/toolbar.component';
+import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
+import { ToolbarComponent } from 'src/app/shared/toolbar/toolbar.component';
 import { environment } from 'src/environments/environment';
-import { SharedModule } from 'src/app/@shared/shared.module';
+import { SharedModule } from 'src/app/shared/shared.module';
 
 describe('TestLettersPage', () => {
   let fixture: ComponentFixture<TestLettersPage>;

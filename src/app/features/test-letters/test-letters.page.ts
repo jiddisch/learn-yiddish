@@ -1,8 +1,8 @@
 import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
-import { TestLettersService } from 'src/app/@core/test-letters/test-letters.service';
+import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
 import { tap } from 'rxjs/operators';
-import { TestLetters } from 'src/app/@core/test-letters/test-letters.model';
+import { TestLetters } from 'src/app/core/test-letters/test-letters.model';
 import { environment } from './../../../environments/environment';
 
 @Component({
