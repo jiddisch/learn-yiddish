@@ -21,7 +21,8 @@ import { IncreaseByOnePipe } from './increase-by-one/increase-by-one.pipe';
         IonicModule,
         ToolbarComponent,
         FontAwesomeModule,
-        TranslocoRootModule
+        TranslocoRootModule,
+        IncreaseByOnePipe
     ]
 })
 export class SharedModule {}

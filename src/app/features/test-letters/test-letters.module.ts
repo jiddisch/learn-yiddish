@@ -6,7 +6,9 @@ import { TestLettersPage } from './test-letters.page';
 @NgModule({
   imports: [
     SharedModule,
-    RouterModule.forChild([{ path: '', component: TestLettersPage }])
+    RouterModule.forChild([
+      { path: '', component: TestLettersPage },
+    ])
   ],
   declarations: [TestLettersPage],
   providers: []

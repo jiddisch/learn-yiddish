@@ -1,34 +1,37 @@
-<ion-header>
-  <app-toolbar></app-toolbar>
-  <div class="indicator" *ngIf="sliders">{{currentSlide | increaseByOne}} / {{sliders.length | json}}</div>
-</ion-header>
+<ng-container *ngIf="data$ | async as data">
+  <ion-header>
+    <app-toolbar></app-toolbar>
+    <div class="indicator">{{currentSlide | increaseByOne}} / {{data.length | json}}</div>
+  </ion-header>
 
-<ion-content>
+  <ion-content>
 
-  <div class="swiper-container">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let test of data$ | async">
+    <div class="swiper-container">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide" *ngFor="let test of data">
 
-        <ion-grid>
+          <ion-grid>
 
-          <ion-row>
-            <ion-col class="letters-yiddish-col">
-              <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
-            </ion-col>
-          </ion-row>
+            <ion-row>
 
-          <ion-row class="no-wrap">
-            <ion-col *ngFor="let possibleLetter of test.possibleLetters; let i = index">
-              <div [class]="test.selectedIndex === i ? isSuccess + ' letter' : ' letter'"
-                (click)="testLetter(test, possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
-            </ion-col>
-          </ion-row>
+              <ion-col class="letters-yiddish-col">
+                <div class="ion-text-center letters letters-yiddish">{{ test.yiddishLetter }}</div>
+              </ion-col>
+            </ion-row>
 
-        </ion-grid>
+            <ion-row class="no-wrap">
+              <ion-col *ngFor="let possibleLetter of test.possibleLetters; let i = index">
+                <div [class]="test.selectedIndex === i ? isSuccess + ' letter' : ' letter'"
+                  (click)="testLetter(test, possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
+              </ion-col>
+            </ion-row>
 
+          </ion-grid>
+
+        </div>
       </div>
+      <div class="swiper-scrollbar"></div>
     </div>
-    <div class="swiper-scrollbar"></div>
-  </div>
 
-</ion-content>
+  </ion-content>
+</ng-container>

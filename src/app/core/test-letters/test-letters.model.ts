@@ -1,9 +1,8 @@
 export interface TestLetter {
-  yiddishLetter: string;
   letterName: string;
-  transcribedLetterName: string;
-  transcribedLetter: string[];
+  yiddishLetter: string;
   possibleLetters?: string[];
-  selectedIndex: number;
+  transcribedLetter: string[];
+  transcribedLetterName: string;
 }
 

@@ -8,4 +8,10 @@ export class Helpers {
     return arr;
   }
 
+  static flatArray<T>(arr: T[][]): T[] {
+    return arr.reduce((acc, val) => {
+      return acc.concat(val);
+    });
+  }
+
 }

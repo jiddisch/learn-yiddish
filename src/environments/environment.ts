@@ -6,7 +6,9 @@ export const environment = {
   production: false,
   i18nPrefix: '',
   mocks: '../assets/mocks/',
-  initialSlidesDelay: 300
+  generalDelay: 300,
+  slideOptionsSpeed: 400,
+  amountOfPossibleLetters: 5
 };
 
 /*

@@ -1,6 +1,6 @@
 <ion-header>
   <app-toolbar></app-toolbar>
-  <div class="indicator" *ngIf="slidersLength">{{currentSlide + 1 | number}} / {{slidersLength | json}}</div>
+  <div class="indicator" *ngIf="slidersLength">{{currentSlide | increaseByOne}} / {{slidersLength | json}}</div>
 </ion-header>
 
 <ion-content *transloco="let t">

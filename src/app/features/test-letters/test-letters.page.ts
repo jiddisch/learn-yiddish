@@ -1,9 +1,9 @@
 import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
 import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
-import { tap } from 'rxjs/operators';
 import { TestLetter } from 'src/app/core/test-letters/test-letters.model';
 import { environment } from './../../../environments/environment';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-test-letters',
@@ -12,27 +12,22 @@ import { environment } from './../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class TestLettersPage {
-  data$ = this.testLettersService.data$().pipe(
-    tap((res) => {
-      this.sliders = res;
-    })
-  );
+  data$ = this.testLettersService.data$();
+  data: [];
   slides: Swiper;
   slideOptions: SwiperOptions;
-  sliders: TestLetter[];
-  currentSlide: number;
+  currentSlide = 0;
   isSuccess: string;
-  changeSlideSpeed = 200;
   pickedLetter: string;
-  rightLetters: string[];
+  rightLetters = [];
   selectedIndex: number;
 
-  constructor(private testLettersService: TestLettersService, private cd: ChangeDetectorRef) {}
+  constructor(private testLettersService: TestLettersService, private cd: ChangeDetectorRef) { }
 
   ionViewWillEnter() {
     this.slideOptions = {
       width: window.innerWidth,
-      speed: 400,
+      speed: environment.slideOptionsSpeed,
       scrollbar: {
         el: '.swiper-scrollbar',
         draggable: true
@@ -41,57 +36,50 @@ export class TestLettersPage {
   }
 
   ionViewDidEnter() {
-      setTimeout(() => {
-        this.slides = new Swiper('.swiper-container', this.slideOptions);
+    setTimeout(() => {
+      this.slides = new Swiper('.swiper-container', this.slideOptions);
 
-        this.slides.on('slideChange', () => {
-          this.currentSlide = this.slides.activeIndex + 1;
-          this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
-          this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
-          this.cd.detectChanges();
-        });
-      }, environment.initialSlidesDelay);
-  }
-
-  isPicked(pickedLetter: string): void {
-    if (this.pickedLetters && this.pickedLetters.includes(pickedLetter)) {
-      this.isSuccess = 'success';
-    } else {
-      this.isSuccess = 'failed';
-    }
-
-    if (
-      this.pickedLetters.length === 0 ||
-      this.pickedLetters.length === this.rightLetters.length
-    ) {
-      setTimeout(() => {
-        this.isSuccess = '';
+      this.slides.on('slideChange', () => {
+        this.currentSlide = this.slides.activeIndex;
         this.cd.detectChanges();
-      }, environment.initialSlidesDelay);
-    }
+      });
+    }, environment.generalDelay);
   }
 
   testLetter(test: TestLetter, pickedLetter: string): void {
-    // if (test.transcribedLetter.includes(possibleLetter)) {
-    //   if (!this.pickedLetters.includes(possibleLetter)) {
-    //     this.pickedLetters.push(possibleLetter);
+    if (test.transcribedLetter.includes(pickedLetter)) {
+      this.isSuccess = 'success';
 
-    //     if (
-    //       this.pickedLetters.sort().join() === this.rightLetters.sort().join()
-    //     ) {
-    //       setTimeout(() => {
-    //         this.slides.slideNext();
-    //         this.pickedLetters.length = 0;
-    //       }, environment.initialSlidesDelay);
-    //     }
-    //   }
-    // }
-    // this.isPicked(possibleLetter);
+      if(test.transcribedLetter.length === 1) {
+        setTimeout(() => {
+          this.isSuccess = '';
+          this.cd.detectChanges();
+          this.slides.slideNext()
+        }, environment.generalDelay);
+      } else {
+        if (this.rightLetters.length === test.transcribedLetter.length) {
+          setTimeout(() => {
+            this.isSuccess = '';
+            this.cd.detectChanges();
+            this.slides.slideNext();
+          }, environment.generalDelay);
+        } else {
+          this.rightLetters.push(pickedLetter);
+        }
+      }
+    } else {
+      this.isSuccess = 'failed';
+
+      setTimeout(() => {
+        this.isSuccess = '';
+        this.cd.detectChanges();
+      }, environment.generalDelay);
+    }
   }
 
   ionViewWillLeave() {
     this.currentSlide = 0;
-    this.cd.detectChanges();
     this.slides.destroy(true, true);
+    this.cd.detectChanges();
   }
 }

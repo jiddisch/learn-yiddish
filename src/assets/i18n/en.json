@@ -1,9 +1,9 @@
 {
     "home.startStudyAlphabetButton": "Learn the Alphabet",
-    "home.goTotestLettersButton": "Test Letters",
+    "home.goTotestLettersButton": "Exercise",
     "menu.home": "Home",
     "menu.alphabet": "Alphabet",
-    "menu.testLetters": "Exercises on Letters",
+    "menu.testLetters": "Exercises",
     "menu.settings": "Settings",
     "settings.dismiss": "Dismiss",
     "settings.languageTitle": "Language",
