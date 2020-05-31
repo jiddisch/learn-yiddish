@@ -3,7 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { TestLetters } from './test-letters.model';
+import { TestLetter } from './test-letters.model';
 import { Helpers } from 'src/app/shared/helpers/helpers';
 
 @Injectable({ providedIn: 'root' })
@@ -13,9 +13,9 @@ export class TestLettersService {
 
   constructor(private http: HttpClient) {}
 
-  data$(): Observable<TestLetters[]> {
+  data$(): Observable<TestLetter[]> {
     return this.http
-      .get<TestLetters[]>(`${environment.mocks}alphabet.json`)
+      .get<TestLetter[]>(`${environment.mocks}alphabet.json`)
       .pipe(
         map((res) => {
           return res.map((item) => {

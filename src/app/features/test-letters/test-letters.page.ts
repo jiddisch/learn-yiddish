@@ -2,7 +2,7 @@ import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/
 import Swiper, { SwiperOptions } from 'swiper';
 import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
 import { tap } from 'rxjs/operators';
-import { TestLetters } from 'src/app/core/test-letters/test-letters.model';
+import { TestLetter } from 'src/app/core/test-letters/test-letters.model';
 import { environment } from './../../../environments/environment';
 
 @Component({
@@ -15,14 +15,12 @@ export class TestLettersPage {
   data$ = this.testLettersService.data$().pipe(
     tap((res) => {
       this.sliders = res;
-      this.possibleLetters = res[0].possibleLetters;
-      this.rightLetters = res[0].transcribedLetter;
     })
   );
   slides: Swiper;
   slideOptions: SwiperOptions;
-  sliders: TestLetters[];
-  currentSlide = 0;
+  sliders: TestLetter[];
+  currentSlide: number;
   isSuccess: string;
   changeSlideSpeed = 200;
   pickedLetters: string[];
@@ -34,7 +32,6 @@ export class TestLettersPage {
 
   ionViewWillEnter() {
     this.pickedLetters = [];
-
     this.slideOptions = {
       width: window.innerWidth,
       speed: 400,
@@ -47,19 +44,15 @@ export class TestLettersPage {
 
   ionViewDidEnter() {
       setTimeout(() => {
-        this.slides = new Swiper('.swiper-container-t', this.slideOptions);
+        this.slides = new Swiper('.swiper-container', this.slideOptions);
 
         this.slides.on('slideChange', () => {
-          this.currentSlide = this.slides.activeIndex;
+          this.currentSlide = this.slides.activeIndex + 1;
           this.possibleLetters = this.sliders[this.currentSlide].possibleLetters;
           this.rightLetters = this.sliders[this.currentSlide].transcribedLetter;
           this.cd.detectChanges();
         });
       }, environment.initialSlidesDelay);
-  }
-
-  ionViewWillLeave() {
-    this.slides = undefined;
   }
 
   isPicked(pickedLetter: string): void {
@@ -80,21 +73,27 @@ export class TestLettersPage {
     }
   }
 
-  testLetter(possibleLetter: string): void {
-    if (this.rightLetters.includes(possibleLetter)) {
-      if (!this.pickedLetters.includes(possibleLetter)) {
-        this.pickedLetters.push(possibleLetter);
+  testLetter(test: TestLetter, pickedLetter: string): void {
+    // if (test.transcribedLetter.includes(possibleLetter)) {
+    //   if (!this.pickedLetters.includes(possibleLetter)) {
+    //     this.pickedLetters.push(possibleLetter);
 
-        if (
-          this.pickedLetters.sort().join() === this.rightLetters.sort().join()
-        ) {
-          setTimeout(() => {
-            this.slides.slideNext();
-            this.pickedLetters.length = 0;
-          }, environment.initialSlidesDelay);
-        }
-      }
-    }
-    this.isPicked(possibleLetter);
+    //     if (
+    //       this.pickedLetters.sort().join() === this.rightLetters.sort().join()
+    //     ) {
+    //       setTimeout(() => {
+    //         this.slides.slideNext();
+    //         this.pickedLetters.length = 0;
+    //       }, environment.initialSlidesDelay);
+    //     }
+    //   }
+    // }
+    // this.isPicked(possibleLetter);
+  }
+
+  ionViewWillLeave() {
+    this.currentSlide = 0;
+    this.cd.detectChanges();
+    this.slides.destroy(true, true);
   }
 }

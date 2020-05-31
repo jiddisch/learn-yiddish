@@ -19,11 +19,11 @@ export class AlphabetPage {
   slideOptions: SwiperOptions;
   slidersLength: number;
   slides: Swiper;
-  currentSlide = 0;
+  currentSlide: number;
 
   constructor(private alphabetService: AlphabetService, private cd: ChangeDetectorRef) { }
 
-  ionViewWillEnter(): void {
+  ionViewWillEnter() {
     this.slideOptions = {
       width: window.innerWidth,
       speed: 400,
@@ -39,13 +39,16 @@ export class AlphabetPage {
       this.slides = new Swiper('.swiper-container-a', this.slideOptions);
 
       this.slides.on('slideChange', () => {
-        this.currentSlide = this.slides.activeIndex;
+        this.currentSlide = this.slides.activeIndex + 1;
         this.cd.detectChanges();
       });
     }, environment.initialSlidesDelay);
   }
 
   ionViewWillLeave() {
-    this.slides = undefined;
+    this.currentSlide = 0;
+    this.cd.detectChanges();
+    this.slides.destroy(true, true);
   }
+
 }

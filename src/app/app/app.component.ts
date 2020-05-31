@@ -19,25 +19,25 @@ export class AppComponent {
     {
       url: '/home',
       icon: 'home',
-      label: 'home',
+      label: 'menu.home',
       class: 'home-item'
     },
     {
       url: '/alphabet',
       icon: 'font',
-      label: 'alphabet',
+      label: 'menu.alphabet',
       class: 'alphabet-item'
     },
     {
       url: '/test-letters',
       icon: 'question',
-      label: 'testLetters',
+      label: 'menu.testLetters',
       class: 'test-letters-item'
     },
     {
       url: '/settings',
       icon: 'cog',
-      label: 'settings',
+      label: 'menu.settings',
       class: 'settings-item'
     }
   ];
@@ -53,7 +53,7 @@ export class AppComponent {
   }
 
   initializeApp() {
-    this.platform.ready().then(() => {
+    this.platform.ready().then((r) => {
       this.statusBar.styleDefault();
       this.splashScreen.hide();
       this.storageService.getItem$('language').subscribe((defLang: string) => {

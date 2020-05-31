@@ -2,7 +2,7 @@
   <app-toolbar></app-toolbar>
 </ion-header>
 
-<ion-content *transloco="let t; read: 'home'">
+<ion-content *transloco="let t">
   <div class="btn-container ion-padding" *ngFor="let btn of btns">
     <div class="{{btn.class}} btn-3d blue" [routerLink]="[btn.url]">{{t(btn.label)}}</div>
   </div>

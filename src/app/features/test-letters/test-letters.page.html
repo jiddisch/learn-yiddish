@@ -1,11 +1,11 @@
 <ion-header>
   <app-toolbar></app-toolbar>
-  <div class="indicator" *ngIf="sliders">{{this.currentSlide + 1 | number}} / {{sliders.length | json}}</div>
+  <div class="indicator" *ngIf="sliders">{{currentSlide + 1 | number}} / {{sliders.length | json}}</div>
 </ion-header>
 
 <ion-content>
 
-  <div class="swiper-container-t">
+  <div class="swiper-container">
     <div class="swiper-wrapper">
       <div class="swiper-slide" *ngFor="let test of data$ | async">
 
@@ -20,7 +20,7 @@
           <ion-row class="no-wrap">
             <ion-col *ngFor="let possibleLetter of test.possibleLetters; let i = index">
               <div [class]="test.selectedIndex === i ? isSuccess + ' letter' : ' letter'"
-                (click)="testLetter(possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
+                (click)="testLetter(test, possibleLetter); test.selectedIndex = i">{{ possibleLetter }}</div>
             </ion-col>
           </ion-row>
 

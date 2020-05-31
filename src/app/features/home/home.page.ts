@@ -12,12 +12,12 @@ export class HomePage {
   btns: NavLink[] = [
     {
       url: '/alphabet',
-      label: 'startStudyAlphabetButton',
+      label: 'home.startStudyAlphabetButton',
       class: 'alphabet-btn'
     },
     {
       url: '/test-letters',
-      label: 'goTotestLettersButton',
+      label: 'home.goTotestLettersButton',
       class: 'test-letters-btn'
     }
   ];

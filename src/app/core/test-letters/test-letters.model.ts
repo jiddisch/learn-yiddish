@@ -1,4 +1,4 @@
-export interface TestLetters {
+export interface TestLetter {
   yiddishLetter: string;
   letterName: string;
   transcribedLetterName: string;
