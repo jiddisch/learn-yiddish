@@ -5,9 +5,10 @@ import { RouterModule } from '@angular/router';
 import { ToolbarComponent } from './toolbar/toolbar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { TranslocoRootModule } from '../transloco-root.module';
+import { IncreaseByOnePipe } from './increase-by-one/increase-by-one.pipe';
 
 @NgModule({
-    declarations: [ToolbarComponent],
+    declarations: [ToolbarComponent, IncreaseByOnePipe],
     imports: [
         CommonModule,
         IonicModule,

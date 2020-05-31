@@ -23,15 +23,13 @@ export class TestLettersPage {
   currentSlide: number;
   isSuccess: string;
   changeSlideSpeed = 200;
-  pickedLetters: string[];
-  possibleLetters: string[];
+  pickedLetter: string;
   rightLetters: string[];
   selectedIndex: number;
 
   constructor(private testLettersService: TestLettersService, private cd: ChangeDetectorRef) {}
 
   ionViewWillEnter() {
-    this.pickedLetters = [];
     this.slideOptions = {
       width: window.innerWidth,
       speed: 400,
