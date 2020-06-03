@@ -1,20 +1,20 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map, tap } from 'rxjs/operators';
-import { environment } from 'src/environments/environment';
+import { map } from 'rxjs/operators';
+import { environment as env } from 'src/environments/environment';
 import { TestLetter } from './test-letters.model';
 import { Helpers } from 'src/app/shared/helpers/helpers';
 
 @Injectable({ providedIn: 'root' })
 export class TestLettersService {
-  private amountOfPossibleLetters = environment.amountOfPossibleLetters;
+  private amountOfPossibleLetters = env.amountOfPossibleLetters;
 
   constructor(private http: HttpClient) { }
 
   data$(): Observable<TestLetter[]> {
     return this.http
-      .get<TestLetter[]>(`${environment.mocks}alphabet.json`)
+      .get<TestLetter[]>(`${env.mocks}alphabet.json`)
       .pipe(
         map((res) => {
           const allLetters = Helpers.flatArray(

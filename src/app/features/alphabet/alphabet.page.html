@@ -1,13 +1,14 @@
+<ng-container *ngIf="alphabet$ | async as alphabet">
 <ion-header>
   <app-toolbar></app-toolbar>
-  <div class="indicator" *ngIf="slidersLength">{{currentSlide | increaseByOne}} / {{slidersLength | json}}</div>
+  <div class="indicator">{{currentSlide | increaseByOne}} / {{alphabet.length | json}}</div>
 </ion-header>
 
 <ion-content *transloco="let t">
 
   <div class="swiper-container-a">
     <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let letter of alphabet$ | async">
+      <div class="swiper-slide" *ngFor="let letter of alphabet">
 
         <ion-grid>
 
@@ -78,3 +79,4 @@
     <div class="swiper-scrollbar"></div>
   </div>
 </ion-content>
+</ng-container>

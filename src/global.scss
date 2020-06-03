@@ -29,6 +29,10 @@
   --ion-font-family: '';
 }
 
+* {
+  outline: 0;
+}
+
 .header-md:after {
   background-image: none;
 }
@@ -60,4 +64,8 @@ ion-toolbar {
 
 .a-no-underline {
   text-decoration: none;
+}
+
+.no-wrap {
+  flex-wrap: nowrap;
 }

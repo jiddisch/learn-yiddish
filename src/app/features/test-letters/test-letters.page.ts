@@ -2,8 +2,7 @@ import { Component, ChangeDetectorRef, ChangeDetectionStrategy } from '@angular/
 import Swiper, { SwiperOptions } from 'swiper';
 import { TestLettersService } from 'src/app/core/test-letters/test-letters.service';
 import { TestLetter } from 'src/app/core/test-letters/test-letters.model';
-import { environment } from './../../../environments/environment';
-import { ActivatedRoute } from '@angular/router';
+import { environment as env } from './../../../environments/environment';
 
 @Component({
   selector: 'app-test-letters',
@@ -19,15 +18,16 @@ export class TestLettersPage {
   currentSlide = 0;
   isSuccess: string;
   pickedLetter: string;
-  rightLetters = [];
+  pickedLetters = [];
   selectedIndex: number;
 
   constructor(private testLettersService: TestLettersService, private cd: ChangeDetectorRef) { }
 
   ionViewWillEnter() {
     this.slideOptions = {
+      initialSlide: 15,
       width: window.innerWidth,
-      speed: environment.slideOptionsSpeed,
+      speed: env.slideOptionsSpeed,
       scrollbar: {
         el: '.swiper-scrollbar',
         draggable: true
@@ -43,7 +43,7 @@ export class TestLettersPage {
         this.currentSlide = this.slides.activeIndex;
         this.cd.detectChanges();
       });
-    }, environment.generalDelay);
+    }, env.generalDelay);
   }
 
   testLetter(test: TestLetter, pickedLetter: string): void {
@@ -55,25 +55,28 @@ export class TestLettersPage {
           this.isSuccess = '';
           this.cd.detectChanges();
           this.slides.slideNext()
-        }, environment.generalDelay);
+        }, env.generalDelay);
       } else {
-        if (this.rightLetters.length === test.transcribedLetter.length) {
+        if (this.pickedLetters.length > 0) {
           setTimeout(() => {
             this.isSuccess = '';
+            this.pickedLetters = [];
             this.cd.detectChanges();
             this.slides.slideNext();
-          }, environment.generalDelay);
+          }, env.generalDelay);
         } else {
-          this.rightLetters.push(pickedLetter);
+          this.pickedLetters.push(pickedLetter);
         }
       }
     } else {
       this.isSuccess = 'failed';
+      this.pickedLetters = [];
+      this.cd.detectChanges();
 
       setTimeout(() => {
         this.isSuccess = '';
         this.cd.detectChanges();
-      }, environment.generalDelay);
+      }, env.generalDelay);
     }
   }
 

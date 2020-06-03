@@ -4,5 +4,6 @@ export interface TestLetter {
   possibleLetters?: string[];
   transcribedLetter: string[];
   transcribedLetterName: string;
+  selectedIndex?: number;
 }
 

@@ -1,8 +1,12 @@
-import { Component, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import {
+  Component,
+  ChangeDetectionStrategy,
+  ChangeDetectorRef
+} from '@angular/core';
 import Swiper, { SwiperOptions } from 'swiper';
 import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
-import { tap, } from 'rxjs/operators';
-import { environment } from './../../../environments/environment';
+import { environment as env } from './../../../environments/environment';
+import { StorageService } from 'src/app/core/storage/storage.service';
 
 @Component({
   selector: 'app-alphabet',
@@ -11,42 +15,46 @@ import { environment } from './../../../environments/environment';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AlphabetPage {
-  alphabet$ = this.alphabetService.alphabet$().pipe(
-    tap(res => {
-      this.slidersLength = res.length;
-    })
-  );
+  alphabet$ = this.alphabetService.alphabet$();
   slideOptions: SwiperOptions;
   slidersLength: number;
   slides: Swiper;
-  currentSlide = 0;
+  currentSlide: number;
 
-  constructor(private alphabetService: AlphabetService, private cd: ChangeDetectorRef) { }
-
-  ionViewWillEnter() {
-    this.slideOptions = {
-      width: window.innerWidth,
-      speed: environment.slideOptionsSpeed,
-      scrollbar: {
-        el: '.swiper-scrollbar',
-        draggable: true
-      }
-    };
-  }
+  constructor(
+    private alphabetService: AlphabetService,
+    private cd: ChangeDetectorRef,
+    private storageService: StorageService
+  ) { }
 
   ionViewDidEnter() {
-    setTimeout(() => {
-      this.slides = new Swiper('.swiper-container-a', this.slideOptions);
+    this.storageService.getItem$<number>('alphabet').subscribe(initSlide => {
+      this.currentSlide = initSlide;
+      this.cd.detectChanges();
 
-      this.slides.on('slideChange', () => {
-        this.currentSlide = this.slides.activeIndex;
-        this.cd.detectChanges();
-      });
-    }, environment.generalDelay);
+      this.slideOptions = {
+        initialSlide: initSlide,
+        width: window.innerWidth,
+        speed: env.slideOptionsSpeed,
+        scrollbar: {
+          el: '.swiper-scrollbar',
+          draggable: true
+        }
+      }
+
+      setTimeout(() => {
+        this.slides = new Swiper('.swiper-container-a', this.slideOptions);
+
+        this.slides.on('slideChange', () => {
+          this.currentSlide = this.slides.activeIndex;
+          this.storageService.setItem$('alphabet', this.currentSlide);
+          this.cd.detectChanges();
+        });
+      }, env.generalDelay);
+    });
   }
 
   ionViewWillLeave() {
-    this.currentSlide = 0;
     this.slides.destroy(true, true);
     this.cd.detectChanges();
   }
