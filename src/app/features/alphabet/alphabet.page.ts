@@ -7,6 +7,7 @@ import Swiper, { SwiperOptions } from 'swiper';
 import { AlphabetService } from 'src/app/core/alphabet/alphabet.service';
 import { environment as env } from './../../../environments/environment';
 import { StorageService } from 'src/app/core/storage/storage.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-alphabet',
@@ -24,16 +25,17 @@ export class AlphabetPage {
   constructor(
     private alphabetService: AlphabetService,
     private cd: ChangeDetectorRef,
-    private storageService: StorageService
+    private storageService: StorageService,
+    private activatedRoute: ActivatedRoute
   ) { }
 
-  ionViewDidEnter() {
-    this.storageService.getItem$<number>('alphabet').subscribe(initSlide => {
-      this.currentSlide = initSlide;
+  ionViewWillEnter() {
+    this.activatedRoute.data.subscribe(res => {
+      this.currentSlide = res.initSlide;
       this.cd.detectChanges();
 
       this.slideOptions = {
-        initialSlide: initSlide,
+        initialSlide: res.initSlide,
         width: window.innerWidth,
         speed: env.slideOptionsSpeed,
         scrollbar: {

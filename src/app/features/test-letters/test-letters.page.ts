@@ -25,7 +25,7 @@ export class TestLettersPage {
 
   ionViewWillEnter() {
     this.slideOptions = {
-      initialSlide: 15,
+      initialSlide: 0,
       width: window.innerWidth,
       speed: env.slideOptionsSpeed,
       scrollbar: {
