@@ -6,7 +6,7 @@
   "scripts": {
     "ng": "ng",
     "start": "ionic serve",
-    "build": "ng build",
+    "build": "ionic cordova build android --release --prod && jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ~/jiddisch.keystore  /home/roni/www/learn-yiddish/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk jiddisch && zipalign -v 4 /home/roni/www/learn-yiddish/platforms/android/app/build/outputs/apk/release/app-release-unsigned.apk ~/Downloads/apk.apk",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
@@ -41,6 +41,7 @@
     "core-js": "^3.6.5",
     "ng-mocks": "^9.4.0",
     "ngx-webstorage": "^5.0.0",
+    "reveal.js": "^4.0.2",
     "rxjs": "~6.5.5",
     "swiper": "^5.3.8",
     "tslib": "^1.11.1",

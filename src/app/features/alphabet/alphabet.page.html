@@ -6,9 +6,9 @@
 
 <ion-content *transloco="let t">
 
-  <div class="swiper-container-a">
-    <div class="swiper-wrapper">
-      <div class="swiper-slide" *ngFor="let letter of alphabet">
+  <div class="reveal">
+    <div class="slides">
+      <section *ngFor="let letter of alphabet">
 
         <ion-grid>
 
@@ -74,7 +74,7 @@
 
         </ion-grid>
 
-      </div>
+      </section>
     </div>
     <div class="swiper-scrollbar"></div>
   </div>
