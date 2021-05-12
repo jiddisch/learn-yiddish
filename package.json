@@ -42,7 +42,7 @@
     "ng-mocks": "^9.4.0",
     "ngx-webstorage": "^5.0.0",
     "rxjs": "~6.5.5",
-    "swiper": "^5.3.8",
+    "swiper": "^6.5.1",
     "tslib": "^1.11.1",
     "zone.js": "~0.10.2"
   },
